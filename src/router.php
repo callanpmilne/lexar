@@ -35,7 +35,7 @@ function handleRoute ($requestUri) {
       break;
 
     default:
-    send_status_code(404);
+      http_response_code(404);
       loadPage('error/404');
   }
 }
