@@ -21,6 +21,6 @@ define( 'REQUEST_URI', $_SERVER["REQUEST_URI"] );
  */
 if ( preg_match( SKIP_PATTERNS, REQUEST_URI ) ) {
   return false; // serve the requested resource as-is.
-} else {
-  handleRoute( REQUEST_URI );
 }
+
+handleRoute( REQUEST_URI );
