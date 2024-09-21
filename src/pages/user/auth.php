@@ -18,21 +18,23 @@ if ($isLoginSubmit) {
 }
 ?>
 
-<h1>User Login</h1>
+<main>
+  <h1>User Login</h1>
 
-<form 
-  action="/login" 
-  method="POST">
-  <?php include('../src/components/forms/login.php'); ?>
-</form>
+  <form 
+    action="/login" 
+    method="POST">
+    <?php include('../src/components/forms/login.php'); ?>
+  </form>
 
-<?php if ($isLoginSubmit) : ?>
-  <div
-    class="component-form-login-debug">
-    <h2>Debug</h2>
-    <pre><?php var_dump($_POST); ?></pre>
-  </div>
-<?php endif; ?>
+  <?php if ($isLoginSubmit) : ?>
+    <div
+      class="component-form-login-debug">
+      <h2>Debug</h2>
+      <pre><?php var_dump($_POST); ?></pre>
+    </div>
+  <?php endif; ?>
+</main>
 
 <style>
   div.component-form-login-debug {
