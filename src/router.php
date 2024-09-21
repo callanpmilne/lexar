@@ -18,6 +18,10 @@ function handleRoute ($requestUri) {
     case '': 
       loadPage('home');
       break;
+    
+    case 'categories': 
+      loadPage('categories');
+      break;
 
     default:
       http_response_code(404);

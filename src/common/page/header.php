@@ -24,6 +24,12 @@
       </li>
       <li>
         <a 
+          href="/categories">
+          Categories
+        </a>
+      </li>
+      <li>
+        <a 
           href="/404">
           404
         </a>

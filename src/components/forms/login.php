@@ -62,6 +62,10 @@
 </div>
 
 <style>
+  main {
+    align-items: center;
+  }
+
   div.component-form-login {
     display: flex;
     flex-direction: column;
