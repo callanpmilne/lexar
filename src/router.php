@@ -1,20 +1,5 @@
 <?php
 
-// Patterns to exclude from router
-define('SKIP_PATTERNS', '/\.(?:png|jpg|jpeg|gif)$/');
-
-// HTTP Request URI
-define('REQUEST_URI', $_SERVER["REQUEST_URI"]);
-
-/**
- * Router
- */
-if ( preg_match(SKIP_PATTERNS, REQUEST_URI) ) {
-  return false; // serve the requested resource as-is.
-} else {
-  handleRoute(REQUEST_URI);
-}
-
 /**
  * Handle Route
  * 
