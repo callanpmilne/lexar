@@ -7,6 +7,7 @@
  */
 
 require_once('../src/class/Customer.php');
+require_once('../src/methods/Customer/fetchCustomerList.php');
 
 $customers = fetchCustomerList();
 
@@ -14,13 +15,29 @@ $customers = fetchCustomerList();
 
 <main>
   <h1>Customer List</h1>
-  <ul>
-    <?php foreach ($customers as $customer) : ?>
-      <li>
-        <a href="/admin/view/customer/<?=$customer->ID?>">
-          <?=$customer->Name?>
-        </a>
-      </li>
-    <?php endforeach; ?>
-  </ul>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <?php foreach ($customers as $customer) : ?>
+        <tr>
+          <th>
+            <?=$customer->ID?>
+          </th>
+
+          <td>
+            <a href="/admin/view/customer/<?=$customer->ID?>">
+              <?=$customer->Name?>
+            </a>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
 </main>
