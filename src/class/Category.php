@@ -6,6 +6,11 @@
 class Category {
 
   /**
+   * Unique ID
+   */
+  public string $ID;
+
+  /**
    * Display Name
    */
   public string $Name;
@@ -27,10 +32,19 @@ class Category {
    * @param string $path Full Path (e.g. animals/cat)
    * @param string $parentPath Parent's Full Path (if any)
    */
-  public function __construct (string $name, string $path, ?string $parentPath = null) {
-    $this->Name = $name;
-    $this->Path = $path;
-    $this->ParentID = $parentPath; // Parent Category
+  public function __construct (
+    string $ID, 
+    string $Name, 
+    string $Path, 
+    ?string $ParentID = null
+  ) {
+    $this->ID = $ID;
+    $this->Name = $Name;
+    $this->Path = $Path;
+    
+    if (!is_null($ParentID)) {
+      $this->ParentID = $ParentID; // Parent Category
+    }
   }
 
   /**

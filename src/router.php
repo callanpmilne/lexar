@@ -1,5 +1,14 @@
 <?php
 
+class GlobalSession {
+  static public function init () {
+    // check for cookie: 'accept_cookie_policy'
+    // if set we can init session, and ...
+      // check for cookie: 'session'
+      // set cookie: 'session'
+  }
+}
+
 /**
  * Handle Route
  * 
@@ -8,7 +17,10 @@
  * @param string $requestUri The full Request URI
  */
 function handleRoute ($requestUri) {
-  $route = preg_split('/\//', $requestUri)[1];
+  $routeParts = preg_split('/\//', $requestUri);
+  $route = $routeParts[1];
+
+  GlobalSession::init();
 
   switch ($route) {
     case 'login':
@@ -21,6 +33,10 @@ function handleRoute ($requestUri) {
     
     case 'categories': 
       loadPage('categories');
+      break;
+    
+    case 'admin': 
+      loadPage('admin/router');
       break;
 
     default:

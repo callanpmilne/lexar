@@ -6,17 +6,27 @@
 class Customer {
 
   /**
-   * GUID
+   * Customer GUID
    */
-  public ?string $ID;
+  public string $ID;
+
+  /**
+   * Customer Name
+   */
+  public string $Name;
   
   /**
    * Constructor
    * 
    * @param string $ID Customer GUID
+   * @param string $Name Customer Name
    */
-  public function __construct (?string $ID = null) {
+  public function __construct (
+    string $ID,
+    string $Name
+  ) {
     $this->ID = $ID;
+    $this->Name = $Name;
   }
 
 }

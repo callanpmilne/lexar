@@ -6,35 +6,12 @@
  */
 
 require_once('../src/class/Category.php');
+require_once('../src/methods/Category/fetchCategoryList.php');
 
 /**
  * Categories
  */
-$categories = [
-
-  // Animals
-  new Category('Animals', 'animals'),
-  new Category('Dogs', 'animals/dogs', 'animals'),
-  new Category('Cats', 'animals/cats', 'animals'),
-  new Category('Bunny Rabbits', 'animals/bunny-rabbits', 'animals'),
-  new Category('Guinea-Pigs', 'animals/guinea-pigs', 'animals'),
-
-  // Vehicles
-  new Category('Vehicles', 'vehicles'),
-  new Category('Cars', 'vehicles/cars', 'vehicles'),
-  new Category('Trucks', 'vehicles/trucks', 'vehicles'),
-  new Category('Boats', 'vehicles/boats', 'vehicles'),
-  new Category('Motorbikes', 'vehicles/motorbikes', 'vehicles'),
-
-  // Computers
-  new Category('Computers', 'computers'),
-  new Category('Hand-held Computers', 'computers/hand-held', 'computers'),
-  new Category('Notebook Computers', 'computers/notebooks', 'computers'),
-  new Category('Desktop Computers', 'computers/desktop', 'computers'),
-  new Category('Media Servers', 'computers/media-servers', 'computers')
-
-];
-
+$categories = fetchCategoryList();
 $topLevelCategories = array_filter($categories, function ($cat) {
   return false === $cat->isNested();
 });
@@ -52,11 +29,11 @@ $category = true === $isViewingCategory ? array_values(array_filter($categories,
 }))[0] : null;
 
 $parentCategory = true === $hasParent ? array_values(array_filter($categories, function ($cat) use ($category) {
-  return $cat->Path === $category->ParentID;
+  return $cat->ID === $category->ParentID;
 }))[0] : null;
 
 $children = true === $isViewingCategory ? array_filter($categories, function ($cat) use ($category) {
-  return $cat->ParentID === $category->Path;
+  return $cat->isNested() && $cat->ParentID === $category->ID;
 }) : null;
 
 $displayCategories = false === $isViewingCategory ? $topLevelCategories : $children;
