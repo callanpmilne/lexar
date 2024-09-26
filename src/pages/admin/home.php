@@ -115,6 +115,14 @@ $buttons = array(
           <ul>
             <li>
               <a 
+                href="/admin/search/<?=$button->pluralName?>"
+                title="<?=$button->singularLabel?> Search">
+                🔎 Lookup
+              </a>
+            </li>
+
+            <li>
+              <a 
                 href="/admin/list/<?=$button->pluralName?>"
                 title="List All <?=$button->pluralLabel?>">
                 ✏️ Edit <?=$button->pluralLabel?>
@@ -154,14 +162,19 @@ $buttons = array(
     margin: 0;
     padding: 0.2rem 0.5rem;
     list-style-type: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell h2 {
-    font-size: 0.9rem;
-    flex: 1;
+    font-size: 0.8rem;
     border: none;
-    color: rgb(79 118 248 / 99%);
-    font-weight: 100;
+    font-weight: 500;
+    color: rgb(1 29 36);
+    border-radius: 0.25rem;
+    width: 30%;
+    margin: 0;
+    padding: 0;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell {
@@ -179,17 +192,23 @@ $buttons = array(
     flex: 1;
     box-sizing: border-box;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-end;
     margin: 1rem;
     padding: 1rem;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.34);
     border-radius: 0.5rem;
-    background: linear-gradient(163deg, rgba(0, 60, 180, 0.25) 0%, rgba(0, 60, 180, 0.1) 50%);
+    background: linear-gradient(163deg, rgb(186 218 255 / 47%) 0%, rgb(255 255 255 / 69%) 100%);
+    transition: all 333ms;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell ul {
-    flex: 2;
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    border-radius: 0.5rem;
+    background: linear-gradient(163deg, rgb(0 69 97 / 10%) 0%, rgb(3 84 85 / 20%) 100%);
+    border: 1px solid #5b98a3;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell ul li {
@@ -197,13 +216,25 @@ $buttons = array(
     flex-direction: column;
     justify-content: stretch;
     align-items: stretch;
-    border-bottom: 1px solid rgba(0,0,0,0.25);
+    border-bottom: 2px solid rgb(0 70 98 / 30%);
+    font-size: 0.85rem;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell ul li a {
     line-height: 2rem;
     display: block;
     text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
+    color: #ffffff;
+    font-weight: 400;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    padding: 0 0.5rem;
+  }
+
+  div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li a:hover {
+    background: linear-gradient(163deg, rgb(0 69 97 / 50%) 0%, rgb(3 84 85) 100%);
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell ul li:last-of-type {

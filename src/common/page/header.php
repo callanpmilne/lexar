@@ -37,7 +37,7 @@
           Admin
         </a>
       </li>
-      
+
       <li>
         <a 
           href="/404">
@@ -52,7 +52,7 @@
       height: 2.5rem;
       font-size: 0.9rem;
       font-weight: 400;
-      background-color: #222;
+      background-color: #012e39;
       box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
       display: flex;
       flex-direction: row;

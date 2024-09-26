@@ -77,6 +77,34 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     </ol>
   </div>
 
+  <?php if (true === $isViewingCategory) : ?>
+
+    <section>
+      <h2>Recent Posts</h2>
+      
+      <div class="">
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Recent Photos</h2>
+      
+      <div class="">
+        
+      </div>
+    </section>
+
+    <section>
+      <h2>Recent Videos</h2>
+      
+      <div class="">
+        
+      </div>
+    </section>
+
+  <?php endif; ?>
+
 </main>
 
 <style>
@@ -115,32 +143,38 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
 
   ol.category-list li {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     box-sizing: border-box;
     align-items: stretch;
     justify-content: stretch;
-    padding: 0.5rem;
-    width: 50%;
     max-width: 25%;
-    aspect-ratio: 16/9;
+    width: 25%;
+    /* aspect-ratio: 16/9; */
   }
 
   ol.category-list li a {
-    background-color: #fff;
-    color: #6666bf;
-    border-radius: 1rem;
     display: flex;
-    flex-direction: column;
+    flex: 1;
+    box-sizing: border-box;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex: 1;
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.34);
+    border-radius: 0.5rem;
+    background: linear-gradient(163deg, rgb(186 218 255 / 47%) 0%, rgb(255 255 255 / 69%) 100%);
     transition: all 333ms;
+    aspect-ratio: 16 / 8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    color: #012e39;
+    font-size: 1.4rem;
+    font-weight: 500;
     text-decoration: none;
-    box-shadow: 1px 1px 10px #00000050;
   }
 
   ol.category-list li a:hover {
-    background-color: #6666bf;
-    color: #fff;
+    background-color: rgb(186 218 255 / 47%);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.34);
   }
 </style>

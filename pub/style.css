@@ -1,6 +1,7 @@
 html {
   font-size: 16.6px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #000c15;
 }
 
 body {
@@ -9,7 +10,7 @@ body {
 }
 
 a {
-  color: #6666bf;
+  color: #ffca00;
 }
 
 main {
@@ -19,15 +20,22 @@ main {
   justify-content: center;
   min-height: 70vh;
   padding: 4rem 1rem;
+  background: linear-gradient(45deg, #004360, #1cdfb5);
+  color: #fff;
 }
 
 h1 {
   text-align: center;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 @media only screen and (min-width: 1024px) {
   main {
-    margin: 0 5vw;
+    padding: 4rem 5vw;
   }
 }
 
@@ -64,7 +72,7 @@ table tbody {
 
 table tbody tr th,
 table tbody tr td {
-  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 table tbody tr th {

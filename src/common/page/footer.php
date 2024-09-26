@@ -9,8 +9,10 @@
 
 <style>
   footer {
-    border-top: 1px solid #ddd;
-    color: #00000095;
+    background: radial-gradient(#005955, #004360);
+    background-size: 200% 200%;
+    border-top: 1px solid #088ea9;
+    color: rgba(255, 255, 255, 0.8);
     height: 4rem;
     display: flex;
     flex-direction: row;
@@ -18,6 +20,12 @@
     justify-content: center;
     padding: 1rem 1rem 5rem;
     font-size: 0.88rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    background-position: -25% -25%;
+  }
+
+  footer a {
+    color: #fff;
   }
 
   footer section {
