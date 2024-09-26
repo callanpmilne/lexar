@@ -1,27 +1,32 @@
 <?php
 /**
- * Create Type Form Component
+ * Create Interaction Form Component
  */
+
+include('../src/components/forms/input/uuid.php');
 ?>
 
 <div 
-  class="component-form-create-interaction">
+  class="component-form">
+
+  <?=uuidField('Interaction ID')?> 
+
   <div 
-    class="component-form-create-interaction-field">
+    class="component-form-field">
     <label
-      for="CreateTypeInputName">
-      Type Name
+      for="CreateInteractionInputName">
+      Interaction Name
     </label>
 
     <input 
-      id="CreateTypeInputName"
+      id="CreateInteractionInputName"
       name="interactionName"
       type="input"
       tabindex="2" />
   </div>
 
   <div
-    class="component-form-create-interaction-buttons">
+    class="component-form-buttons">
 
     <div style="display: flex; flex: 1;"></div>
 
@@ -40,34 +45,5 @@
 <style>
   main {
     align-items: center;
-  }
-
-  div.component-form-create-interaction {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    min-width: 20rem;
-    max-width: 30vw;
-  }
-
-  div.component-form-create-interaction div.component-form-create-interaction-field {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    padding: 0.5rem 0;
-  }
-
-  div.component-form-create-interaction div.component-form-create-interaction-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    height: 2.5rem;
-  }
-
-  div.component-form-create-interaction div.component-form-create-interaction-buttons > * {
-    cursor: pointer;
   }
 </style>

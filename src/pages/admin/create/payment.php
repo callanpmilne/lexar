@@ -19,7 +19,7 @@ if ($isCreatePaymentSubmit) {
 <main>
   <h1>Create Payment</h1>
 
-  <p>
+  <p class="breadcrumbs">
     <a href="/admin">
       &larr; Admin Dashboard
     </a>

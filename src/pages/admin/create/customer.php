@@ -19,7 +19,7 @@ if ($isCreateCustomerSubmit) {
 <main>
   <h1>Create Customer</h1>
 
-  <p>
+  <p class="breadcrumbs">
     <a href="/admin">
       &larr; Admin Dashboard
     </a>

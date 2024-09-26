@@ -19,7 +19,7 @@ if ($isCreateMetadataSubmit) {
 <main>
   <h1>Create Metadata</h1>
 
-  <p>
+  <p class="breadcrumbs">
     <a href="/admin">
       &larr; Admin Dashboard
     </a>

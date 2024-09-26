@@ -22,6 +22,7 @@ if ($isLoginSubmit) {
   <h1>User Login</h1>
 
   <form 
+    id="UserLoginForm"
     action="/login" 
     method="POST">
     <?php include('../src/components/forms/login.php'); ?>
@@ -37,6 +38,10 @@ if ($isLoginSubmit) {
 </main>
 
 <style>
+  #UserLoginForm {
+    margin-top: 4rem;
+  }
+  
   div.component-form-login-debug {
     border: 1px solid;
     padding: 0 1rem 1rem;

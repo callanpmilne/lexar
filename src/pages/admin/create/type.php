@@ -19,7 +19,7 @@ if ($isCreateTypeSubmit) {
 <main>
   <h1>Create Content Type</h1>
 
-  <p>
+  <p class="breadcrumbs">
     <a href="/admin">
       &larr; Admin Dashboard
     </a>

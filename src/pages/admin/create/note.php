@@ -19,7 +19,7 @@ if ($isCreateNoteSubmit) {
 <main>
   <h1>Create Note</h1>
 
-  <p>
+  <p class="breadcrumbs">
     <a href="/admin">
       &larr; Admin Dashboard
     </a>

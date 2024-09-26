@@ -2,12 +2,17 @@
 /**
  * Create Category Form Component
  */
+
+include('../src/components/forms/input/uuid.php');
 ?>
 
 <div 
-  class="component-form-create-category">
+  class="component-form">
+
+  <?=uuidField('Category ID')?> 
+
   <div 
-    class="component-form-create-category-field">
+    class="component-form-field">
     <label
       for="CreateCategoryInputName">
       Category Name
@@ -21,7 +26,7 @@
   </div>
 
   <div
-    class="component-form-create-category-buttons">
+    class="component-form-buttons">
 
     <div style="display: flex; flex: 1;"></div>
 
@@ -40,34 +45,5 @@
 <style>
   main {
     align-items: center;
-  }
-
-  div.component-form-create-category {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    min-width: 20rem;
-    max-width: 30vw;
-  }
-
-  div.component-form-create-category div.component-form-create-category-field {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    padding: 0.5rem 0;
-  }
-
-  div.component-form-create-category div.component-form-create-category-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    height: 2.5rem;
-  }
-
-  div.component-form-create-category div.component-form-create-category-buttons > * {
-    cursor: pointer;
   }
 </style>

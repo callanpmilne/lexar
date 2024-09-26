@@ -16,7 +16,7 @@ $categories = fetchCategoryList();
 <main>
   <h1>Category List</h1>
 
-  <p>
+  <p class="breadcrumbs">
     <a href="/admin">
       &larr; Admin Dashboard
     </a>
@@ -33,7 +33,7 @@ $categories = fetchCategoryList();
     <tbody>
       <?php foreach ($categories as $category) : ?>
         <tr>
-          <td>
+          <td class="view-link">
             <a href="/admin/view/category/<?=$category->ID?>">
               <?=$category->Name?>
             </a>

@@ -125,8 +125,7 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    margin: 0 -0.5rem;
-    flex: 1;
+    margin: 4rem -0.5rem 0;
     max-width: 1200px;
     width: 100vw;
   }

@@ -2,12 +2,18 @@
 /**
  * Create Customer Form Component
  */
+
+include('../src/components/forms/input/uuid.php');
+
 ?>
 
 <div 
-  class="component-form-create-customer">
+  class="component-form">
+
+  <?=uuidField('Customer ID')?> 
+
   <div 
-    class="component-form-create-customer-field">
+    class="component-form-field">
     <label
       for="CreateCustomerInputName">
       Customer Name
@@ -21,7 +27,7 @@
   </div>
 
   <div
-    class="component-form-create-customer-buttons">
+    class="component-form-buttons">
 
     <div style="display: flex; flex: 1;"></div>
 
@@ -40,34 +46,5 @@
 <style>
   main {
     align-items: center;
-  }
-
-  div.component-form-create-customer {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    min-width: 20rem;
-    max-width: 30vw;
-  }
-
-  div.component-form-create-customer div.component-form-create-customer-field {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    padding: 0.5rem 0;
-  }
-
-  div.component-form-create-customer div.component-form-create-customer-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    height: 2.5rem;
-  }
-
-  div.component-form-create-customer div.component-form-create-customer-buttons > * {
-    cursor: pointer;
   }
 </style>

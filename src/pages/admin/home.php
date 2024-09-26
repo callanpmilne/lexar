@@ -155,6 +155,7 @@ $buttons = array(
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
+    margin-top: 4rem;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell h2,

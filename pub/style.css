@@ -27,10 +27,16 @@ main {
 h1 {
   text-align: center;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  margin: 0;
 }
 
 p {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+p.breadcrumbs {
+  position: relative;
+  top: -5.5rem;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -59,6 +65,14 @@ form input[type=password]:focus {
   outline: none;
 }
 
+form input[type=input][readonly=readonly] {
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  font-family:'Courier New', Courier, monospace;
+  box-shadow: none;
+  padding: 0;
+}
+
 form button {
   line-height: 1.8rem;
   border-radius: 0.25rem;
@@ -72,20 +86,76 @@ form button {
   color: rgba(255, 255, 255, 0.7);
 }
 
+div.component-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-width: 20rem;
+  max-width: 30vw;
+}
+
+div.component-form div.component-form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0.5rem 0;
+}
+
+div.component-form div.component-form-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  height: 2.5rem;
+}
+
+div.component-form div.component-form-buttons > * {
+  cursor: pointer;
+}
+
 /**
  * Tables
  */
 
 table {
   border-spacing: 0;
-  border: 1px solid;
+  border: 1px solid rgba(255,255,255,0.4);
   border-radius: 0.5rem;
   overflow: hidden;
+  min-width: 80%;
 }
 
 table th,
 table td {
-  padding: 0.2rem 0.5rem;
+  padding: 0.6rem;
+  text-align: center;
+}
+
+table th.wide,
+table td.wide {
+  min-width: 30%; 
+}
+
+table th:last-of-type,
+table td:last-of-type {
+  text-align: right;
+}
+
+table tbody th:nth-of-type(0),
+table tbody td:nth-of-type(0),
+table tbody th:nth-of-type(1),
+table tbody td:nth-of-type(1),
+table thead tr th:nth-of-type(0),
+table thead tr th:nth-of-type(1),
+table thead tr th:nth-of-type(2) {
+  text-align: left;
+}
+
+table tbody tr:hover th,
+table tbody tr:hover td {
+  background-color: rgba(0,0,0,0.5);
 }
 
 table thead {
@@ -93,10 +163,10 @@ table thead {
 }
 
 table thead tr th {
-  background-color: rgb(33,33,33);
+  background-color: rgb(33,33,33, 0.5);
   color: rgba(255,255,255,0.90);
-  text-align: left;
   font-weight: 100;
+  padding-top: 1rem;
 }
 
 table tbody {
@@ -105,7 +175,9 @@ table tbody {
 
 table tbody tr th,
 table tbody tr td {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.2);
+  font-weight: 100;
 }
 
 table tbody tr th {
@@ -114,4 +186,20 @@ table tbody tr th {
 
 table tbody tr td {
 
+}
+
+table tbody tr th.view-link,
+table tbody tr td.view-link {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  flex-direction: column;
+  padding: 0;
+}
+
+table tbody tr th.view-link a,
+table tbody tr td.view-link a {
+  display: flex;
+  flex: 1;
+  padding: 0.6rem;
 }

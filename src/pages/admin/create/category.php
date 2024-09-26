@@ -19,7 +19,7 @@ if ($isCreateCategorySubmit) {
 <main>
   <h1>Create Category</h1>
 
-  <p>
+  <p class="breadcrumbs">
     <a href="/admin">
       &larr; Admin Dashboard
     </a>

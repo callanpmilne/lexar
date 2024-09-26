@@ -16,7 +16,7 @@ $customers = fetchCustomerList();
 <main>
   <h1>Customer List</h1>
 
-  <p>
+  <p class="breadcrumbs">
     <a href="/admin">
       &larr; Admin Dashboard
     </a>
@@ -26,7 +26,7 @@ $customers = fetchCustomerList();
     <thead>
       <tr>
         <th>ID</th>
-        <th>Name</th>
+        <th class="wide">Name</th>
         <th>Created</th>
         <th>Last Interaction</th>
         <th>Last Payment</th>
@@ -41,7 +41,7 @@ $customers = fetchCustomerList();
             <?=$customer->getShortID()?>
           </th>
 
-          <td>
+          <td class="wide view-link">
             <a href="/admin/view/customer/<?=$customer->ID?>">
               <?=$customer->Name?>
             </a>

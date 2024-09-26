@@ -19,7 +19,7 @@ $customer = fetchCustomer($CustomerID);
 <main>
   <h1>Customer</h1>
 
-  <p>
+  <p class="breadcrumbs">
     <a href="/admin/list/customers">
       &larr; Return to Customer List
     </a>

@@ -19,7 +19,7 @@ if ($isCreateInteractionSubmit) {
 <main>
   <h1>Create Interaction</h1>
 
-  <p>
+  <p class="breadcrumbs">
     <a href="/admin">
       &larr; Admin Dashboard
     </a>

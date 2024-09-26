@@ -2,12 +2,17 @@
 /**
  * Create Type Form Component
  */
+
+include('../src/components/forms/input/uuid.php');
 ?>
 
 <div 
-  class="component-form-create-type">
+  class="component-form">
+
+  <?=uuidField('Content Type ID')?> 
+
   <div 
-    class="component-form-create-type-field">
+    class="component-form-field">
     <label
       for="CreateTypeInputName">
       Type Name
@@ -21,7 +26,7 @@
   </div>
 
   <div
-    class="component-form-create-type-buttons">
+    class="component-form-buttons">
 
     <div style="display: flex; flex: 1;"></div>
 
@@ -40,34 +45,5 @@
 <style>
   main {
     align-items: center;
-  }
-
-  div.component-form-create-type {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    min-width: 20rem;
-    max-width: 30vw;
-  }
-
-  div.component-form-create-type div.component-form-create-type-field {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    padding: 0.5rem 0;
-  }
-
-  div.component-form-create-type div.component-form-create-type-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    height: 2.5rem;
-  }
-
-  div.component-form-create-type div.component-form-create-type-buttons > * {
-    cursor: pointer;
   }
 </style>
