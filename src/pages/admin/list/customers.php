@@ -27,6 +27,10 @@ $customers = fetchCustomerList();
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Created</th>
+        <th>Last Interaction</th>
+        <th>Last Payment</th>
+        <th>Revenue (TTL)</th>
       </tr>
     </thead>
 
@@ -42,6 +46,14 @@ $customers = fetchCustomerList();
               <?=$customer->Name?>
             </a>
           </td>
+
+          <td><?=date('d/m/y')?></td>
+
+          <td><?=date('d/m/y')?></td>
+
+          <td>-</td>
+
+          <td>US&dollar; 75.00</td>
         </tr>
       <?php endforeach; ?>
     </tbody>

@@ -95,10 +95,10 @@ $buttons = array(
     'types',
   ),
   new AdminDashboardButton(
-    'Meta',
-    'meta',
-    'Meta-Data',
-    'meta-data',
+    'Metadata',
+    'metadata',
+    'Metadata',
+    'metadata',
   ),
 );
 ?>
