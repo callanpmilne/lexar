@@ -17,7 +17,7 @@ if ($isCreateContactSubmit) {
 ?>
 
 <main>
-  <h1>Create Contact</h1>
+  <h1>Create Contact Method</h1>
 
   <p class="breadcrumbs">
     <a href="/admin">

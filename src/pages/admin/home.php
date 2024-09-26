@@ -108,45 +108,15 @@ $buttons = array(
 
   <div class="admin-dashboard-grid">
     <?php foreach ($buttons as $button) : ?>
-      <div class="admin-dashboard-grid-cell">
-        <div class="cell-inside">
-          <h2><?=$button->pluralLabel?></h2>
-
-          <ul>
-            <li>
-              <a 
-                href="/admin/search/<?=$button->pluralName?>"
-                title="<?=$button->singularLabel?> Search">
-                🔎 Lookup
-              </a>
-            </li>
-
-            <li>
-              <a 
-                href="/admin/list/<?=$button->pluralName?>"
-                title="List All <?=$button->pluralLabel?>">
-                ✏️ Edit <?=$button->pluralLabel?>
-              </a>
-            </li>
-            <li>
-              <a 
-                href="/admin/create/<?=$button->singularName?>"
-                title="Create New <?=$button->singularLabel?>">
-                ➕ New <?=$button->singularLabel?>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <?=renderAdminDashboardTitle(
+        $button->pluralLabel,
+        $button->pluralName,
+        $button->singularLabel,
+        $button->singularName
+      )?>
     <?php endforeach; ?>
   </div>
 </main>
-
-<?php
-
-
-
-?>
 
 <style>
   div.admin-dashboard-grid {
@@ -267,3 +237,56 @@ $buttons = array(
     }
   }
 </style>
+
+<?php
+
+/**
+ * Render Admin Dashboard Tile (HTML)
+ * 
+ * Outputs the HTML for an Admin Dashboard Tile/Card
+ * 
+ * @param string $pluralLabel Plural Tile Label (e.g. Users)
+ * @param string $pluralName Plural Tile Name (e.g. users)
+ * @param string $singularLabel Singular Tile Label (e.g. User)
+ * @param string $singularName Singular Tile Name (e.g. user)
+ */
+function renderAdminDashboardTitle (
+  string $pluralLabel,
+  string $pluralName,
+  string $singularLabel,
+  string $singularName
+) {
+
+  ?>
+  <div class="admin-dashboard-grid-cell">
+    <div class="cell-inside">
+      <h2><?=$pluralLabel?></h2>
+
+      <ul>
+        <li>
+          <a 
+            href="/admin/search/<?=$pluralName?>"
+            title="<?=$singularLabel?> Search">
+            🔎 Lookup
+          </a>
+        </li>
+
+        <li>
+          <a 
+            href="/admin/list/<?=$pluralName?>"
+            title="List All <?=$pluralLabel?>">
+            ✏️ Edit <?=$pluralLabel?>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/admin/create/<?=$singularName?>"
+            title="Create New <?=$singularLabel?>">
+            ➕ New <?=$singularLabel?>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <?php
+}

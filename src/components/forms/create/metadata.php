@@ -14,13 +14,27 @@ include('../src/components/forms/input/uuid.php');
   <div 
     class="component-form-field">
     <label
-      for="CreateMetadataInputName">
-      Metadata Name
+      for="CreateMetadataInputKey">
+      Metadata Key
     </label>
 
     <input 
-      id="CreateMetadataInputName"
-      name="metadataName"
+      id="CreateMetadataInputKey"
+      name="metadataKey"
+      type="input"
+      tabindex="2" />
+  </div>
+
+  <div 
+    class="component-form-field">
+    <label
+      for="CreateMetadataInputValue">
+      Metadata Value
+    </label>
+
+    <input 
+      id="CreateMetadataInputValue"
+      name="metadataValue"
       type="input"
       tabindex="2" />
   </div>

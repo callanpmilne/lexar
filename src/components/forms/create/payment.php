@@ -14,15 +14,57 @@ include('../src/components/forms/input/uuid.php');
   <div 
     class="component-form-field">
     <label
-      for="CreatePaymentInputName">
-      Payment Name
+      for="CreatePaymentInputDescription">
+      Payment Description
     </label>
 
     <input 
-      id="CreatePaymentInputName"
-      name="paymentName"
+      id="CreatePaymentInputDescription"
+      name="paymentDescription"
       type="input"
       tabindex="2" />
+  </div>
+
+  <div 
+    class="component-form-field">
+    <label
+      for="CreatePaymentInputAmount">
+      Payment Amount
+    </label>
+
+    <input 
+      id="CreatePaymentInputAmount"
+      name="paymentAmount"
+      type="input"
+      tabindex="3" />
+  </div>
+
+  <div 
+    class="component-form-field">
+    <label
+      for="CreatePaymentInputFeeAmount">
+      Payment Fee Amount
+    </label>
+
+    <input 
+      id="CreatePaymentInputFeeAmount"
+      name="paymentFeeAmount"
+      type="input"
+      tabindex="4" />
+  </div>
+
+  <div 
+    class="component-form-field">
+    <label
+      for="CreatePaymentInputProcessor">
+      Payment Processor
+    </label>
+
+    <input 
+      id="CreatePaymentInputProcessor"
+      name="paymentProcessor"
+      type="input"
+      tabindex="5" />
   </div>
 
   <div
