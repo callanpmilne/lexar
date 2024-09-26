@@ -56,7 +56,7 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
       </div>
     <?php else : ?>
       <a href="/categories">
-        Categories
+        &larr; Categories
       </a>
     <?php endif; ?>
 
@@ -71,6 +71,7 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
         <li>
           <a href="/categories/<?=$category->Path?>">
             <?=$category->Name?>
+            <span>Browse <?=$category->Name?> &rarr;</span>
           </a>
         </li>
       <?php endforeach; ?>
@@ -125,7 +126,7 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    margin: 4rem -0.5rem 0;
+    margin: 1rem -0.5rem;
     max-width: 1200px;
     width: 100vw;
   }
@@ -154,7 +155,7 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     display: flex;
     flex: 1;
     box-sizing: border-box;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0.5rem 1rem;
@@ -166,7 +167,7 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     aspect-ratio: 16 / 6;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     color: #012e39;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 500;
     text-decoration: none;
   }
@@ -174,6 +175,11 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
   ol.category-list li a:hover {
     background-color: rgb(186 218 255 / 47%);
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.34);
+  }
+
+  ol.category-list li a span {
+    font-size: 0.8rem;
+    font-weight: 100;
   }
 
   @media only screen and (min-width: 800px) {
@@ -192,6 +198,10 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
 
     ol.category-list li a {
       margin: 1rem;
+    }
+
+    div.category-list-wrapper {
+      margin: 2rem -0.5rem;
     }
 
   }

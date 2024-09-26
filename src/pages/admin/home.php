@@ -261,6 +261,7 @@ $buttons = array(
 
     div.admin-dashboard-grid div.admin-dashboard-grid-cell {
       flex: auto;
+      min-width: auto;
       max-width: 25%;
       width: 25%;
     }

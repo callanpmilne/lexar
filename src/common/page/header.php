@@ -82,6 +82,7 @@
       content: '|';
       display: flex;
       margin: 0 0.5rem;
+      color: #1bdbb35e;
     }
 
     #topmenu li:last-of-type::after {
@@ -90,6 +91,7 @@
     }
 
     #topmenu li a {
-      color: #fff;
+      color: #1ad0a9;
+      text-decoration: none;
     }
   </style>
