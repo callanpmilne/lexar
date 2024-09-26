@@ -9,14 +9,22 @@
 function fetchCategory (
   string $ID
 ) {
-  
-  $sth = $dbh->prepare('SELECT * 
-    FROM `Categories`
-    WHERE `ID` = ?');
-  
-  $sth->bindParam(1, $ID, PDO::PARAM_STR, 256);
-  
-  $sth->execute();
+
+  $dbconn = $GLOBALS['dbh'];
+
+  pg_prepare(
+    $dbconn, 
+    "select_one_category_by_id", 
+    'SELECT * FROM public."Categories" WHERE "ID" = $1'
+  );
+
+  $result = pg_execute(
+    $dbconn, 
+    "select_one_category_by_id", 
+    array(
+      $ID,
+    )
+  );
 
   $result = array_map(function ($cat) {
     return new Category(
@@ -25,7 +33,7 @@ function fetchCategory (
       $cat['Path'],
       $cat['ParentID']
     );
-  }, $sth->fetch(PDO::FETCH_ASSOC));
+  }, [pg_fetch_assoc($result)]);
 
   return $result[0];
 }

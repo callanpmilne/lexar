@@ -11,7 +11,7 @@ $routes = array(
   '/^\/admin\/view\/customer/i' => 'view/customer',
 
   '/^\/admin\/create\/category$/i' => 'create/category',
-  '/^\/admin\/list\/categories$/i'  => 'list/category',
+  '/^\/admin\/list\/categories$/i'  => 'list/categories',
   '/^\/admin\/view\/category/i' => 'view/category',
 );
 

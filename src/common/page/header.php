@@ -30,6 +30,12 @@
       </li>
       <li>
         <a 
+          href="/admin/list/customers">
+          Customers
+        </a>
+      </li>
+      <li>
+        <a 
           href="/404">
           404
         </a>

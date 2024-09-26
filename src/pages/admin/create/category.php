@@ -19,6 +19,12 @@ if ($isCreateCategorySubmit) {
 <main>
   <h1>Create Category</h1>
 
+  <p>
+    <a href="/admin">
+      &larr; Admin Dashboard
+    </a>
+  </p>
+
   <form 
     action="/admin/create/category" 
     method="POST">

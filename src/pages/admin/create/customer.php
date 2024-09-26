@@ -19,6 +19,12 @@ if ($isCreateCustomerSubmit) {
 <main>
   <h1>Create Customer</h1>
 
+  <p>
+    <a href="/admin">
+      &larr; Admin Dashboard
+    </a>
+  </p>
+
   <form 
     action="/admin/create/customer" 
     method="POST">

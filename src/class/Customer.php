@@ -29,4 +29,12 @@ class Customer {
     $this->Name = $Name;
   }
 
+  public function getShortID () {
+    return sprintf(
+      '%s...%s',
+      substr($this->ID, 0, 4),
+      substr($this->ID, -4, 4),
+    );
+  }
+
 }

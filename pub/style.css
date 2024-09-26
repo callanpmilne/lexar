@@ -24,3 +24,47 @@ main {
 h1 {
   text-align: center;
 }
+
+/**
+ * Tables
+ */
+
+table {
+  border-spacing: 0;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+table th,
+table td {
+  padding: 0.2rem 0.5rem;
+}
+
+table thead {
+  font-size: 0.8rem;
+}
+
+table thead tr th {
+  background-color: rgb(33,33,33);
+  color: rgba(255,255,255,0.90);
+  text-align: left;
+  font-weight: 100;
+}
+
+table tbody {
+  font-size: 0.9rem;
+}
+
+table tbody tr th,
+table tbody tr td {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+table tbody tr th {
+
+}
+
+table tbody tr td {
+
+}

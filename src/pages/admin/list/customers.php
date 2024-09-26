@@ -15,7 +15,13 @@ $customers = fetchCustomerList();
 
 <main>
   <h1>Customer List</h1>
-  
+
+  <p>
+    <a href="/admin">
+      &larr; Admin Dashboard
+    </a>
+  </p>
+
   <table>
     <thead>
       <tr>
@@ -28,7 +34,7 @@ $customers = fetchCustomerList();
       <?php foreach ($customers as $customer) : ?>
         <tr>
           <th>
-            <?=$customer->ID?>
+            <?=$customer->getShortID()?>
           </th>
 
           <td>
