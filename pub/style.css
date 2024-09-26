@@ -138,9 +138,11 @@ table td {
   text-align: center;
 }
 
-table th.wide,
-table td.wide {
+table thead tr th.wide,
+table tbody tr th.wide,
+table tbody tr td.wide {
   min-width: 30%; 
+  text-align: left;
 }
 
 table th:last-of-type,
@@ -183,6 +185,7 @@ table tbody tr td {
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(0, 0, 0, 0.2);
   font-weight: 100;
+  vertical-align: baseline;
 }
 
 table tbody tr th {
