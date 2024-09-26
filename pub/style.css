@@ -48,9 +48,9 @@ p.breadcrumbs {
 /**
  * Forms
  */
-
 form input[type=input],
-form input[type=password] {
+form input[type=password],
+form select {
   line-height: 2rem;
   border-radius: 0.25rem;
   border: 0;
@@ -60,8 +60,13 @@ form input[type=password] {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }
 
+form select {
+  padding: 0.5rem;
+}
+
 form input[type=input]:focus,
-form input[type=password]:focus {
+form input[type=password]:focus,
+form select:focus {
   outline: none;
 }
 

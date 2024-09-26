@@ -9,20 +9,37 @@ include('../src/components/forms/input/uuid.php');
 <div 
   class="component-form">
 
-  <?=uuidField('Contact ID')?> 
+  <?=uuidField('Contact Method ID')?> 
 
   <div 
     class="component-form-field">
     <label
-      for="CreateContactInputName">
-      Contact Name
+      for="CreateContactMethodInputMedium">
+      Medium
+    </label>
+
+    <select 
+      id="CreateContactMethodInputMedium"
+      name="contactMethodMedium"
+      tabindex="2">
+      <option value="PHONE">Phone</option>
+      <option value="EMAIL">E-Mail</option>
+    </select>
+  </div>
+
+  <div 
+    class="component-form-field">
+    <label
+      for="CreateContactMethodInputIdentifier">
+      Identifier
     </label>
 
     <input 
-      id="CreateContactInputName"
-      name="contactName"
+      id="CreateContactMethodInputIdentifier"
+      name="contactMethodIdentifier"
       type="input"
-      tabindex="2" />
+      tabindex="3"
+      placeholder="e.g. +614123456789 or someone@somehost.tld" />
   </div>
 
   <div
