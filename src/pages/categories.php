@@ -133,11 +133,12 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
   ol.category-list {
     list-style-type: none;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: stretch;
     padding: 0;
+    margin: 0;
   }
 
   ol.category-list li {
@@ -146,9 +147,7 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     box-sizing: border-box;
     align-items: stretch;
     justify-content: stretch;
-    max-width: 25%;
-    width: 25%;
-    /* aspect-ratio: 16/9; */
+    width: 100%;
   }
 
   ol.category-list li a {
@@ -158,13 +157,13 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 1rem;
+    margin: 0.5rem 1rem;
     padding: 1rem;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.34);
     border-radius: 0.5rem;
     background: linear-gradient(163deg, rgb(186 218 255 / 47%) 0%, rgb(255 255 255 / 69%) 100%);
     transition: all 333ms;
-    aspect-ratio: 16 / 8;
+    aspect-ratio: 16 / 6;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     color: #012e39;
     font-size: 1.4rem;
@@ -175,5 +174,25 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
   ol.category-list li a:hover {
     background-color: rgb(186 218 255 / 47%);
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.34);
+  }
+
+  @media only screen and (min-width: 800px) {
+    
+    ol.category-list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    ol.category-list li {
+      max-width: 25%;
+      width: 25%;
+    }
+
+    ol.category-list li a {
+      margin: 1rem;
+    }
+
   }
 </style>

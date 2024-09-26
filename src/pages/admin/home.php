@@ -151,11 +151,12 @@ $buttons = array(
 <style>
   div.admin-dashboard-grid {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-top: 4rem;
+    width: 100%;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell h2,
@@ -184,8 +185,10 @@ $buttons = array(
     box-sizing: border-box;
     align-items: stretch;
     justify-content: stretch;
-    max-width: 25%;
-    width: 25%;
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    flex: 1;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside {
@@ -195,7 +198,7 @@ $buttons = array(
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-end;
-    margin: 1rem;
+    margin: 0.5rem 0;
     padding: 1rem;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.34);
     border-radius: 0.5rem;
@@ -243,5 +246,23 @@ $buttons = array(
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell {
+  }
+
+  @media only screen and (min-width: 800px) {
+    div.admin-dashboard-grid {
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: auto;
+    }
+
+    div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside {
+      margin: 1rem;
+    }
+
+    div.admin-dashboard-grid div.admin-dashboard-grid-cell {
+      flex: auto;
+      max-width: 25%;
+      width: 25%;
+    }
   }
 </style>
