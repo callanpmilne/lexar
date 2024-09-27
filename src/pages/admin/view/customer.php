@@ -51,7 +51,7 @@ $interactions = fetchCustomerInteractions($CustomerID);
       <section>
         <h2>Recent Transactions</h2>
 
-        <table>
+        <table id="CustomerTransactions">
           <thead>
             <tr>
               <th>
@@ -61,8 +61,12 @@ $interactions = fetchCustomerInteractions($CustomerID);
                   value="" />
               </th>
 
-              <th>Description</th>
-              <th>Date</th>
+              <th class="payment-description">Description</th>
+
+              <th class="payment-date">
+                Processed
+              </th>
+
               <th>Amount</th>
             </tr>
           </thead>
@@ -76,8 +80,14 @@ $interactions = fetchCustomerInteractions($CustomerID);
                   value="" />
               </td>
 
-              <td>Short description of the payment</td>
-              <td><?=print(date('d/m/y'))?></td>
+              <td class="payment-description">
+                Short description of the payment
+              </td>
+
+              <td class="payment-date">
+                <?=print(date('d/m/y'))?>
+              </td>
+
               <td>US&dollar; 123.00</td>
             </tr>
           </tbody>
@@ -132,10 +142,11 @@ $interactions = fetchCustomerInteractions($CustomerID);
 
                 <td class="wide">
                   <p>
-                    <?=str_replace(
-                      '/\n\n/', 
+                    <?=trim(nl2br(preg_replace(
+                      '/(\n\w*\n)/', 
                       '</p><p>', 
-                      nl2br($note->ContentBody))?>
+                      $note->ContentBody
+                    )))?>
                   </p>
                 </td>
               </tr>
@@ -186,10 +197,11 @@ $interactions = fetchCustomerInteractions($CustomerID);
 
                 <td class="wide">
                   <p>
-                    <?=str_replace(
-                      '/\n\n/', 
+                    <?=trim(nl2br(preg_replace(
+                      '/(\n\w*\n)/', 
                       '</p><p>', 
-                      nl2br($interaction->ContentBody))?>
+                      $interaction->ContentBody
+                    )))?>
                   </p>
                 </td>
               </tr>
@@ -202,6 +214,15 @@ $interactions = fetchCustomerInteractions($CustomerID);
 </main>
 
 <style>
+table#CustomerTransactions .payment-description {
+  text-align: left;
+  width: 40%;
+}
+
+table#CustomerTransactions .payment-date {
+  text-align: right;
+}
+
 table#CustomerNotes {
 
 }
