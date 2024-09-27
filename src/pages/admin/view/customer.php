@@ -8,11 +8,16 @@
 
 require_once('../src/class/Customer.php');
 require_once('../src/methods/Customer/fetchCustomer.php');
+require_once('../src/methods/Customer/fetchCustomerNotes.php');
+require_once('../src/methods/Customer/fetchCustomerInteraction.php');
 
 $pathParts = explode('/', substr(REQUEST_URI, 1));
 $CustomerID = array_slice($pathParts, -1)[0];
 
 $customer = fetchCustomer($CustomerID);
+
+$notes = fetchCustomerNotes($CustomerID);
+$interactions = fetchCustomerInteractions($CustomerID);
 
 ?>
 
