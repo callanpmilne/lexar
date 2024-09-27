@@ -29,6 +29,7 @@ $routes = array(
 
   '/^\/admin\/create\/payment$/i'  => 'create/payment',
   '/^\/admin\/list\/payments$/i'  => 'list/payments',
+  '/^\/admin\/view\/payment\//i'  => 'view/payment',
 
   '/^\/admin\/create\/type$/i'  => 'create/type',
   '/^\/admin\/list\/types$/i'  => 'list/types',

@@ -13,6 +13,8 @@ if ($isCreateCustomerSubmit) {
 
   // attempt to create customer
   // ...
+
+  // redirect user to customer admin page on successful creation
 }
 ?>
 

@@ -9,7 +9,8 @@
 require_once('../src/class/Customer.php');
 require_once('../src/methods/Customer/fetchCustomer.php');
 require_once('../src/methods/Customer/fetchCustomerNotes.php');
-require_once('../src/methods/Customer/fetchCustomerInteraction.php');
+require_once('../src/methods/Customer/fetchCustomerInteractions.php');
+require_once('../src/methods/Customer/fetchCustomerPayments.php');
 
 $pathParts = explode('/', substr(REQUEST_URI, 1));
 $CustomerID = array_slice($pathParts, -1)[0];
@@ -17,6 +18,7 @@ $CustomerID = array_slice($pathParts, -1)[0];
 $customer = fetchCustomer($CustomerID);
 
 $notes = fetchCustomerNotes($CustomerID);
+$payments = fetchCustomerPayments($CustomerID);
 $interactions = fetchCustomerInteractions($CustomerID);
 
 ?>
@@ -49,18 +51,11 @@ $interactions = fetchCustomerInteractions($CustomerID);
       </section>
 
       <section>
-        <h2>Recent Transactions</h2>
+        <h2>Recent Payments</h2>
 
-        <table id="CustomerTransactions">
+        <table id="CustomerPayments">
           <thead>
             <tr>
-              <th>
-                <input id=""
-                  name=""
-                  type="checkbox"
-                  value="" />
-              </th>
-
               <th class="payment-description">Description</th>
 
               <th class="payment-date">
@@ -72,24 +67,19 @@ $interactions = fetchCustomerInteractions($CustomerID);
           </thead>
 
           <tbody>
-            <tr>
-              <td>
-                <input id=""
-                  name=""
-                  type="checkbox"
-                  value="" />
-              </td>
+            <?php foreach ($payments as $payment) : ?>
+              <tr>
+                <td class="payment-description">
+                  <?=$payment->Description?>
+                </td>
 
-              <td class="payment-description">
-                Short description of the payment
-              </td>
+                <td class="payment-date">
+                  <?=date('d/m/y H:i', $payment->Recorded)?>
+                </td>
 
-              <td class="payment-date">
-                <?=print(date('d/m/y'))?>
-              </td>
-
-              <td>US&dollar; 123.00</td>
-            </tr>
+                <td>US&dollar; <?=$payment->getAmount('.')?></td>
+              </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </section>
@@ -97,7 +87,7 @@ $interactions = fetchCustomerInteractions($CustomerID);
 
     <div class="primary-content">
       <section class="note-editor">
-        Add Note Editor Here to Add Notes Easily
+        <?php include('../src/components/forms/create/note.php'); ?>
       </section>
 
       <section>
@@ -214,12 +204,12 @@ $interactions = fetchCustomerInteractions($CustomerID);
 </main>
 
 <style>
-table#CustomerTransactions .payment-description {
+table#CustomerPayments .payment-description {
   text-align: left;
   width: 40%;
 }
 
-table#CustomerTransactions .payment-date {
+table#CustomerPayments .payment-date {
   text-align: right;
 }
 

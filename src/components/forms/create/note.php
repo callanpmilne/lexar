@@ -8,21 +8,17 @@ include('../src/components/forms/input/uuid.php');
 
 <div 
   class="component-form">
-
-  <?=uuidField('Note ID')?> 
-
   <div 
     class="component-form-field">
     <label
-      for="CreateNoteInputName">
-      Note Name
+      for="CreateNoteInputContent">
+      Note
     </label>
 
-    <input 
-      id="CreateNoteInputName"
-      name="noteName"
-      type="input"
-      tabindex="2" />
+    <textarea 
+      id="CreateNoteInputContent"
+      name="noteContentBody"
+      tabindex="3"></textarea>
   </div>
 
   <div
@@ -32,7 +28,7 @@ include('../src/components/forms/input/uuid.php');
 
     <button
       type="submit">
-      Create
+      Add Note
     </button>
 
     <input
