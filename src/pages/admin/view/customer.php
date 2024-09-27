@@ -112,32 +112,34 @@ $interactions = fetchCustomerInteractions($CustomerID);
           </thead>
 
           <tbody>
-            <tr>
-              <td>
-                <input id=""
-                  name=""
-                  type="checkbox"
-                  value="" />
-              </td>
+            <?php foreach ($notes as $note) : ?>
+              <tr>
+                <td>
+                  <input id=""
+                    name=""
+                    type="checkbox"
+                    value="" />
+                </td>
 
-              <td>
-                <a href="/#">Admin</a>
-              </td>
+                <td>
+                  <a href="/admin/view/user/<?=$note->Author?>">Admin</a>
+                </td>
 
-              <td>
-                <?=date('d/m/Y')?><br />
-                <?=date('h:i:sA')?>
-              </td>
+                <td>
+                  <?=date('d/m/Y', $note->Recorded)?><br />
+                  <?=date('h:i:sA', $note->Recorded)?>
+                </td>
 
-              <td class="wide">
-                <p>
-                  This is the note content body which contains the main text of the note.
-                </p>
-                <p>
-                  Most notes are expected to span multiple paragraphs and QA testing must be carried out to ensure it's functionality and reliability.
-                </p>
-              </td>
-            </tr>
+                <td class="wide">
+                  <p>
+                    <?=str_replace(
+                      '/\n\n/', 
+                      '</p><p>', 
+                      nl2br($note->ContentBody))?>
+                  </p>
+                </td>
+              </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </section>
@@ -164,32 +166,34 @@ $interactions = fetchCustomerInteractions($CustomerID);
           </thead>
 
           <tbody>
-            <tr>
-              <td>
-                <input id=""
-                  name=""
-                  type="checkbox"
-                  value="" />
-              </td>
+            <?php foreach ($interactions as $interaction) : ?>
+              <tr>
+                <td>
+                  <input id=""
+                    name=""
+                    type="checkbox"
+                    value="" />
+                </td>
 
-              <td>
-                <a href="/#">Admin</a>
-              </td>
+                <td>
+                  <a href="/admin/view/user/<?=$interaction->Author?>">Admin</a>
+                </td>
 
-              <td>
-                <?=date('d/m/Y')?><br />
-                <?=date('h:i:sA')?>
-              </td>
+                <td>
+                  <?=date('d/m/Y h:i:sA', $interaction->StartTime)?><br />
+                  <?=date('d/m/Y h:i:sA', $interaction->EndTime)?>
+                </td>
 
-              <td class="wide">
-                <p>
-                  This is the note content body which contains the main text of the note.
-                </p>
-                <p>
-                  Most notes are expected to span multiple paragraphs and QA testing must be carried out to ensure it's functionality and reliability.
-                </p>
-              </td>
-            </tr>
+                <td class="wide">
+                  <p>
+                    <?=str_replace(
+                      '/\n\n/', 
+                      '</p><p>', 
+                      nl2br($interaction->ContentBody))?>
+                  </p>
+                </td>
+              </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </section>
