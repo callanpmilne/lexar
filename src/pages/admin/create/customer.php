@@ -1,4 +1,8 @@
 <?php
+
+require_once('../src/class/Customer.php');
+require_once('../src/methods/Customer/createCustomer.php');
+
 /**
  * Create Customer Page
  */
@@ -8,13 +12,30 @@ $isCreateCustomerSubmit =
     && '1' === $_POST['is_create_customer_submit'];
 
 if ($isCreateCustomerSubmit) {
+  
+  // Customer ID
+  $customerID = $_POST['uuid'];
+
   // Customer Name
-  $name = strtolower($_POST['customerName']);
+  $customerName = $_POST['customerName'];
 
   // attempt to create customer
-  // ...
+  $result = createCustomer(new Customer(
+    $customerID,
+    $customerName
+  ));
 
   // redirect user to customer admin page on successful creation
+  if (true === $result) {
+    ?>
+    <script>"use strict"; (function (w) {
+      const customerURI = '/admin/view/customer/<?=$customerID?>';
+      w.location.assign(customerURI);
+    })(window);</script>
+    <?php
+    exit(1);
+  }
+
 }
 ?>
 

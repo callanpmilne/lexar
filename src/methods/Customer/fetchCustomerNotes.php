@@ -25,7 +25,8 @@ function fetchCustomerNotes (
       FROM public."CustomerNotes" AS CN
       LEFT JOIN public."Notes" AS N
         ON CN."NoteID" = N."ID"
-      WHERE CN."CustomerID" = $1'
+      WHERE CN."CustomerID" = $1
+      ORDER BY CN."Recorded" DESC'
   );
 
   $result = pg_execute(

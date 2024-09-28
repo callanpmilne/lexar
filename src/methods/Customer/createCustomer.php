@@ -1,5 +1,7 @@
 <?php
 
+require_once('../src/class/Customer.php');
+
 /**
  * Create Customer
  * 
@@ -10,8 +12,10 @@ function createCustomer (
 ) {
 
   try {
-    insertCustomer($cust->Name);
-    return true;
+    return insertCustomer(
+      $cust->ID,
+      $cust->Name
+    );
   }
   catch (Exception $e) {
     return false;
@@ -25,21 +29,37 @@ function createCustomer (
  * @param string $name New Customer Name
  */
 function insertCustomer (
-  string $name
+  string $ID,
+  string $Name
 ) {
 
-  $sth = $dbh->prepare('INSERT
-    INTO 
-      `Customers` (
-        `Name`
-      ) 
-    VALUES 
-      (
-        ?
-      )');
-  
-  $sth->bindParam(1, $name, PDO::PARAM_STR, 256);
+  $dbconn = $GLOBALS['dbh'];
 
-  $sth->execute();
+  pg_prepare(
+    $dbconn,
+    "insert_new_customer", 
+    ' INSERT
+      INTO 
+        public."Customers" (
+          "ID",
+          "Name"
+        ) 
+      VALUES 
+        (
+          $1,
+          $2
+        )'
+  );
+
+  $result = pg_execute(
+    $dbconn,
+    "insert_new_customer", 
+    array(
+      $ID,
+      $Name
+    )
+  );
+
+  return pg_affected_rows($result) > 0;
 
 }

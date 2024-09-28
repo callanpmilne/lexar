@@ -6,10 +6,14 @@
  */
 
 /**
+ * Configuration File
+ */
+require_once( '../config.inc.php' );
+
+/**
  * Initialise DB
  */
-// $GLOBALS['dbh'] = pg_connect( $_ENV['db'] );
-$GLOBALS['dbh'] = pg_connect( 'postgresql://lexar:lexar@localhost:5433/lexar?connect_timeout=30' );
+$GLOBALS['dbh'] = pg_connect( POSTGRES_DB_CONN_STRING );
 
 /**
  * Router requires relevant sources

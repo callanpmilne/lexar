@@ -9,15 +9,20 @@ function generateUuid () {
 
   $dbconn = $GLOBALS['dbh'];
 
-  pg_prepare(
-    $dbconn, 
-    "generate_uuid", 
-    'SELECT gen_random_uuid()'
-  );
+  try {
+    pg_prepare(
+      $dbconn, 
+      "", 
+      'SELECT gen_random_uuid()'
+    );
+  }
+  catch (Exception $e) {
+    // do nothing
+  }
 
   $result = pg_execute(
-    $dbconn, 
-    "generate_uuid", 
+    $dbconn,
+    "", 
     array()
   );
 

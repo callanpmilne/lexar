@@ -66,7 +66,8 @@ form select {
 
 form input[type=input]:focus,
 form input[type=password]:focus,
-form select:focus {
+form select:focus,
+form textarea:focus {
   outline: none;
 }
 

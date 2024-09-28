@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Site Configuration
+ * 1. Rename this file to `config.inc.php`
+ * 2. Update and save
+ */
+
+/**
+ * Default User UUID
+ */
+define( 
+  'DEFAULT_USER_UUID', 
+  '8b2c194b-8e7e-431d-9971-7452bfecdbb2'
+);
+
+/**
+ * DB Connection String
+ */
+define( 
+  'POSTGRES_DB_CONN_STRING',
+  'postgresql://lexar:lexar@localhost:5433/lexar?connect_timeout=30'
+);

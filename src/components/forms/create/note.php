@@ -2,8 +2,6 @@
 /**
  * Create Note Form Component
  */
-
-include('../src/components/forms/input/uuid.php');
 ?>
 
 <div 
