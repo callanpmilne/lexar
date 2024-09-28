@@ -13,34 +13,49 @@ require_once('../src/constants/payment.php');
 function fetchCustomerPayments (
   string $CustomerID
 ) {
-  $mockCustomerPaymentID = '2f490478-5d4a-41dd-99ed-4c7db3a61627';
-  $mockPaymentID = 'b0fd6237-02d5-44c2-a666-7eef9d6d4f17';
-  $mockPaymentDate = time() - 86400;
 
-  $mockDescription = 'Example/Mock Payment';
+  $dbconn = $GLOBALS['dbh'];
 
-  $mockAmount = 7500;
-  $mockFeeAmount = 1500;
-
-  $mockCurrencyID = UUID_CURRENCY_USD;
-  $mockPaymentProcessorID = UUID_PAYMENT_BANK;
-
-  $mockPayment = new CustomerPayment(
-    $mockCustomerPaymentID,  // CustomerPayment.ID
-    $CustomerID,             // CustomerPayment.CustomerID
-    $mockDescription,        // CustomerPayment.Description
-    $mockPaymentDate,        // CustomerPayment.Recorded
-
-    $mockPaymentID,          // Payment.ID
-    $mockAmount,             // Payment.Amount
-    $mockCurrencyID,         // Payment.CurrencyID
-    $mockFeeAmount,          // Payment.FeeAmount
-    $mockCurrencyID,         // Payment.FeeCurrencyID
-    $mockPaymentProcessorID, // Payment.PaymentProcessorID
-    $mockPaymentDate         // Payment.Received
+  pg_prepare(
+    $dbconn, 
+    "select_all_customer_payments", 
+    ' SELECT 
+        CP."ID" AS "CustomerPaymentID",
+        CP."CustomerID", CP."Recorded",
+        CP."Description", P."ID" AS "PaymentID", 
+        P."Amount", P."CurrencyID",
+        P."FeeAmount", P."FeeCurrencyID",
+        P."PaymentProcessorID", P."Received"
+      FROM public."CustomerPayments" AS CP
+      LEFT JOIN public."Payments" AS P
+        ON CP."PaymentID" = P."ID"
+      WHERE CP."CustomerID" = $1
+      ORDER BY CP."Recorded" DESC'
   );
 
-  return array(
-    $mockPayment
+  $result = pg_execute(
+    $dbconn,
+    "select_all_customer_payments", 
+    array(
+      $CustomerID
+    )
   );
+
+  $result = array_map(function ($pmnt) {
+    return new CustomerPayment(
+      $pmnt['CustomerPaymentID'],
+      $pmnt['CustomerID'],
+      $pmnt['Description'],
+      $pmnt['Recorded'],
+      $pmnt['PaymentID'],
+      $pmnt['Amount'],
+      $pmnt['CurrencyID'],
+      $pmnt['FeeAmount'],
+      $pmnt['FeeCurrencyID'],
+      $pmnt['PaymentProcessorID'],
+      $pmnt['Received']
+    );
+  }, pg_fetch_all($result));
+
+  return $result;
 }

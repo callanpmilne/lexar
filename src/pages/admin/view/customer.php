@@ -98,7 +98,7 @@ function handleNoteSubmission ($CustomerID) {
 
           <li>
             <span class="label">Name:</span>
-            <?=$customer->Name?>
+            <?=htmlentities($customer->Name)?>
           </li>
         </ul>
       </section>

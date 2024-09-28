@@ -43,7 +43,7 @@ $customers = fetchCustomerList();
 
           <td class="wide view-link">
             <a href="/admin/view/customer/<?=$customer->ID?>">
-              <?=$customer->Name?>
+              <?=htmlentities($customer->Name)?>
             </a>
           </td>
 
