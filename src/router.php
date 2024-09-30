@@ -26,6 +26,11 @@ function handleRoute ($requestUri) {
     case 'login':
       loadPage('user/auth');
       break;
+
+    case 'logout':
+      $isSuccess = $routeParts[2] && "success" === $routeParts[2];
+      loadPage($isSuccess ? 'user/logout/success' : 'user/logout');
+      break;
     
     case '': 
       loadPage('home');

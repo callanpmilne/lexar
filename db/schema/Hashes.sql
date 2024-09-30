@@ -1,9 +1,7 @@
 CREATE TABLE public."Hashes" ( 
   "ID" uuid NOT NULL DEFAULT gen_random_uuid(),
-  "UserID" uuid NOT NULL,
   "HashValue" character varying(255) NOT NULL, 
-  CONSTRAINT "HashID" PRIMARY KEY ("ID"),
-  CONSTRAINT "HashUserID" UNIQUE ("UserID")
+  CONSTRAINT "HashID" PRIMARY KEY ("ID")
 ); 
 
 ALTER TABLE IF EXISTS 

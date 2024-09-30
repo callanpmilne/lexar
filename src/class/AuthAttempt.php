@@ -6,9 +6,9 @@
 class AuthAttempt {
 
   /**
-   * Login Input Name
+   * Login Username
    */
-  private string $InputName;
+  private string $Username;
 
   /**
    * Password
@@ -18,21 +18,21 @@ class AuthAttempt {
   /**
    * Constructor
    * 
-   * @param string $InputName Login Input Name
+   * @param string $Username Login Username
    * @param string $Password Password
    */
-  public function __construct (string $InputName, string $Password) {
-    $this->InputName = $InputName;
+  public function __construct (string $Username, string $Password) {
+    $this->Username = $Username;
     $this->Password = $Password;
   }
 
   /**
    * Get User ID
    * 
-   * @return string InputName used in this auth attempt
+   * @return string Username used in this auth attempt
    */
-  public function getInputName () {
-    return $this->InputName;
+  public function getUsername () {
+    return $this->Username;
   }
 
   /**

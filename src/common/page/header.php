@@ -27,19 +27,32 @@
         </a>
       </li>
 
-      <li>
-        <a
-          href="/login">
-          Login
-        </a>
-      </li>
+      <?php if (!isLoggedIn()) : ?>
+        <li>
+          <a
+            href="/login">
+            Login
+          </a>
+        </li>
+      <?php endif; ?>
 
-      <li>
-        <a 
-          href="/admin">
-          Admin
-        </a>
-      </li>
+      <?php if (isLoggedIn() && isSuperAdmin()) : ?>
+        <li>
+          <a 
+            href="/admin">
+            Admin
+          </a>
+        </li>
+      <?php endif; ?>
+
+      <?php if (isLoggedIn()) : ?>
+        <li>
+          <a 
+            href="/logout">
+            Logout
+          </a>
+        </li>
+      <?php endif; ?>
 
       <li>
         <a 

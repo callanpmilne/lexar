@@ -2,6 +2,10 @@
 /**
  * User Login Form Component
  */
+
+$values = array(
+  "username" => array_key_exists('username', $_POST) ? $_POST['username'] : '',
+);
 ?>
 
 <div 
@@ -9,14 +13,15 @@
   <div 
     class="component-form-login-field">
     <label
-      for="AuthInputEmailAddress">
-      Email Address
+      for="AuthInputUsername">
+      Username
     </label>
 
     <input 
-      id="AuthInputEmailAddress"
-      name="emailAddress"
+      id="AuthInputUsername"
       type="input"
+      name="username"
+      value="<?=$values['username']?>"
       tabindex="2" />
   </div>
 
@@ -29,8 +34,8 @@
 
     <input 
       id="AuthInputPassword"
-      name="password"
       type="password"
+      name="password"
       tabindex="3" />
   </div>
 
@@ -40,7 +45,8 @@
       <input
         type="checkbox"
         name="remember"
-        value="1" />
+        value="1"
+        tabindex="4" />
 
       <span>
         Remember Me
@@ -50,7 +56,8 @@
     <div style="display: flex; flex: 1;"></div>
 
     <button
-      type="submit">
+      type="submit"
+      tabindex="5">
       Login
     </button>
 
