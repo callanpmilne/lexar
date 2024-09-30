@@ -21,6 +21,7 @@ main {
   min-height: 70vh;
   padding: 4rem 1rem;
   background: linear-gradient(45deg, #004360, #1cdfb5);
+  background-attachment: fixed;
   color: #fff;
 }
 
