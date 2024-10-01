@@ -1,5 +1,7 @@
 <?php
 
+require_once('../src/methods/util.php');
+
 class GlobalSession {
   static public function init () {
     // check for cookie: 'accept_cookie_policy'
@@ -16,8 +18,20 @@ class GlobalSession {
  * 
  * @param string $requestUri The full Request URI
  */
-function handleRoute ($requestUri) {
-  $routeParts = preg_split('/\//', $requestUri);
+function handleRoute (
+  string $requestUri
+) {
+
+  // The URI
+  $uri = preg_split('/\?/', $requestUri);
+
+  // Query String
+  $qs = array_key_exists(1, $uri) ? $uri[1] : '';
+  
+  // URI Parts (for routing) 
+  $routeParts = preg_split('/\//', $uri[0]);
+
+  // Top-Level Route
   $route = $routeParts[1];
 
   GlobalSession::init();
@@ -41,13 +55,15 @@ function handleRoute ($requestUri) {
       break;
     
     case 'admin': 
+      adminOnlyPage(); // Redirect user to the login page if they're not an admin
       loadPage('admin/router');
       break;
 
     default:
-      http_response_code(404);
+      http_response_code(404); // 404 if no handler above
       loadPage('error/404');
   }
+
 }
 
 /**
@@ -58,6 +74,7 @@ function handleRoute ($requestUri) {
  * @param string $page Path to PHP file in pages source dir (excl .php extention)
  */
 function loadPage ($page) {
+
   // Load Page Header
   loadPageHeader();
   

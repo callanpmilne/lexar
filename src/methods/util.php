@@ -1,10 +1,20 @@
 <?php
 
+/**
+ * Is Logged In
+ * 
+ * @return bool TRUE if the current visitor is logged in
+ */
 function isLoggedIn () {
   return in_array('is_logged_in', $_SESSION)
     && true === $_SESSION['is_logged_in'];
 }
 
+/**
+ * Is Super Admin
+ * 
+ * @return bool TRUE if the current visitor is an admin
+ */
 function isSuperAdmin () {
   if (!isLoggedIn()) {
     return false;
@@ -14,17 +24,50 @@ function isSuperAdmin () {
     && true === $_SESSION['user']['IsSuperAdmin'];
 }
 
-function checkAuthorization () {
-  
+/**
+ * User Only Page
+ * 
+ * Redirect a visitor to the homepage if they are not an admin
+ * 
+ * @param bool $inline Use inline JavaScript to redirect the user?
+ * @return void
+ */
+function userOnlyPage (
+  bool $inline = false
+) {
+  if (isLoggedIn()) {
+    return; // User is logged in
+  }
+
+  if (true === $inline) {
+    inlineRedirect('/');
+    return;
+  }
+
+  httpRedirect('/');
 }
 
-function adminOnlyPage () {
-  $isAdmin = !isSuperAdmin();
-  if ($isAdmin) {
+/**
+ * Admin Only Page
+ * 
+ * Redirect a visitor to the homepage if they are not an admin
+ * 
+ * @param bool $inline Use inline JavaScript to redirect the user?
+ * @return void
+ */
+function adminOnlyPage (
+  bool $inline = false
+) {
+  if (isSuperAdmin()) {
     return; // User is admin
   }
 
-  inlineRedirect('/');
+  if (true === $inline) {
+    inlineRedirect('/login?redirect=' . urlencode($_SERVER['REQUEST_URI']));
+    return;
+  }
+
+  httpRedirect('/login?redirect=' . urlencode($_SERVER['REQUEST_URI']));
 }
 
 /**
@@ -35,11 +78,26 @@ function adminOnlyPage () {
  * @param string $dest URL for redirection
  * @return void
  */
-function inlineRedirect ($dest) {
+function inlineRedirect (
+  string $dest
+) {
   ?>
   <script>"use strict"; (function (w) {
     w.location.assign('<?=$dest?>');
   })(window);</script>
   <?php
   exit(1);
+}
+
+/**
+ * HTTP Redirect
+ * 
+ * Redirect a user by way of setting the HTTP Location Header.
+ * 
+ * @param string $dest URL for redirection
+ */
+function httpRedirect (
+  string $dest
+) {
+  header('Location: ' . $dest);
 }
