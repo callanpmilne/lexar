@@ -58,16 +58,18 @@ function userOnlyPage (
 function adminOnlyPage (
   bool $inline = false
 ) {
+  $redirectTarget = '/login?redirect=' . urlencode($_SERVER['REQUEST_URI']);
+  
   if (isSuperAdmin()) {
     return; // User is admin
   }
 
   if (true === $inline) {
-    inlineRedirect('/login?redirect=' . urlencode($_SERVER['REQUEST_URI']));
+    inlineRedirect($redirectTarget);
     return;
   }
 
-  httpRedirect('/login?redirect=' . urlencode($_SERVER['REQUEST_URI']));
+  httpRedirect($redirectTarget);
 }
 
 /**

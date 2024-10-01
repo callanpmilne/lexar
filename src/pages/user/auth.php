@@ -173,10 +173,20 @@ function validLogin (
 function redirectAuthedUser (
   bool $isSuperAdmin
 ) {
+  // If there is a 'redirect' key in the $_REQUEST
+  // then try to send the user there
+  if (array_key_exists('redirect', $_REQUEST)) {
+    inlineRedirect($_REQUEST['redirect']);
+    return;
+  }
+
+  // If they are an admin, try to send the user to the
+  // admin dashboard route (/admin)
   if (true === $isSuperAdmin) {
     inlineRedirect('/admin');
     return;
   }
-  
+
+  // Try to send the user to the homepage route (/)
   inlineRedirect('/');
 }

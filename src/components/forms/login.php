@@ -6,6 +6,13 @@
 $values = array(
   "username" => array_key_exists('username', $_POST) ? $_POST['username'] : '',
 );
+
+$redirectUrl = '';
+
+if (array_key_exists('redirect', $_REQUEST)) {
+  $redirectUrl = $_REQUEST['redirect'];
+}
+
 ?>
 
 <div 
@@ -65,6 +72,11 @@ $values = array(
       name="is_login_submit"
       type="hidden"
       value="1" />
+
+    <input
+      name="redirect"
+      type="hidden"
+      value="<?=$redirectUrl?>" />
   </div>
 </div>
 
