@@ -174,7 +174,7 @@ $tools = [
 
 <style>
   section.content-grid {
-
+    position: relative;
   }
 
   section.content-grid div.content-list-wrapper {

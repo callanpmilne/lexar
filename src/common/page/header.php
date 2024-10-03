@@ -422,4 +422,18 @@
       background: linear-gradient(199deg, #1ad3af, #067b7e);
       color: #fff;
     }
+
+    #topmenu > li > a {
+      white-space: nowrap;
+      max-width: 1.8rem;
+      overflow: hidden;
+      font-size: 2rem;
+    }
+
+    @media screen and (min-width: 800px) {
+      #topmenu > li > a {
+        max-width: none;
+        font-size: 1rem;
+      }
+    }
   </style>

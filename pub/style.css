@@ -132,6 +132,7 @@ div.component-form {
   padding: 2rem;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
+  position: relative;
 }
 
 div.component-form div.component-form-field {
