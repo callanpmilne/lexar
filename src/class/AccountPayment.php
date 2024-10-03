@@ -3,14 +3,14 @@
 require_once('../src/class/Payment.php');
 
 /**
- * Customer Payment Class
+ * Account Payment Class
  */
-class CustomerPayment extends Payment {
+class AccountPayment extends Payment {
 
   /**
-   * Customer Payment ID
+   * Account Payment ID
    */
-  public string $CustomerPaymentID;
+  public string $AccountPaymentID;
 
   /**
    * Customer ID
@@ -23,17 +23,11 @@ class CustomerPayment extends Payment {
   public string $Description;
 
   /**
-   * Recorded Date
-   */
-  public int $Recorded;
-
-  /**
    * Customer Payment
    * 
-   * @param string $CustomerPaymentID Unique ID for this Customer Payment
+   * @param string $AccountPaymentID Unique ID for this Customer Payment
    * @param string $CustomerID Identifies the Customer this Payment was made for
    * @param string $Description 
-   * @param int $Recorded 
    * @param string $ID 
    * @param int $Amount 
    * @param string $CurrencyID 
@@ -43,10 +37,9 @@ class CustomerPayment extends Payment {
    * @param int $Received
    */
   public function __construct (
-    string $CustomerPaymentID,
+    string $AccountPaymentID,
     string $CustomerID,
     string $Description,
-    int $Recorded,
     string $ID,
     int $Amount,
     string $CurrencyID,
@@ -66,10 +59,9 @@ class CustomerPayment extends Payment {
       $Received
     );
 
-    $this->CustomerPaymentID = $CustomerPaymentID;
+    $this->AccountPaymentID = $AccountPaymentID;
     $this->CustomerID = $CustomerID;
     $this->Description = $Description;
-    $this->Recorded = $Recorded;
 
   }
 

@@ -130,7 +130,7 @@ function handleNoteSubmission ($CustomerID) {
                   </td>
 
                   <td class="payment-date">
-                    <?=date('d/m/y H:i', $payment->Recorded)?>
+                    <?=date('d/m/y H:i', $payment->Received)?>
                   </td>
 
                   <td>US&dollar; <?=$payment->getAmount('.')?></td>
@@ -271,6 +271,9 @@ function handleNoteSubmission ($CustomerID) {
 table#CustomerPayments .payment-description {
   text-align: left;
   width: 40%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 table#CustomerPayments .payment-date {

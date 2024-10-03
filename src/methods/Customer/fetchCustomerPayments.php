@@ -1,6 +1,6 @@
 <?php
 
-require_once('../src/class/CustomerPayment.php');
+require_once('../src/class/AccountPayment.php');
 require_once('../src/constants/currency.php');
 require_once('../src/constants/payment.php');
 
@@ -20,17 +20,21 @@ function fetchCustomerPayments (
     $dbconn, 
     "select_all_customer_payments", 
     ' SELECT 
-        CP."ID" AS "CustomerPaymentID",
-        CP."CustomerID", CP."Recorded",
-        CP."Description", P."ID" AS "PaymentID", 
+        AP."ID" AS "AccountPaymentID",
+        CA."CustomerID", AP."Description", 
+        P."ID" AS "PaymentID", AP."Received",
         P."Amount", P."CurrencyID",
         P."FeeAmount", P."FeeCurrencyID",
-        P."PaymentProcessorID", P."Received"
-      FROM public."CustomerPayments" AS CP
+        P."PaymentProcessorID"
+      FROM public."CustomerAccounts" AS CA
+      LEFT JOIN public."Accounts" AS A
+        ON CA."AccountID" = A."ID"
+      LEFT JOIN public."AccountPayments" AS AP
+        ON A."ID" = AP."AccountID"
       LEFT JOIN public."Payments" AS P
-        ON CP."PaymentID" = P."ID"
-      WHERE CP."CustomerID" = $1
-      ORDER BY CP."Recorded" DESC'
+        ON AP."PaymentID" = P."ID"
+      WHERE CA."CustomerID" = $1
+      ORDER BY AP."Received" DESC'
   );
 
   $result = pg_execute(
@@ -42,11 +46,10 @@ function fetchCustomerPayments (
   );
 
   $result = array_map(function ($pmnt) {
-    return new CustomerPayment(
-      $pmnt['CustomerPaymentID'],
+    return new AccountPayment(
+      $pmnt['AccountPaymentID'],
       $pmnt['CustomerID'],
       $pmnt['Description'],
-      $pmnt['Recorded'],
       $pmnt['PaymentID'],
       $pmnt['Amount'],
       $pmnt['CurrencyID'],

@@ -6,7 +6,7 @@
  * Shows a list of Customers
  */
 
-require_once('../src/class/Customer.php');
+require_once('../src/class/DetailedCustomer.php');
 require_once('../src/methods/Customer/fetchCustomerList.php');
 
 $customers = fetchCustomerList();
@@ -29,10 +29,10 @@ $customers = fetchCustomerList();
       <tr>
         <th>ID</th>
         <th class="wide">Name</th>
-        <th>Created</th>
-        <th>Last Interaction</th>
+        <th>Account Opened</th>
         <th>Last Payment</th>
-        <th>Revenue (TTL)</th>
+        <th style="text-align: right;">Revenue (TTL)</th>
+        <th style="text-align: right;">Fees (TTL)</th>
       </tr>
     </thead>
 
@@ -49,15 +49,43 @@ $customers = fetchCustomerList();
             </a>
           </td>
 
-          <td><?=date('d/m/y')?></td>
+          <td><?=$customer->getAccountOpenedDate('d/m/y')?></td>
 
-          <td><?=date('d/m/y')?></td>
+          <td><?=$customer->getLastPaymentDate('d/m/y')?></td>
 
-          <td>-</td>
+          <td style="text-align:right;"><?=getCurrencyAmount(
+            $customer->TotalPaymentsAmount
+          )?></td>
 
-          <td>US&dollar; 75.00</td>
+          <td style="text-align:right;"><?=getCurrencyAmount(
+            $customer->TotalFeesAmount
+          )?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>
   </table>
 </main>
+
+<?php
+
+function getCurrencyAmount (
+  int $amount,
+  string $currencySymbol = '$',
+  string $currencyCode = 'USD',
+  string $currencyLabel = 'United States Dollar',
+  string $decimalSeparator = '.',
+  string $thousandsSeparator = ',',
+  string $currencySymbolPosition = 'PREFIX',
+  int $decimalPlaces = 2
+): string {
+  $pow = pow(10, $decimalPlaces);
+  return sprintf(
+    '%s %d%s%s %s',
+    'PREFIX' === $currencySymbolPosition 
+      ? $currencySymbol : '',
+    floor($amount / $pow),
+    $decimalSeparator,
+    str_pad(strval($amount % $pow), $decimalPlaces, '0'),
+    $currencyCode
+  );
+}

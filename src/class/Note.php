@@ -59,8 +59,6 @@ class Note {
       $Created
     );
 
-    var_dump($note);
-
     // Return the new Note
     return $note;
   }
