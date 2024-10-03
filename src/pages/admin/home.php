@@ -1,5 +1,7 @@
 <?php
 
+require_once('../src/class/Tool.php');
+
 /**
  * Admin Dashboard
  */
@@ -115,36 +117,6 @@ $buttons = array(
 );
 
 /**
- * Tool Class
- */
-class Tool {
-  /**
-   * Tool Label
-   * @param string
-   */
-  public string $Label;
-
-  /**
-   * Tool URI (relative to admin tools dir)
-   * @param string
-   */
-  public string $Path;
-
-  /**
-   * A Web Tool
-   * @param string $Label
-   * @param string $Path
-   */
-  public function __construct(
-    string $Label,
-    string $Path
-  ) {
-    $this->Label = $Label;
-    $this->Path = $Path;
-  }
-}
-
-/**
  * Tools
  */
 $tools = [
@@ -230,32 +202,29 @@ $tools = [
   }
 
   section.content-grid div.content-list-wrapper ol.content-list li a {
-    display: flex;
-    flex: 1;
-    box-sizing: border-box;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0.5rem 1rem;
     padding: 1rem;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.34);
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
+    background: linear-gradient(163deg, rgb(0 0 0 / 47%) 0%, rgb(0 0 0 / 69%) 100%);
     transition: all 333ms;
+    aspect-ratio: 16 / 6;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    color: #012e39;
+    color: #fff;
     font-size: 1.1rem;
     font-weight: 500;
     text-decoration: none;
-    background: rgba(0,0,0,0.2);
-    border: 1px solid #5ad8ff;
-    aspect-ratio: 16/9;
-    color: rgb(255,255,255,1);
+    border-bottom: 4px solid;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
   }
 
-  section.content-grid div.content-list-wrapper ol.content-list li a:hover {
-    color: rgba(255,255,255,1);
-    background-color: rgb(186 218 255 / 47%);
-    
+  section.content-grid div.content-list-wrapper ol.content-list li a:hover  {
+    color: #ffca00;
   }
 
   section.content-grid div.content-list-wrapper ol.content-list li a span {

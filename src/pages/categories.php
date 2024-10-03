@@ -87,6 +87,36 @@ $catNameSingular = true === $isViewingCategory
   <?php if (true === $isViewingCategory) : ?>
 
     <section>
+      <h2>Recent Videos</h2>
+
+      <div class="content-list-wrapper">
+        <ol class="content-list">
+          <?php for ($i = 0; $i < 8; $i++) : ?>
+            <li>
+              <a href="/">
+                <span style="font-size: 2.5rem;color:#1cdfb5;">&#9654;</span>
+                <?=$catNameSingular?> Video #<?=$i?>
+                <span>View Video &rarr;</span>
+                
+                <div class="item-info">
+                  <div>
+                    <span>1m 35s</span>
+                    <span>Posted 3 Minutes Ago</span>
+                  </div>
+
+                  <div>
+                    <span></span>
+                    <span>By @testuser</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          <?php endfor; ?>
+        </ol>
+      </div>
+    </section>
+
+    <section>
       <h2>Recent Posts</h2>
       
       <div class="content-list-wrapper">
@@ -94,6 +124,7 @@ $catNameSingular = true === $isViewingCategory
           <?php for ($i = 0; $i < 8; $i++) : ?>
             <li>
               <a href="/">
+                <span style="font-size: 2.5rem;color:#1cdfb5;">&#9654;</span>
                 <?=$catNameSingular?> Post #<?=$i?>
                 <span>View Post &rarr;</span>
 
@@ -123,41 +154,13 @@ $catNameSingular = true === $isViewingCategory
           <?php for ($i = 0; $i < 8; $i++) : ?>
             <li>
               <a href="/">
+                <span style="font-size: 2.5rem;color:#1cdfb5;">&#9654;</span>
                 <?=$catNameSingular?> Photo #<?=$i?>
                 <span>View Photo &rarr;</span>
                 
                 <div class="item-info">
                   <div>
                     <span>1280x1024</span>
-                    <span>Posted 3 Minutes Ago</span>
-                  </div>
-
-                  <div>
-                    <span></span>
-                    <span>By @testuser</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-          <?php endfor; ?>
-        </ol>
-      </div>
-    </section>
-
-    <section>
-      <h2>Recent Videos</h2>
-
-      <div class="content-list-wrapper">
-        <ol class="content-list">
-          <?php for ($i = 0; $i < 8; $i++) : ?>
-            <li>
-              <a href="/">
-                <?=$catNameSingular?> Video #<?=$i?>
-                <span>View Video &rarr;</span>
-                
-                <div class="item-info">
-                  <div>
-                    <span>1m 35s</span>
                     <span>Posted 3 Minutes Ago</span>
                   </div>
 
@@ -249,8 +252,27 @@ $catNameSingular = true === $isViewingCategory
     text-decoration: none;
   }
 
+  ol.category-list li a {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem 1rem;
+    padding: 1rem;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.34);
+    border-radius: 0.25rem;
+    background: linear-gradient(163deg, rgb(0 0 0 / 47%) 0%, rgb(0 0 0 / 69%) 100%);
+    transition: all 333ms;
+    aspect-ratio: 16 / 6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 4px solid;
+  }
+
   ol.content-list li a {
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,1);
     color: #fff;
     border: 1px solid #5ad8ff;
     aspect-ratio: 16/9;
@@ -259,7 +281,10 @@ $catNameSingular = true === $isViewingCategory
     color: rgb(255,255,255,0.5);
   }
 
-  ol.category-list li a:hover,
+  ol.category-list li a:hover {
+    color: #ffca00;
+  }
+
   ol.content-list li a:hover {
     background-color: rgb(186 218 255 / 47%);
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.34);
@@ -270,6 +295,10 @@ $catNameSingular = true === $isViewingCategory
     font-size: 0.8rem;
     font-weight: 100;
   }
+
+ol.category-list li a span {
+  color: rgba(255,255,255,0.5);
+}
 
   div.item-info {
     position: absolute;
