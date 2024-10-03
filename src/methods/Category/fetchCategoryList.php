@@ -1,11 +1,17 @@
 <?php
 
+$GLOBALS['categories'] = [];
+
 /**
  * Fetch Category List
  * 
  * @return Category[] Category List
  */
 function fetchCategoryList () {
+
+  if (count($GLOBALS['categories']) > 0) {
+    return $GLOBALS['categories'];
+  }
 
   $dbconn = $GLOBALS['dbh'];
 
@@ -39,6 +45,8 @@ function fetchCategoryList () {
     );
 
   }, pg_fetch_all($result));
+
+  $GLOBALS['categories'] = $result;
 
   return $result;
 }

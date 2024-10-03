@@ -25,6 +25,25 @@
           href="/categories">
           🏷️ Categories
         </a>
+        
+        <div class="submenu">
+          <span class="menutitle">
+            🏷️ Categories
+          </span>
+
+          <ul class="tagcloud">
+            <?php require_once('../src/class/Category.php'); ?>
+            <?php require_once('../src/methods/Category/fetchCategoryList.php'); ?>
+            <?php $categories = fetchCategoryList(); ?>
+            <?php foreach ( $categories as $cat ) : ?>
+              <li class="tag">
+                <a href="/categories/<?=$cat->Path?>">
+                  <?=$cat->Name?>
+                </a>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
       </li>
 
       <?php $globalSession = $GLOBALS["sess"]; ?>
@@ -33,113 +52,8 @@
         <li>
           <a
             href="/login">
-            Login
+            🔐 Login
           </a>
-
-          <div class="submenu">
-
-          </div>
-        </li>
-      <?php endif; ?>
-
-      <?php if ($globalSession->getSession()->isLoggedIn() && $globalSession->getUser()->IsSuperAdmin) : ?>
-        <li>
-          <a 
-            href="/admin">
-            ⚙️ Site Admin
-          </a>
-
-          <div class="submenu">
-            <span class="menutitle">
-              ⚙️ Site Admin Menu
-            </span>
-
-            <div class="submenuSections">
-              <section>
-                <strong>Tools</strong>
-
-                <ul>
-                  <li>
-                    <a href="/admin/tools/uuid/generator">
-                      UUID Generator
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="/password/hasher">
-                      Password Hasher
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="/admin/tools/password/generator">
-                      Password Generator
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="/admin/tools/timestamp/converter">
-                      Timestamp Converter
-                    </a>
-                  </li>
-                </ul>
-              </section>
-              
-              <section>
-                <strong>Customer Relationships</strong>
-                
-                <ul>
-                  <li>
-                    <a href="/admin/list/customers">
-                      Customers
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="/admin/list/payments">
-                      Payments
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="/admin/list/notes">
-                      Notes
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="/admin/list/interactions">
-                      Interactions
-                    </a>
-                  </li>
-                </ul>
-              </section>
-              
-              <section>
-                <strong>Site Content</strong>
-                
-                <ul>
-                  <li>
-                    <a href="/admin/list/categories">
-                      Categories
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="/admin/list/metadata">
-                      Meta Tags
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="/admin/list/types">
-                      Types
-                    </a>
-                  </li>
-                </ul>
-              </section>
-            </div>
-          </div>
         </li>
       <?php endif; ?>
 
@@ -243,7 +157,108 @@
                   <li>
                     <a 
                       href="/logout">
-                      🔑 Logout
+                      🔑 End Session (Logout)
+                    </a>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </li>
+      <?php endif; ?>
+
+      <?php if ($globalSession->getSession()->isLoggedIn() && $globalSession->getUser()->IsSuperAdmin) : ?>
+        <li>
+          <a 
+            href="/admin">
+            ⚙️ Site Admin
+          </a>
+
+          <div class="submenu">
+            <span class="menutitle">
+              ⚙️ Site Admin Menu
+            </span>
+
+            <div class="submenuSections">
+              <section>
+                <strong>Tools</strong>
+
+                <ul>
+                  <li>
+                    <a href="/admin/tools/uuid/generator">
+                      UUID Generator
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/admin/tools/password/hasher">
+                      Password Hasher
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/admin/tools/password/generator">
+                      Password Generator
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/admin/tools/timestamp/converter">
+                      Timestamp Converter
+                    </a>
+                  </li>
+                </ul>
+              </section>
+              
+              <section>
+                <strong>Customer Relationships</strong>
+                
+                <ul>
+                  <li>
+                    <a href="/admin/list/customers">
+                      Customers
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/admin/list/payments">
+                      Payments
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/admin/list/notes">
+                      Notes
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/admin/list/interactions">
+                      Interactions
+                    </a>
+                  </li>
+                </ul>
+              </section>
+              
+              <section>
+                <strong>Site Content</strong>
+                
+                <ul>
+                  <li>
+                    <a href="/admin/list/categories">
+                      Categories
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/admin/list/types">
+                      Content-Types
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/admin/list/metadata">
+                      Page Meta-Tags
                     </a>
                   </li>
                 </ul>
@@ -270,6 +285,11 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
     }
 
     #topmenu {
@@ -295,14 +315,20 @@
     #topmenu > li > a {
       color: #1ad0a9;
       text-decoration: none;
-      line-height: 2rem;
-      padding: 0 0.5rem;
+      line-height: 3.5rem;
+      padding: 0 0.75rem;
+    }
+
+    #topmenu > li:hover > a {
+      color: #fff;
+      background: linear-gradient(199deg, #1ad3af, #067b7e);
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
     }
 
     #topmenu li div.submenu {
       position: absolute;
-      left: -25vw;
-      top: 2rem;
+      left: -15vw;
+      top: 3.5rem;
       display: flex;
       flex-direction: column;
       background-color: rgba(0, 0, 0, 0.85);
@@ -310,11 +336,12 @@
       padding: 1rem 0.5rem;
       display: none;
       width: 40vw;
-      border-radius: 0.5rem;
+      border-radius: 0 0 0.5rem 0.5rem;
       padding-top: 1rem;
       border-top: 2px solid #1ad0a9;
-      border-bottom: 2px solid;
+      border-bottom: none;
       z-index: 10;
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     }
 
     #topmenu li div.submenu div.submenuSections {
@@ -324,7 +351,7 @@
 
     #topmenu li div.submenu span.menutitle {
       padding: 0 0.5rem;
-      color: #ffffff50;
+      color: #ffffff;
       margin-bottom: 1rem;
     }
 
@@ -367,9 +394,32 @@
       display: flex;
     }
 
-    #topmenu > li:hover > a {
-      background-color: #1ad0a9;
-      border-radius: 0.25rem 0.25rem 0 0;
+    #topmenu div.submenu ul.tagcloud {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    #topmenu div.submenu ul.tagcloud li.tag {
+      display: flex;
+    }
+
+    #topmenu div.submenu ul.tagcloud li.tag a {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      line-height: 1;
+      font-size: 0.9rem;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+      border-radius: 0.25rem;
+    }
+
+    #topmenu div.submenu ul.tagcloud li.tag a:hover {
+      background: linear-gradient(199deg, #1ad3af, #067b7e);
       color: #fff;
     }
   </style>

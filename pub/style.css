@@ -10,7 +10,7 @@ body {
 }
 
 a {
-  color: #ffca00;
+  color: #ffe273;
 }
 
 main {
@@ -37,17 +37,33 @@ p {
 }
 
 p.breadcrumbs {
-  position: relative;
-  top: -5.5rem;
+}
+
+p.breadcrumbs a {
+  text-decoration: none;
 }
 
 div#PageTitle {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   padding: 2.5rem;
   align-items: center;
   justify-content: center;
   width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+main::before {
+  content: ' ';
+  width: 50vw;
+  height: 50vh;
+  transform: rotate(145deg);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+  position: fixed;
+  top: -25vh;
+  box-shadow: 10px 10px 100px rgb(1 117 123);
+  z-index: 0;
 }
 
 @media only screen and (min-width: 1024px) {

@@ -48,41 +48,41 @@ $catNameSingular = true === $isViewingCategory
 
   <div id="PageTitle">
     <?php if (true === $isViewingCategory) : ?>
-
+      <h1><?=$category->Name?></h1>
+      <p class="breadcrumbs">
       <?php if (true === $hasParent) : ?>
-        <div class="breadcrumbs">
-          <a href="/categories">
-            Categories
-          </a>
-          <span> / </span>
-          <a href="/categories/<?=$parentCategory->Path?>">
-            <?=$parentCategory->Name?>
-          </a>
-        </div>
+        <a href="/categories">
+          Categories
+        </a>
+        <span> / </span>
+        <a href="/categories/<?=$parentCategory->Path?>">
+          <?=$parentCategory->Name?>
+        </a>
       <?php else : ?>
         <a href="/categories">
           &larr; Categories
         </a>
       <?php endif; ?>
-
-      <h1><?=$category->Name?></h1>
+      </p>
     <?php else : ?>
       <h1>Categories</h1>
     <?php endif; ?>
-    </div>
-
-  <div class="category-list-wrapper">
-    <ol class="category-list">
-      <?php foreach ($displayCategories as $cat) : ?>
-        <li>
-          <a href="/categories/<?=$cat->Path?>">
-            <?=$cat->Name?>
-            <span>Browse <?=$cat->Name?> &rarr;</span>
-          </a>
-        </li>
-      <?php endforeach; ?>
-    </ol>
   </div>
+
+  <?php if (count($displayCategories) > 0) : ?>
+    <div class="category-list-wrapper">
+      <ol class="category-list">
+        <?php foreach ($displayCategories as $cat) : ?>
+          <li>
+            <a href="/categories/<?=$cat->Path?>">
+              <?=$cat->Name?>
+              <span>Browse <?=$cat->Name?> &rarr;</span>
+            </a>
+          </li>
+        <?php endforeach; ?>
+      </ol>
+    </div>
+  <?php endif; ?>
 
   <?php if (true === $isViewingCategory) : ?>
 
@@ -186,6 +186,11 @@ $catNameSingular = true === $isViewingCategory
     width: 100vw;
   }
   
+  section h2 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
   div.breadcrumbs {
     display: flex;
     flex-direction: row;
@@ -206,6 +211,8 @@ $catNameSingular = true === $isViewingCategory
     margin: 1rem -0.5rem;
     max-width: 1200px;
     width: 100vw;
+    position: relative;
+    z-index: 2;
   }
 
   ol.category-list,

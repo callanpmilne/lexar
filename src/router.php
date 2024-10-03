@@ -40,6 +40,9 @@ function handleRoute (
       loadPage('home');
       break;
     
+    case 'browse': 
+      // no break
+    
     case 'categories': 
       loadPage('categories');
       break;
