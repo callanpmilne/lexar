@@ -2,15 +2,6 @@
 
 require_once('../src/methods/util.php');
 
-class GlobalSession {
-  static public function init () {
-    // check for cookie: 'accept_cookie_policy'
-    // if set we can init session, and ...
-      // check for cookie: 'session'
-      // set cookie: 'session'
-  }
-}
-
 /**
  * Handle Route
  * 
@@ -34,16 +25,15 @@ function handleRoute (
   // Top-Level Route
   $route = $routeParts[1];
 
-  GlobalSession::init();
-
   switch ($route) {
     case 'login':
       loadPage('user/auth');
       break;
 
     case 'logout':
-      $isSuccess = $routeParts[2] && "success" === $routeParts[2];
-      loadPage($isSuccess ? 'user/logout/success' : 'user/logout');
+      $isSuccess = array_key_exists(2, $routeParts) && "success" === $routeParts[2];
+      if ($isSuccess) loadPage('user/logout/success');
+      else loadPage('user/logout', false, false);
       break;
     
     case '': 
@@ -73,16 +63,20 @@ function handleRoute (
  * 
  * @param string $page Path to PHP file in pages source dir (excl .php extention)
  */
-function loadPage ($page) {
+function loadPage (
+  string $page,
+  bool $inclHeader = true,
+  bool $inclFooter = true
+) {
 
   // Load Page Header
-  loadPageHeader();
+  if (true === $inclHeader) loadPageHeader();
   
   // Load Page
   require('../src/pages/' . $page . '.php');
   
   // Load Page Footer
-  loadPageFooter();
+  if (true === $inclFooter) loadPageFooter();
 }
 
 /**

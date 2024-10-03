@@ -17,13 +17,15 @@ $category = fetchCategory($CategoryID);
 ?>
 
 <main>
-  <h1>Category: <?=$category->Name?></h1>
+  <div id="PageTitle">
+    <h1>Category: <?=$category->Name?></h1>
 
-  <p>
-    <a href="/admin/list/categories">
-      &larr; Return to Category List
-    </a>
-  </p>
+    <p>
+      <a href="/admin/list/categories">
+        &larr; Return to Category List
+      </a>
+    </p>
+  </div>
 
   <ul>
     <?php if ($category->isNested()) : ?>

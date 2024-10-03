@@ -17,13 +17,15 @@ if ($isCreateNoteSubmit) {
 ?>
 
 <main>
-  <h1>Create Note</h1>
+  <div id="PageTitle">
+    <h1>Create Note</h1>
 
-  <p class="breadcrumbs">
-    <a href="/admin">
-      &larr; Admin Dashboard
-    </a>
-  </p>
+    <p class="breadcrumbs">
+      <a href="/admin">
+        &larr; Admin Dashboard
+      </a>
+    </p>
+  </div>
 
   <form 
     action="/admin/create/note" 

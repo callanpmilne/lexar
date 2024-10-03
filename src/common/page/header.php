@@ -27,7 +27,9 @@
         </a>
       </li>
 
-      <?php if (!isLoggedIn()) : ?>
+      <?php $globalSession = $GLOBALS["sess"]; ?>
+
+      <?php if (!$globalSession->getSession()->isLoggedIn()) : ?>
         <li>
           <a
             href="/login">
@@ -36,7 +38,7 @@
         </li>
       <?php endif; ?>
 
-      <?php if (isLoggedIn() && isSuperAdmin()) : ?>
+      <?php if ($globalSession->getSession()->isLoggedIn() && $globalSession->getUser()->IsSuperAdmin) : ?>
         <li>
           <a 
             href="/admin">
@@ -45,7 +47,7 @@
         </li>
       <?php endif; ?>
 
-      <?php if (isLoggedIn()) : ?>
+      <?php if ($globalSession->getSession()->isLoggedIn()) : ?>
         <li>
           <a 
             href="/logout">
@@ -59,6 +61,10 @@
           href="/404">
           404
         </a>
+      </li>
+
+      <li>
+        <span style="font-size: 0.8rem;position:fixed;top:0.5rem;right:0.5rem;"><?=$globalSession->getSession()->ID?></span>
       </li>
     </ul>
   </header>

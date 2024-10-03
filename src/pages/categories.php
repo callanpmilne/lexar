@@ -38,40 +38,46 @@ $children = true === $isViewingCategory ? array_filter($categories, function ($c
 
 $displayCategories = false === $isViewingCategory ? $topLevelCategories : $children;
 
+$catNameSingular = true === $isViewingCategory 
+  ? preg_replace(['/(ies)$/', '/(s)$/'], ['y', ''], $category->Name) 
+  : '';
+
 ?>
 
 <main>
 
-  <?php if (true === $isViewingCategory) : ?>
+  <div id="PageTitle">
+    <?php if (true === $isViewingCategory) : ?>
 
-    <?php if (true === $hasParent) : ?>
-      <div class="breadcrumbs">
+      <?php if (true === $hasParent) : ?>
+        <div class="breadcrumbs">
+          <a href="/categories">
+            Categories
+          </a>
+          <span> / </span>
+          <a href="/categories/<?=$parentCategory->Path?>">
+            <?=$parentCategory->Name?>
+          </a>
+        </div>
+      <?php else : ?>
         <a href="/categories">
-          Categories
+          &larr; Categories
         </a>
-        <span> / </span>
-        <a href="/categories/<?=$parentCategory->Path?>">
-          <?=$parentCategory->Name?>
-        </a>
-      </div>
-    <?php else : ?>
-      <a href="/categories">
-        &larr; Categories
-      </a>
-    <?php endif; ?>
+      <?php endif; ?>
 
-    <h1><?=$category->Name?></h1>
-  <?php else : ?>
-    <h1>Categories</h1>
-  <?php endif; ?>
+      <h1><?=$category->Name?></h1>
+    <?php else : ?>
+      <h1>Categories</h1>
+    <?php endif; ?>
+    </div>
 
   <div class="category-list-wrapper">
     <ol class="category-list">
-      <?php foreach ($displayCategories as $category) : ?>
+      <?php foreach ($displayCategories as $cat) : ?>
         <li>
-          <a href="/categories/<?=$category->Path?>">
-            <?=$category->Name?>
-            <span>Browse <?=$category->Name?> &rarr;</span>
+          <a href="/categories/<?=$cat->Path?>">
+            <?=$cat->Name?>
+            <span>Browse <?=$cat->Name?> &rarr;</span>
           </a>
         </li>
       <?php endforeach; ?>
@@ -83,24 +89,87 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     <section>
       <h2>Recent Posts</h2>
       
-      <div class="">
+      <div class="content-list-wrapper">
+        <ol class="content-list">
+          <?php for ($i = 0; $i < 8; $i++) : ?>
+            <li>
+              <a href="/">
+                <?=$catNameSingular?> Post #<?=$i?>
+                <span>View Post &rarr;</span>
 
+                <div class="item-info">
+                  <div>
+                    <span>1m 35s</span>
+                    <span>Posted 3 Minutes Ago</span>
+                  </div>
+
+                  <div>
+                    <span></span>
+                    <span>By @testuser</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          <?php endfor; ?>
+        </ol>
       </div>
     </section>
 
     <section>
       <h2>Recent Photos</h2>
       
-      <div class="">
-        
+      <div class="content-list-wrapper">
+        <ol class="content-list">
+          <?php for ($i = 0; $i < 8; $i++) : ?>
+            <li>
+              <a href="/">
+                <?=$catNameSingular?> Photo #<?=$i?>
+                <span>View Photo &rarr;</span>
+                
+                <div class="item-info">
+                  <div>
+                    <span>1280x1024</span>
+                    <span>Posted 3 Minutes Ago</span>
+                  </div>
+
+                  <div>
+                    <span></span>
+                    <span>By @testuser</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          <?php endfor; ?>
+        </ol>
       </div>
     </section>
 
     <section>
       <h2>Recent Videos</h2>
-      
-      <div class="">
-        
+
+      <div class="content-list-wrapper">
+        <ol class="content-list">
+          <?php for ($i = 0; $i < 8; $i++) : ?>
+            <li>
+              <a href="/">
+                <?=$catNameSingular?> Video #<?=$i?>
+                <span>View Video &rarr;</span>
+                
+                <div class="item-info">
+                  <div>
+                    <span>1m 35s</span>
+                    <span>Posted 3 Minutes Ago</span>
+                  </div>
+
+                  <div>
+                    <span></span>
+                    <span>By @testuser</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          <?php endfor; ?>
+        </ol>
       </div>
     </section>
 
@@ -109,6 +178,11 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
 </main>
 
 <style>
+  section {
+    max-width: 1200px;
+    width: 100vw;
+  }
+  
   div.breadcrumbs {
     display: flex;
     flex-direction: row;
@@ -131,7 +205,8 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     width: 100vw;
   }
 
-  ol.category-list {
+  ol.category-list,
+  ol.content-list {
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -142,7 +217,8 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     margin: 0;
   }
 
-  ol.category-list li {
+  ol.category-list li,
+  ol.content-list li {
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
@@ -151,7 +227,8 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     width: 100%;
   }
 
-  ol.category-list li a {
+  ol.category-list li a,
+  ol.content-list li a {
     display: flex;
     flex: 1;
     box-sizing: border-box;
@@ -172,35 +249,90 @@ $displayCategories = false === $isViewingCategory ? $topLevelCategories : $child
     text-decoration: none;
   }
 
-  ol.category-list li a:hover {
+  ol.content-list li a {
+    background: rgba(0,0,0,0.2);
+    color: #fff;
+    border: 1px solid #5ad8ff;
+    aspect-ratio: 16/9;
+    position: relative;
+    margin-bottom: 4rem;
+    color: rgb(255,255,255,0.5);
+  }
+
+  ol.category-list li a:hover,
+  ol.content-list li a:hover {
     background-color: rgb(186 218 255 / 47%);
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.34);
   }
 
-  ol.category-list li a span {
+  ol.category-list li a span,
+  ol.content-list li a span {
     font-size: 0.8rem;
     font-weight: 100;
   }
 
+  div.item-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    font-size: 1.1rem;
+    padding: 0.5rem 0.35rem 0;
+    line-height: 1.5rem;
+    color: rgba(255,255,255,0.75);
+  }
+
+  ol.content-list li a:hover {
+    color: rgba(255,255,255,0.9);
+  }
+
+  ol.content-list li a:hover div.item-info {
+    color: rgba(255,255,255,1);
+  }
+
+  div.item-info > div {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+
+  div.item-info {
+
+  }
+
   @media only screen and (min-width: 800px) {
     
-    ol.category-list {
+    ol.category-list,
+    ol.content-list {
       flex-direction: row;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
     }
 
-    ol.category-list li {
+    ol.category-list li,
+    ol.content-list li {
       max-width: 25%;
       width: 25%;
     }
 
-    ol.category-list li a {
+    ol.category-list li a,
+    ol.content-list li a {
       margin: 1rem;
     }
 
-    div.category-list-wrapper {
+    ol.content-list li a {
+      margin: 1rem 1rem 4rem;
+    }
+
+    div.category-list-wrapper,
+    div.content-list-wrapper {
       margin: 2rem -0.5rem;
     }
 

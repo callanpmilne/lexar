@@ -9,13 +9,15 @@
 ?>
 
 <main>
-  <h1>Note List</h1>
+  <div id="PageTitle">
+    <h1>Note List</h1>
 
-  <p class="breadcrumbs">
-    <a href="/admin">
-      &larr; Admin Dashboard
-    </a>
-  </p>
+    <p class="breadcrumbs">
+      <a href="/admin">
+        &larr; Admin Dashboard
+      </a>
+    </p>
+  </div>
 
   <p>No Notes</p>
 </main>

@@ -77,13 +77,15 @@ function handleNoteSubmission ($CustomerID) {
 ?>
 
 <main>
-  <h1>Customer</h1>
+  <div id="PageTitle">
+    <h1>Customer</h1>
 
-  <p class="breadcrumbs">
-    <a href="/admin/list/customers">
-      &larr; Return to Customer List
-    </a>
-  </p>
+    <p class="breadcrumbs">
+      <a href="/admin/list/customers">
+        &larr; Return to Customer List
+      </a>
+    </p>
+  </div>
 
   <div class="customer-page">
     <div class="secondary-content">
@@ -106,35 +108,39 @@ function handleNoteSubmission ($CustomerID) {
       <section>
         <h2>Recent Payments</h2>
 
-        <table id="CustomerPayments">
-          <thead>
-            <tr>
-              <th class="payment-description">Description</th>
-
-              <th class="payment-date">
-                Processed
-              </th>
-
-              <th>Amount</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <?php foreach ($payments as $payment) : ?>
+        <?php if (count($payments) > 0) : ?>
+          <table id="CustomerPayments">
+            <thead>
               <tr>
-                <td class="payment-description">
-                  <?=$payment->Description?>
-                </td>
+                <th class="payment-description">Description</th>
 
-                <td class="payment-date">
-                  <?=date('d/m/y H:i', $payment->Recorded)?>
-                </td>
+                <th class="payment-date">
+                  Processed
+                </th>
 
-                <td>US&dollar; <?=$payment->getAmount('.')?></td>
+                <th>Amount</th>
               </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              <?php foreach ($payments as $payment) : ?>
+                <tr>
+                  <td class="payment-description">
+                    <?=$payment->Description?>
+                  </td>
+
+                  <td class="payment-date">
+                    <?=date('d/m/y H:i', $payment->Recorded)?>
+                  </td>
+
+                  <td>US&dollar; <?=$payment->getAmount('.')?></td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        <?php else : ?>
+          <p style="margin: 0;">No payments for this customer, yet.</p>
+        <?php endif; ?>
       </section>
       
       <section class="note-editor">
@@ -312,6 +318,7 @@ form#CreateNoteForm button[type=submit] {
   border: none;
   line-height: 2rem;
   padding: 0 1rem;
+  color: #137564;
 }
 
 table#CustomerNotes tr th,
@@ -327,6 +334,12 @@ main div.customer-page {
   align-items: stretch;
   justify-content: stretch;
   width: 100%;
+}
+
+main div.customer-page div.component-form {
+  padding: 0;
+  background: none;
+  border-radius: 0;
 }
 
 main div.customer-page div.primary-content,

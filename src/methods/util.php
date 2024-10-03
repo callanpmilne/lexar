@@ -6,8 +6,7 @@
  * @return bool TRUE if the current visitor is logged in
  */
 function isLoggedIn () {
-  return in_array('is_logged_in', $_SESSION)
-    && true === $_SESSION['is_logged_in'];
+  return GlobalSession::getGlobalSession()->getSession()->isLoggedIn();
 }
 
 /**
@@ -20,8 +19,7 @@ function isSuperAdmin () {
     return false;
   }
 
-  return in_array('user', $_SESSION)
-    && true === $_SESSION['user']['IsSuperAdmin'];
+  return GlobalSession::getGlobalSession()->getUser()->IsSuperAdmin;
 }
 
 /**

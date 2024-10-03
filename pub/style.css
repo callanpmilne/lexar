@@ -23,6 +23,7 @@ main {
   background: linear-gradient(45deg, #004360, #1cdfb5);
   background-attachment: fixed;
   color: #fff;
+  overflow: hidden;
 }
 
 h1 {
@@ -38,6 +39,15 @@ p {
 p.breadcrumbs {
   position: relative;
   top: -5.5rem;
+}
+
+div#PageTitle {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -100,6 +110,9 @@ div.component-form {
   justify-content: flex-start;
   min-width: 20rem;
   max-width: 30vw;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
 }
 
 div.component-form div.component-form-field {

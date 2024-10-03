@@ -14,13 +14,15 @@ $customers = fetchCustomerList();
 ?>
 
 <main>
-  <h1>Customer List</h1>
+  <div id="PageTitle">
+    <h1>Customer List</h1>
 
-  <p class="breadcrumbs">
-    <a href="/admin">
-      &larr; Admin Dashboard
-    </a>
-  </p>
+    <p class="breadcrumbs">
+      <a href="/admin">
+        &larr; Admin Dashboard
+      </a>
+    </p>
+  </div>
 
   <table>
     <thead>

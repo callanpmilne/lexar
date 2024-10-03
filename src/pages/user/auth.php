@@ -1,15 +1,14 @@
 <?php
 
-require_once('../src/methods/User/fetchUser.php');
-require_once('../src/methods/User/fetchUserHash.php');
+require_once("../src/class/AuthAttempt.php");
 
 /**
  * User Login Page
  */
 
-$isLoggedIn = array_key_exists('is_logged_in', $_SESSION) && true === $_SESSION['is_logged_in'];
-if ($isLoggedIn) {
-  redirectAuthedUser($_SESSION['user']['IsSuperAdmin']);
+$globalSession = $GLOBALS["sess"];
+if ($globalSession->getSession()->isLoggedIn()) {
+  redirectAuthedUser($globalSession->getUser()->IsSuperAdmin);
 }
 
 $isLoginSubmit = array_key_exists('is_login_submit', $_POST)
@@ -18,7 +17,9 @@ $isLoginSubmit = array_key_exists('is_login_submit', $_POST)
 ?>
 
 <main>
+<div id="PageTitle">
   <h1>User Login</h1>
+  </div>
 
   <?php
     if ($isLoginSubmit) {
@@ -51,7 +52,7 @@ $isLoginSubmit = array_key_exists('is_login_submit', $_POST)
 
 <style>
   #UserLoginForm {
-    margin-top: 4rem;
+
   }
   
   div.component-form-login-debug {
@@ -66,10 +67,10 @@ $isLoginSubmit = array_key_exists('is_login_submit', $_POST)
     border-radius: 0.5rem;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     border: 1px solid rgba(255,255,255,0.8);
-    margin-top: 3rem;
-    min-width: 20rem;
-    max-width: 20vw;
-    margin-bottom: -2rem;
+    margin-top: 0rem;
+    width: 80vw;
+    max-width: 100%;
+    margin-bottom: 2rem;
   }
 
   section#LoginErrorNotice h2 {
@@ -98,28 +99,19 @@ function handleSubmit (
   string $username, 
   string $password
 ) {
-  // attempt authentication
-  $user = fetchUserByUsername($username);
+  $authAttempt = new AuthAttempt(
+    $username,
+    $password
+  );
 
-  if (!$user) {
+  try {
+    $user = GlobalSession::authSession($authAttempt);
+  }
+  catch (SessionException $e) {
     return invalidLogin();
   }
 
-  // Fetch most recent Password UserHash
-  $userHash = fetchLastUserHash(
-    $user->ID,
-    UserHash::$PASSWORD_TYPE
-  );
-
-  // Verify input password matches most recent Password UserHash
-  $verified = $userHash->verify($password);
-
-  if (!$verified) {
-    invalidLogin();
-    return;
-  }
-
-  validLogin($user);
+  return validLogin($user);
 }
 
 /**
@@ -130,9 +122,6 @@ function handleSubmit (
  * @return void
  */
 function invalidLogin () {
-  $_SESSION['user'] = null;
-  $_SESSION['is_logged_in'] = false;
-
   ?>
   <section id="LoginErrorNotice">
     <h2>Invalid Login</h2>
@@ -152,14 +141,6 @@ function invalidLogin () {
 function validLogin (
   User $user
 ) {
-  $_SESSION['user'] = array(
-    'ID' => $user->ID,
-    'Username' => $user->Username,
-    'Name' => $user->Name,
-    'IsSuperAdmin' => $user->IsSuperAdmin
-  );
-  $_SESSION['is_logged_in'] = true;
-
   redirectAuthedUser($user->IsSuperAdmin);
 }
 

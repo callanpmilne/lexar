@@ -17,13 +17,15 @@ if ($isCreateInteractionSubmit) {
 ?>
 
 <main>
-  <h1>Create Interaction</h1>
+  <div id="PageTitle">
+    <h1>Create Interaction</h1>
 
-  <p class="breadcrumbs">
-    <a href="/admin">
-      &larr; Admin Dashboard
-    </a>
-  </p>
+    <p class="breadcrumbs">
+      <a href="/admin">
+        &larr; Admin Dashboard
+      </a>
+    </p>
+  </div>
 
   <form 
     action="/admin/create/interaction" 

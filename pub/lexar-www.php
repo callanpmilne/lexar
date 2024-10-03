@@ -21,15 +21,9 @@ require_once( '../src/methods/util.php' );
 $GLOBALS['dbh'] = pg_connect( POSTGRES_DB_CONN_STRING );
 
 /**
- * Start Session
+ * Global Session
  */
-session_start(array(
-  "sid_length" => 128,
-  "save_path" => realpath('../.tmp'),
-  // "use_cookies" => false,
-  // "use_trans_sid" => true,
-  // "trans_sid_hosts" => '',
-));
+require_once( '../src/GlobalSession.php' );
 
 /**
  * Router requires relevant sources

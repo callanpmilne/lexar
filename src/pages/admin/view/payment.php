@@ -17,13 +17,15 @@ $payment = fetchPayment($PaymentID);
 ?>
 
 <main id="ViewPaymentPage">
-  <h1>View Payment</h1>
+  <div id="PageTitle">
+    <h1>View Payment</h1>
 
-  <p>
-    <a href="/admin/list/payments">
-      &larr; Return to Payment List
-    </a>
-  </p>
+    <p>
+      <a href="/admin/list/payments">
+        &larr; Return to Payment List
+      </a>
+    </p>
+  </div>
 
   <section>
     <ul>

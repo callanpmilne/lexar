@@ -14,13 +14,15 @@ $categories = fetchCategoryList();
 ?>
 
 <main>
-  <h1>Category List</h1>
+  <div id="PageTitle">
+    <h1>Category List</h1>
 
-  <p class="breadcrumbs">
-    <a href="/admin">
-      &larr; Admin Dashboard
-    </a>
-  </p>
+    <p class="breadcrumbs">
+      <a href="/admin">
+        &larr; Admin Dashboard
+      </a>
+    </p>
+  </div>
 
   <table>
     <thead>

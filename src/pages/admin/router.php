@@ -34,6 +34,11 @@ $routes = array(
   '/^\/admin\/create\/type$/i'  => 'create/type',
   '/^\/admin\/list\/types$/i'  => 'list/types',
 
+  '/^\/admin\/tools\/password\/generator$/i'  => 'tools/password/generator',
+  '/^\/admin\/tools\/password\/hasher$/i'  => 'tools/password/hasher',
+  '/^\/admin\/tools\/timestamp\/converter$/i'  => 'tools/timestamp/converter',
+  '/^\/admin\/tools\/uuid\/generator$/i'  => 'tools/uuid/generator',
+
 );
 
 foreach ($routes as $pattern => $includePath) {
