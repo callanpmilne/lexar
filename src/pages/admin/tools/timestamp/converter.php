@@ -20,7 +20,7 @@
     <div 
       class="component-form-field"
       style="align-items: center;">
-      <p>Current Timestamp</p>
+      <p>Current Timestamp (in seconds)</p>
     </div>
 
     <div 

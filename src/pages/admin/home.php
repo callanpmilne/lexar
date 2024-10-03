@@ -161,7 +161,7 @@ $tools = [
     '/uuid/generator'
   ),
   new Tool(
-    'Password Hash',
+    'Password Hasher',
     '/password/hasher'
   ),
 ]
