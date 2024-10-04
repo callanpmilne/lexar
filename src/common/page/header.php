@@ -94,14 +94,14 @@
                   </li>
 
                   <li>
-                    <a href="/my/profile">
-                      👤 My Profile
+                    <a href="/my/files">
+                      📲 My Files
                     </a>
                   </li>
 
                   <li>
-                    <a href="/admin/list/notes">
-                      📲 Downloads
+                    <a href="/my/profile">
+                      👤 My Profile
                     </a>
                   </li>
 
@@ -293,9 +293,9 @@
         </li>
       <?php endif; ?>
 
-      <li>
+      <!--<li>
         <span style="font-size: 0.8rem;position:fixed;top:0.5rem;right:0.5rem;"><?=$globalSession->getSession()->ID?></span>
-      </li>
+      </li>-->
     </ul>
   </header>
 

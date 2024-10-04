@@ -18,6 +18,10 @@ $routes = array(
   '/^\/admin\/create\/category$/i' => 'create/category',
   '/^\/admin\/list\/categories$/i'  => 'list/categories',
   '/^\/admin\/view\/category/i' => 'view/category',
+
+  '/^\/admin\/create\/user$/i' => 'create/user',
+  '/^\/admin\/list\/users$/i'  => 'list/users',
+  '/^\/admin\/view\/user/i' => 'view/user',
   
   '/^\/admin\/create\/contact$/i'  => 'create/contact',
   '/^\/admin\/list\/contacts$/i'  => 'list/contacts',

@@ -29,7 +29,7 @@ if ($isCreateOrganisationSubmit) {
   if (true === $result) {
     ?>
     <script>"use strict"; (function (w) {
-      const organisationURI = '/admin/view/organisation/<?=$organisationID?>';
+      const organisationURI = '/admin/view/org/<?=$organisationID?>';
       w.location.assign(organisationURI);
     })(window);</script>
     <?php
@@ -51,7 +51,7 @@ if ($isCreateOrganisationSubmit) {
   </div>
 
   <form 
-    action="/admin/create/organisation" 
+    action="/admin/create/org" 
     method="POST">
     <?php include('../src/components/forms/create/organisation.php'); ?>
   </form>

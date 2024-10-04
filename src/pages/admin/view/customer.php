@@ -59,8 +59,10 @@ function handleSubmissions ($CustomerID) {
  * @param string $CustomerID
  * @return void
  */
-function handleNoteSubmission ($CustomerID) {
-  $Author = DEFAULT_USER_UUID;
+function handleNoteSubmission (
+  string $CustomerID
+) {
+  $Author = GlobalSession::getGlobalSession()->getUserID();
   $ContentBody = 
     array_key_exists('noteContentBody', $_POST)
       && $_POST['noteContentBody']

@@ -121,6 +121,22 @@ $buttons = array(
  */
 $tools = [
   new Tool(
+    'Code Writer',
+    '/code/writer'
+  ),
+  new Tool(
+    'Code Writer',
+    '/code/writer'
+  ),
+  new Tool(
+    'Code Writer',
+    '/code/writer'
+  ),
+  new Tool(
+    'Code Writer',
+    '/code/writer'
+  ),
+  new Tool(
     'Password Generator',
     '/password/generator'
   ),
@@ -225,7 +241,7 @@ $tools = [
   }
 
   section.content-grid div.content-list-wrapper ol.content-list li a:hover  {
-    color: #ffca00;
+    color: #00fff9;
   }
 
   section.content-grid div.content-list-wrapper ol.content-list li a span {

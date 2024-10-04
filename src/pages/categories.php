@@ -290,7 +290,7 @@ $catNameSingular = true === $isViewingCategory
   }
 
   ol.category-list li a:hover {
-    color: #ffca00;
+    color: #00fff9;
   }
 
   ol.content-list li a:hover {

@@ -26,7 +26,7 @@ if ($isCodeWriterSubmit) {
 
   <?php if ($isCodeWriterSubmit) : ?>
   <div
-    class="component-form alt-form"
+    class="component-form"
     style="margin-bottom: 2rem;">
     <div 
       class="component-form-field">
@@ -73,7 +73,7 @@ if ($isCodeWriterSubmit) {
         <input 
           id="UserInputObjectName"
           name="userInput"
-          type="text"
+          type="input"
           tabindex="1" />
       </div>
 

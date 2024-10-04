@@ -1,50 +1,83 @@
 <?php
 
+require_once('../src/class/Category.php');
+
+/**
+ * @var string SQL Query
+ */
+$qInsertNewCategorySql = <<<END
+  INSERT INTO 
+    public."Categories" 
+      (
+        "ParentID",
+        "ID",
+        "Name",
+        "Added"
+    ) 
+  VALUES 
+    (
+      $1,
+      $2,
+      $3,
+      $4
+  )
+  END;
+
+// Register the SQL Query
+pg_prepare(
+  $GLOBALS['dbh'],
+  "insert_new_category", 
+);
+
 /**
  * Create Category
  * 
- * @param Category $cat
+ * @param Category $category
  */
 function createCategory (
-  Category $cat
+  Category $category
 ) {
-
   try {
-    insertCategory($cat->Name, $cat->ParentID);
-    return true;
+    return insertCategory(
+      $category->ID,
+      $category->Name,
+      $category->Added,
+      $category->ParentID,
+    );
   }
   catch (Exception $e) {
     return false;
   }
-
 }
 
 /**
  * Insert Category
  * 
  * @param string $name New Category Name
- * @param int $parentID New Category Parent (if any)
+ * @param string $Name
+ * @param int $Added
+ * @param string|null $ParentID
  */
 function insertCategory (
-  string $name,
-  ?int $parentID = null,
+  string $ID,
+  string $Name,
+  int $Added = 0,
+  string|null $ParentID = null
 ) {
 
-  $sth = $dbh->prepare('INSERT
-    INTO 
-      `Categories` (
-        `Name`, 
-        `Parent`
-      ) 
-    VALUES 
-      (
-        ?, 
-        ?
-      )');
-  
-  $sth->bindParam(1, $name, PDO::PARAM_STR, 128);
-  $sth->bindParam(2, is_null($parentID) ? null : $parentID, PDO::PARAM_STR, 256);
+  $dbconn = $GLOBALS['dbh'];
 
-  $sth->execute();
+  $result = pg_execute(
+    $dbconn,
+    "insert_new_category", 
+    array(
+      $ParentID,
+      $ID,
+      $Name,
+      $Added > 0 ? $Added : time()
+    )
+  );
+
+  return pg_affected_rows($result) > 0;
 
 }

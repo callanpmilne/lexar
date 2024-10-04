@@ -254,6 +254,23 @@ class GlobalSession {
   }
 
   /**
+   * Get User ID
+   * 
+   * This will *always* return an ID, even if the current user is not logged in.
+   * If the current user is not logged in: this function will use the `DEFAULT_USER_UUID` 
+   * const defined in config.inc.php
+   */
+  public function getUserID (
+    // no args
+  ): string {
+    if (is_null($this->User)) {
+      return DEFAULT_USER_UUID;
+    }
+
+    return $this->getUser()->ID;
+  }
+
+  /**
    * Summary of setUser
    * @param User $user
    * @return $this

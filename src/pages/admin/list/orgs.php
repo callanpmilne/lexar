@@ -40,11 +40,13 @@ $organisations = fetchOrganisationList();
       <?php foreach ($organisations as $organisation) : ?>
         <tr>
           <th>
-            <?=$organisation->ID?>
+            <a href="/admin/view/org/<?=$organisation->ID?>">
+              <?=$organisation->ID?>
+            </a>
           </th>
 
           <td class="wide view-link">
-            <a href="/admin/view/organisation/<?=$organisation->ID?>">
+            <a href="/admin/view/org/<?=$organisation->ID?>">
               <?=htmlentities($organisation->Name)?>
             </a>
           </td>

@@ -47,6 +47,17 @@ function handleRoute (
       loadPage('categories');
       break;
     
+    case 'change': 
+      // no break
+    
+    case 'update': 
+      // no break
+    
+    case 'my': 
+      userOnlyPage(); // Redirect user to the login page if they're not logged in
+      loadPage('user/router');
+      break;
+    
     case 'admin': 
       adminOnlyPage(); // Redirect user to the login page if they're not an admin
       loadPage('admin/router');

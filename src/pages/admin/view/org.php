@@ -60,7 +60,7 @@ function handleSubmissions ($OrganisationID) {
  * @return void
  */
 function handleNoteSubmission ($OrganisationID) {
-  $Author = DEFAULT_USER_UUID;
+  $Author = GlobalSession::getGlobalSession()->getUserID();
   $ContentBody = 
     array_key_exists('noteContentBody', $_POST)
       && $_POST['noteContentBody']
@@ -78,10 +78,10 @@ function handleNoteSubmission ($OrganisationID) {
 
 <main>
   <div id="PageTitle">
-    <h1>Organisation</h1>
+    <h1>ORG: <?=htmlentities($organisation->Name)?></h1>
 
     <p class="breadcrumbs">
-      <a href="/admin/list/organisations">
+      <a href="/admin/list/orgs">
         &larr; Return to Organisation List
       </a>
     </p>
@@ -146,7 +146,7 @@ function handleNoteSubmission ($OrganisationID) {
       <section class="note-editor">
         <form
           id="CreateNoteForm"
-          action="/admin/view/organisation/<?=$OrganisationID?>" 
+          action="/admin/view/org/<?=$OrganisationID?>" 
           method="POST">
           <?php include('../src/components/forms/create/note.php'); ?>
         </form>

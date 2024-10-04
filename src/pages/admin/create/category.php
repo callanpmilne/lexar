@@ -1,4 +1,7 @@
 <?php
+
+require_once('../src/method/Category/createCategory.php');
+
 /**
  * Create Category Page
  */
@@ -8,11 +11,25 @@ $isCreateCategorySubmit =
     && '1' === $_POST['is_create_category_submit'];
 
 if ($isCreateCategorySubmit) {
+  // Category ID
+  $ID = strtolower($_POST['uuid']);
+
   // Category Name
   $name = strtolower($_POST['categoryName']);
 
+  // Category Parent ID
+  $parentID = array_key_exists('categoryParentID', $_POST)
+    && strlen($_POST['categoryParentID']) === 36
+    ? $_POST['categoryParentID']
+    : null;
+
   // attempt to create category
-  // ...
+  createCategory(new Category(
+    $ID,
+    $name,
+    $path,
+    $parentID
+  ));
 }
 ?>
 
