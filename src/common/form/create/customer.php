@@ -3,7 +3,7 @@
  * Create Customer Form Component
  */
 
-include('../src/components/forms/input/uuid.php');
+include('../src/common/form/input/uuid.php');
 
 ?>
 

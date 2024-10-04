@@ -53,7 +53,7 @@ if ($isCreateCustomerSubmit) {
   <form 
     action="/admin/create/customer" 
     method="POST">
-    <?php include('../src/components/forms/create/customer.php'); ?>
+    <?php include('../src/common/form/create/customer.php'); ?>
   </form>
 
   <?php if ($isCreateCustomerSubmit) : ?>

@@ -30,7 +30,7 @@ if ($isCreateTypeSubmit) {
   <form 
     action="/admin/create/type" 
     method="POST">
-    <?php include('../src/components/forms/create/type.php'); ?>
+    <?php include('../src/common/form/create/type.php'); ?>
   </form>
 
   <?php if ($isCreateTypeSubmit) : ?>

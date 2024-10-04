@@ -38,7 +38,7 @@ $isLoginSubmit = array_key_exists('is_login_submit', $_POST)
     id="UserLoginForm"
     action="/login" 
     method="POST">
-    <?php include('../src/components/forms/login.php'); ?>
+    <?php include('../src/common/form/login.php'); ?>
   </form>
 
   <?php if (false && $isLoginSubmit) : ?>

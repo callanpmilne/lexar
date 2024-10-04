@@ -30,7 +30,7 @@ if ($isCreateNoteSubmit) {
   <form 
     action="/admin/create/note" 
     method="POST">
-    <?php include('../src/components/forms/create/note.php'); ?>
+    <?php include('../src/common/form/create/note.php'); ?>
   </form>
 
   <?php if ($isCreateNoteSubmit) : ?>

@@ -7,7 +7,7 @@ require_once('../src/methods/Category/fetchCategoryList.php');
  * Create Category Form Component
  */
 
-include('../src/components/forms/input/uuid.php');
+include('../src/common/form/input/uuid.php');
 
 /**
  * Categories

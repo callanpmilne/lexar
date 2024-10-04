@@ -66,6 +66,11 @@ main::before {
   z-index: 0;
 }
 
+main > * {
+  position: relative;
+  z-index: 5;
+}
+
 @media only screen and (min-width: 1024px) {
   main {
     padding: 4rem 5vw;

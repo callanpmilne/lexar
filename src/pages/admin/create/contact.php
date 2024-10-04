@@ -30,7 +30,7 @@ if ($isCreateContactSubmit) {
   <form 
     action="/admin/create/contact" 
     method="POST">
-    <?php include('../src/components/forms/create/contact.php'); ?>
+    <?php include('../src/common/form/create/contact.php'); ?>
   </form>
 
   <?php if ($isCreateContactSubmit) : ?>

@@ -30,7 +30,7 @@ if ($isCreateInteractionSubmit) {
   <form 
     action="/admin/create/interaction" 
     method="POST">
-    <?php include('../src/components/forms/create/interaction.php'); ?>
+    <?php include('../src/common/form/create/interaction.php'); ?>
   </form>
 
   <?php if ($isCreateInteractionSubmit) : ?>

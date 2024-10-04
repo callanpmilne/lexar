@@ -47,7 +47,7 @@ if ($isCreateCategorySubmit) {
   <form 
     action="/admin/create/category" 
     method="POST">
-    <?php include('../src/components/forms/create/category.php'); ?>
+    <?php include('../src/common/form/create/category.php'); ?>
   </form>
 
   <?php if ($isCreateCategorySubmit) : ?>

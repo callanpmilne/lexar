@@ -148,7 +148,7 @@ function handleNoteSubmission ($OrganisationID) {
           id="CreateNoteForm"
           action="/admin/view/org/<?=$OrganisationID?>" 
           method="POST">
-          <?php include('../src/components/forms/create/note.php'); ?>
+          <?php include('../src/common/form/create/note.php'); ?>
         </form>
       </section>
     </div>

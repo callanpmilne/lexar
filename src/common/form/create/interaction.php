@@ -1,26 +1,26 @@
 <?php
 /**
- * Create Type Form Component
+ * Create Interaction Form Component
  */
 
-include('../src/components/forms/input/uuid.php');
+include('../src/common/form/input/uuid.php');
 ?>
 
 <div 
   class="component-form">
 
-  <?=uuidField('Content Type ID')?> 
+  <?=uuidField('Interaction ID')?> 
 
   <div 
     class="component-form-field">
     <label
-      for="CreateTypeInputName">
-      Type Name
+      for="CreateInteractionInputName">
+      Interaction Name
     </label>
 
     <input 
-      id="CreateTypeInputName"
-      name="typeName"
+      id="CreateInteractionInputName"
+      name="interactionName"
       type="input"
       tabindex="2" />
   </div>
@@ -36,7 +36,7 @@ include('../src/components/forms/input/uuid.php');
     </button>
 
     <input
-      name="is_create_type_submit"
+      name="is_create_interaction_submit"
       type="hidden"
       value="1" />
   </div>

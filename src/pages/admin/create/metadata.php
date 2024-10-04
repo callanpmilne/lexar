@@ -30,7 +30,7 @@ if ($isCreateMetadataSubmit) {
   <form 
     action="/admin/create/metadata" 
     method="POST">
-    <?php include('../src/components/forms/create/metadata.php'); ?>
+    <?php include('../src/common/form/create/metadata.php'); ?>
   </form>
 
   <?php if ($isCreateMetadataSubmit) : ?>

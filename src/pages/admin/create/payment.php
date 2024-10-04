@@ -30,7 +30,7 @@ if ($isCreatePaymentSubmit) {
   <form 
     action="/admin/create/payment" 
     method="POST">
-    <?php include('../src/components/forms/create/payment.php'); ?>
+    <?php include('../src/common/form/create/payment.php'); ?>
   </form>
 
   <?php if ($isCreatePaymentSubmit) : ?>
