@@ -21,3 +21,58 @@ define(
   'POSTGRES_DB_CONN_STRING',
   'postgresql://lexar:lexar@localhost:5433/lexar?connect_timeout=30'
 );
+
+/**
+ * Syntax Highlighting
+ */
+
+/**
+ * Syntax Highlighting
+ * Color Setting: highlight.string
+ * (default #DD0000)
+ */
+ini_set(
+  'highlight.string',
+  'rgba(44,200,200,0.9)'
+);
+
+/**
+ * Syntax Highlighting
+ * Color Setting: highlight.comment
+ * (default #FF8000)
+ */
+ini_set(
+  'highlight.comment',
+  'rgba(44,200,88,0.9)'
+);
+
+/**
+ * Syntax Highlighting
+ * Color Setting: highlight.keyword
+ * (default #007700)
+ */
+ini_set(
+  'highlight.keyword',
+  'rgba(200,200,88,0.9)'
+);
+
+/**
+ * Syntax Highlighting
+ * Color Setting: highlight.default
+ * (default #0000BB)
+ */
+ini_set(
+  'highlight.default',
+  'rgba(120,200,120,0.9)'
+);
+
+/**
+ * Syntax Highlighting
+ * Color Setting: highlight.html
+ * (default #000000)
+ */
+ini_set(
+  'highlight.html',
+  'rgba(44,200,88,0.9)'
+);
+

@@ -276,6 +276,7 @@ $catNameSingular = true === $isViewingCategory
     font-weight: 500;
     text-decoration: none;
     border-bottom: 4px solid;
+    backdrop-filter: brightness(0.75) blur(10px);
   }
 
   ol.content-list li a {
@@ -303,9 +304,9 @@ $catNameSingular = true === $isViewingCategory
     font-weight: 100;
   }
 
-ol.category-list li a span {
-  color: rgba(255,255,255,0.5);
-}
+  ol.category-list li a span {
+    color: rgba(255,255,255,0.5);
+  }
 
   div.item-info {
     position: absolute;

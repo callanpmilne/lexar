@@ -221,6 +221,7 @@ $tools = [
     display: flex;
     flex: 1;
     flex-direction: column;
+    backdrop-filter: brightness(0.85) blur(10px);
   }
 
   section.content-grid div.content-list-wrapper ol.content-list li a:hover  {
@@ -256,6 +257,7 @@ $tools = [
     flex-wrap: nowrap;
     margin-top: 4rem;
     width: 100%;
+    position: relative;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell h2,

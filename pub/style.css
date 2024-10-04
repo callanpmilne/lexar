@@ -133,6 +133,29 @@ div.component-form {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   position: relative;
+  backdrop-filter: brightness(0.85) blur(10px);
+  border-top: 1px solid rgb(19 47 43 / 23%);
+  border-bottom: 1px solid rgb(137 193 185 / 42%);
+}
+
+div.component-form.alt-form {
+  padding: 0;
+}
+
+div.component-form.alt-form label {
+  text-align: left;
+  font-size: 0.8rem;
+  padding: 0 0.75rem;
+  color: #1cdfb5;
+}
+
+div.component-form pre {
+  font-size: 0.7rem;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  max-height: 100px;
+  overflow: scroll;
+  backdrop-filter: brightness(0.5);
+  padding: 0.75rem;
 }
 
 div.component-form div.component-form-field {
@@ -165,6 +188,7 @@ table {
   border-radius: 0.5rem;
   overflow: hidden;
   min-width: 80%;
+  backdrop-filter: brightness(0.85) blur(10px);
 }
 
 table th,

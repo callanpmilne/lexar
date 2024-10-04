@@ -11,6 +11,10 @@ $routes = array(
   '/^\/admin\/list\/customers$/i'  => 'list/customers',
   '/^\/admin\/view\/customer/i' => 'view/customer',
 
+  '/^\/admin\/create\/org$/i' => 'create/org',
+  '/^\/admin\/list\/orgs$/i'  => 'list/orgs',
+  '/^\/admin\/view\/org/i' => 'view/org',
+
   '/^\/admin\/create\/category$/i' => 'create/category',
   '/^\/admin\/list\/categories$/i'  => 'list/categories',
   '/^\/admin\/view\/category/i' => 'view/category',
@@ -38,6 +42,7 @@ $routes = array(
   '/^\/admin\/tools\/password\/hasher$/i'  => 'tools/password/hasher',
   '/^\/admin\/tools\/timestamp\/converter$/i'  => 'tools/timestamp/converter',
   '/^\/admin\/tools\/uuid\/generator$/i'  => 'tools/uuid/generator',
+  '/^\/admin\/tools\/code\/writer$/i'  => 'tools/code/writer',
 
 );
 

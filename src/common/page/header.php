@@ -8,6 +8,19 @@
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Fonts -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com">
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+  <link 
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
+  <!-- Google Fonts -->
 </head>
 
 <body>
@@ -185,6 +198,12 @@
 
                 <ul>
                   <li>
+                    <a href="/admin/tools/code/writer">
+                      Code Writer
+                    </a>
+                  </li>
+
+                  <li>
                     <a href="/admin/tools/uuid/generator">
                       UUID Generator
                     </a>
@@ -211,9 +230,15 @@
               </section>
               
               <section>
-                <strong>Customer Relationships</strong>
+                <strong>Relationships</strong>
                 
                 <ul>
+                  <li>
+                    <a href="/admin/list/orgs">
+                      Organisations
+                    </a>
+                  </li>
+
                   <li>
                     <a href="/admin/list/customers">
                       Customers
@@ -278,8 +303,7 @@
     header {
       height: 3.5rem;
       font-size: 0.9rem;
-      font-weight: 400;
-      background-color: #012e39;
+      /* background-color: #012e39; */
       box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
       display: flex;
       flex-direction: row;
@@ -290,6 +314,9 @@
       left: 0;
       right: 0;
       z-index: 10;
+      font-family: "Open Sans", sans-serif;
+      font-weight: 500;
+      backdrop-filter: brightness(0.25) blur(10px);
     }
 
     #topmenu {
@@ -387,7 +414,7 @@
       line-height: 2rem;
       color: #fff;
       text-decoration: none;
-      font-size: 0.75rem;
+      font-size: 0.875rem;
     }
 
     #topmenu li:hover div.submenu {
@@ -433,7 +460,7 @@
     @media screen and (min-width: 800px) {
       #topmenu > li > a {
         max-width: none;
-        font-size: 1rem;
+        font-size: 0.9rem;
       }
     }
   </style>
