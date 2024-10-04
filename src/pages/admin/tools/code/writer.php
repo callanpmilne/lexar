@@ -1,6 +1,7 @@
 <?php
 
 require_once('../src/class/Module.php');
+require_once("../src/class/ModuleName.php");
 require_once('../src/methods/Module/generateSourceFiles.php');
 
 /**
@@ -8,19 +9,27 @@ require_once('../src/methods/Module/generateSourceFiles.php');
  */
 
 $isCodeWriterSubmit = 
-  array_key_exists('is_code_writer_submit', $_POST)
-    && '1' === $_POST['is_code_writer_submit'];
+  array_key_exists('is_code_writer_submit', $_REQUEST)
+    && '1' === $_REQUEST['is_code_writer_submit'];
 
 $sourceFiles = [];
 
+$moduleName = null;
+$module = null;
+
 if ($isCodeWriterSubmit) {
+  $userInput = $_REQUEST['userInput'] ? $_REQUEST['userInput'] : '';
+  var_dump($userInput);
+  
+  $moduleName = new LexarModuleName(
+    $userInput,
+  );
+  var_dump($moduleName);
   $module = new LexarModule(
-    new LexarModuleName(
-      $_REQUEST['userInput']
-    )
+    $moduleName
   );
 
-  $sourceFiles = generateSourceFiles($module);
+  $sourceFiles = generateSourceFiles(module: $module);
 
   foreach ($sourceFiles as $uri => $src) {
     ?>
@@ -49,6 +58,7 @@ if ($isCodeWriterSubmit) {
   </div>
 
   <?php if ($isCodeWriterSubmit) : ?>
+    <?=var_dump($sourceFiles);?>
   <div
     class="component-form"
     style="margin-bottom: 2rem;">
@@ -59,11 +69,7 @@ if ($isCodeWriterSubmit) {
         Create <?=$_REQUEST['userInput']?> Page
       </label>
 
-      <?=highlight_string(
-        html_entity_decode(
-          createPageSource($_REQUEST['userInput'])
-        ), 
-      true)?>
+      <?=$sourceFiles[sprintf('src/common/form/create/%s.php', $module->name->LcSingular)]?>
     </div>
 
     <div 
@@ -73,11 +79,7 @@ if ($isCodeWriterSubmit) {
         New <?=$_REQUEST['userInput']?> Form
       </label>
 
-      <?=highlight_string(
-        html_entity_decode(
-          createFormSource($_REQUEST['userInput'])
-        ), 
-      true)?>
+      <?=$sourceFiles[sprintf('src/common/form/create/%s.php', $module->name->LcSingular)]?>
     </div>
   </div>
   <?php endif; ?>
