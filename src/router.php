@@ -62,6 +62,10 @@ function handleRoute (
       adminOnlyPage(); // Redirect user to the login page if they're not an admin
       loadPage('admin/router');
       break;
+    
+    case 'api': 
+      require('../src/api/router.php');
+      break;
 
     default:
       http_response_code(404); // 404 if no handler above
