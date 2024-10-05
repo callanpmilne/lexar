@@ -1,22 +1,22 @@
 <?php
 
-function createFormSource (
-  string $objectName
+require_once("../src/class/Module.php");
+
+/**
+ * Summary of generateFormSourceFile
+ * @param LexarModule $module
+ * @return string
+ */
+function generateFormSourceFile (
+  LexarModule $module
 ): string {
-  $firstLetter = substr($objectName, 0, 1);
-
-  $x = [
-    'CapitalObjectName' => $objectName,
-    'NotCapitalObjectName' => strtolower($firstLetter) . substr($objectName, 1),
-  ];
-
   ob_start();
-
+  
   ?>&lt;?php
 
 /**
-* Create <?=$x['CapitalObjectName']?> Form Component
-*/
+ * Create <?=$module->name->UcSingular?> Form Component
+ */
 
 include('../src/common/form/input/uuid.php');
 
@@ -25,18 +25,18 @@ include('../src/common/form/input/uuid.php');
 &lt;div 
   class="component-form"&gt;
 
-  &lt;?=uuidField('<?=$x['CapitalObjectName']?> ID')?&gt; 
+  &lt;?=uuidField('<?=$module->name->UcSingular?> ID')?&gt; 
 
   &lt;div 
     class="component-form-field"&gt;
     &lt;label
-      for="Create<?=$x['CapitalObjectName']?>InputName"&gt;
-      <?=$x['CapitalObjectName']?> Name
+      for="Create<?=$module->name->UcSingular?>InputName"&gt;
+      <?=$module->name->UcSingular?> Name
     &lt;/label&gt;
 
     &lt;input 
-      id="Create<?=$x['CapitalObjectName']?>InputName"
-      name="<?=$x['NotCapitalObjectName']?>Name"
+      id="Create<?=$module->name->UcSingular?>InputName"
+      name="<?=$module->name->LcSingular?>Name"
       type="input"
       tabindex="2" /&gt;
   &lt;/div&gt;
@@ -52,7 +52,7 @@ include('../src/common/form/input/uuid.php');
     &lt;/button&gt;
 
     &lt;input
-      name="is_create_<?=$x['NotCapitalObjectName']?>_submit"
+      name="is_create_<?=$module->name->LcSingular?>_submit"
       type="hidden"
       value="1" /&gt;
   &lt;/div&gt;
@@ -62,8 +62,8 @@ include('../src/common/form/input/uuid.php');
   main {
     align-items: center;
   }
-&lt;/style&gt;
-  <?php
+&lt;/style&gt;<?php
+
   $result = ob_get_contents();
 
   ob_clean();

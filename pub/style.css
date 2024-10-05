@@ -157,7 +157,7 @@ div.component-form.alt-form label {
 div.component-form pre {
   font-size: 0.7rem;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
-  max-height: 100px;
+  /* max-height: 100px; */
   overflow: scroll;
   backdrop-filter: brightness(0.5);
   padding: 0.75rem;

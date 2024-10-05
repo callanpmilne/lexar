@@ -27,6 +27,7 @@ $qInsertNewCategorySql = <<<END
 pg_prepare(
   $GLOBALS['dbh'],
   "insert_new_category", 
+  $qInsertNewCategorySql
 );
 
 /**

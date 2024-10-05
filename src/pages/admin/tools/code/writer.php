@@ -19,36 +19,24 @@ $module = null;
 
 if ($isCodeWriterSubmit) {
   $userInput = $_REQUEST['userInput'] ? $_REQUEST['userInput'] : '';
-  var_dump($userInput);
   
   $moduleName = new LexarModuleName(
     $userInput,
   );
-  var_dump($moduleName);
+
   $module = new LexarModule(
     $moduleName
   );
 
   $sourceFiles = generateSourceFiles(module: $module);
-
-  foreach ($sourceFiles as $uri => $src) {
-    ?>
-    <h2><pre><?=$uri?></pre></h2>
-
-    <?=highlight_string(
-      html_entity_decode($src), 
-      true
-    )?>
-
-    <?php
-  }
 }
 
 ?>
 
 <main>
   <div id="PageTitle">
-    <h1>Code Writer</h1>
+    <h1>Class Builder</h1>
+    <!-- <h1>Portal Builder</h1> -->
 
     <p class="breadcrumbs">
       <a href="/admin">
@@ -58,29 +46,22 @@ if ($isCodeWriterSubmit) {
   </div>
 
   <?php if ($isCodeWriterSubmit) : ?>
-    <?=var_dump($sourceFiles);?>
   <div
-    class="component-form"
+    class="component-form code-output-form"
     style="margin-bottom: 2rem;">
+    <?php foreach ($sourceFiles as $uri => $src) : ?>
     <div 
       class="component-form-field">
-      <label
-        for="SystemOutputCreatePage">
-        Create <?=$_REQUEST['userInput']?> Page
+      <label class="output">
+        <pre><?=$uri?></pre>
       </label>
 
-      <?=$sourceFiles[sprintf('src/common/form/create/%s.php', $module->name->LcSingular)]?>
+      <?=highlight_string(
+        html_entity_decode($src), 
+        true
+      )?>
     </div>
-
-    <div 
-      class="component-form-field">
-      <label
-        for="SystemOutputCreateForm">
-        New <?=$_REQUEST['userInput']?> Form
-      </label>
-
-      <?=$sourceFiles[sprintf('src/common/form/create/%s.php', $module->name->LcSingular)]?>
-    </div>
+    <?php endforeach; ?>
   </div>
   <?php endif; ?>
 
@@ -123,40 +104,45 @@ if ($isCodeWriterSubmit) {
 </main>
 
 <style>
-  textarea#SystemOutputHash {
-    /* font-family: monospace;
-    font-size: 1.1rem;
-    line-height: 1;
-    padding: 1rem;
-    background: transparent;
-    box-shadow: none;
-    border: none;
-    color: #fff;
-    width: 24rem;
-    text-align: center; */
+  div.component-form.code-output-form {
+    max-width: none;
     width: 100%;
-    height: 14rem;
-    background: rgba(0,0,0,0.25);
-    border-width: 1px 0;
-    border-style: solid;
-    border-color: rgba(255,255,255,0.5);
-    box-sizing: border-box;
-    color: rgba(255,255,255,0.8);
-    padding: 0.5rem 1rem;
-    line-height: 1.25;
-    height: 4.2rem;
   }
-  textarea#SystemOutputHash:focus {
-    outline-color: #fff;
+  div.component-form.code-output-form div.component-form-field {
+    margin-top: 0;
+  }
+  div.component-form.code-output-form div.component-form-field label.output > pre {
+    margin: 0;
+    padding: 0;
+  }
+  div.component-form.code-output-form div.component-form-field > pre {
+    margin-top: 0;
+  }
+  div.component-form.code-output-form div.component-form-field label.output {
+    backdrop-filter: drop-shadow(2px 4px 6px black);
+    padding: 0.75rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    box-sizing: border-box;
+  }
+  div.component-form.code-output-form label {
+    max-width: none;
+    width: 100%;
+  }
+  div.component-form.code-output-form label {
+    padding: 0;
+    margin: 0;
   }
 </style>
 
 <script>
   (function ($w) {"use strict";
-    const $el = $w.document.getElementById('SystemOutputHash');
+    const $el = ;
+
+    const $els = $w.document.getElementsByClassName('component-form code-output-form').find();
 
     addEventListener('click', ($ev) => {
-      if ($ev.target !== $el) return;
+      if ($els.includes($ev.target)) return;
       $ev.preventDefault();
       $el.setSelectionRange(0,$el.value.length);
     });
