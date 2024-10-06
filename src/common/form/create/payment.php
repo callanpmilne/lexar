@@ -3,6 +3,7 @@
  * Create Payment Form Component
  */
 
+include('../src/common/input/customer.php');
 include('../src/common/input/uuid.php');
 ?>
 
@@ -10,6 +11,8 @@ include('../src/common/input/uuid.php');
   class="component-form">
 
   <?=uuidField('Payment ID')?> 
+
+  <?=customerField(2)?>
 
   <div 
     class="component-form-field">
@@ -22,7 +25,7 @@ include('../src/common/input/uuid.php');
       id="CreatePaymentInputDescription"
       name="paymentDescription"
       type="input"
-      tabindex="2" />
+      tabindex="3" />
   </div>
 
   <div 
@@ -36,7 +39,7 @@ include('../src/common/input/uuid.php');
       id="CreatePaymentInputAmount"
       name="paymentAmount"
       type="input"
-      tabindex="3" />
+      tabindex="4" />
   </div>
 
   <div 
@@ -50,7 +53,7 @@ include('../src/common/input/uuid.php');
       id="CreatePaymentInputFeeAmount"
       name="paymentFeeAmount"
       type="input"
-      tabindex="4" />
+      tabindex="5" />
   </div>
 
   <div 
@@ -64,7 +67,7 @@ include('../src/common/input/uuid.php');
       id="CreatePaymentInputProcessor"
       name="paymentProcessor"
       type="input"
-      tabindex="5" />
+      tabindex="6" />
   </div>
 
   <div

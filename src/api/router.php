@@ -10,10 +10,17 @@ define("HTTP_DELETE", "DELETE");
  * API Router
  */
 $routes = array(
+  // API Status
   '/\/status$/i' => 
     [HTTP_GET, 'getStatus'],
+  
+  // Categories
   '/\/categories.json$/i' => 
     [HTTP_GET, 'getCategories.json'],
+  
+  // Customers
+  '/\/customers.json(|\?.+)$/i' => 
+    [HTTP_GET, 'getCustomers.json'],
 );
 
 foreach ($routes as $pattern => $includePath) {

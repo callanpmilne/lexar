@@ -79,7 +79,6 @@ for ($i = 0; $i < $numComments; $i++) {
   }
 
   #Comments div.comment-list-wrapper ol.comment-list li.comment-list-item {
-    border-top: 2px solid;
     margin-bottom: 2rem;
   }
 

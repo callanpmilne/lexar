@@ -93,6 +93,30 @@ main > * {
 }
 
 /**
+ * Predictive Inputs & Options
+ */
+
+div.predictive-options {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid;
+  background: rgba(0,0,0,0.8);
+  margin-top: 4rem;
+  font-size: 0.9rem;
+}
+
+div.predictive-options > div {
+  cursor: pointer;
+  padding: 0 0.5rem;
+  line-height: 2;
+  border-bottom: 1px solid;
+}
+
+div.predictive-options > div:hover {
+  background-color: #004457;
+}
+
+/**
  * Forms
  */
 form input[type=input],
