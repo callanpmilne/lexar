@@ -19,7 +19,7 @@ require_once("../src/class/<?=$module->name->UcSingular?>.php");
 /**
  * Detailed <?=$module->name->UcSingular?> Class
  */
-class Detailed<?=$module->name->UcSingular?> {
+class Detailed<?=$module->name->UcSingular?> extends <?=$module->name->UcSingular?> {
   /**
    * @var string Parent ID
    */
