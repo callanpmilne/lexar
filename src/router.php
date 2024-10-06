@@ -43,6 +43,18 @@ function handleRoute (
     case 'browse': 
       // no break
     
+    case 'pic': 
+      loadPage('pic');
+      break;
+    
+    case 'post': 
+      loadPage('post');
+      break;
+    
+    case 'video': 
+      loadPage('video');
+      break;
+    
     case 'categories': 
       loadPage('categories');
       break;

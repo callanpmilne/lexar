@@ -86,14 +86,14 @@ $catNameSingular = true === $isViewingCategory
 
   <?php if (true === $isViewingCategory) : ?>
 
-    <section>
+    <section class="content-grid">
       <h2>Recent Videos</h2>
 
       <div class="content-list-wrapper">
         <ol class="content-list">
           <?php for ($i = 0; $i < 8; $i++) : ?>
             <li>
-              <a href="/">
+              <a href="/video/<?=substr(md5(uniqid()),0,8);?>">
                 <span style="font-size: 2.5rem;color:#1cdfb5;">&#9654;</span>
                 <?=$catNameSingular?> Video #<?=$i?>
                 <span>View Video &rarr;</span>
@@ -116,14 +116,14 @@ $catNameSingular = true === $isViewingCategory
       </div>
     </section>
 
-    <section>
+    <section class="content-grid">
       <h2>Recent Posts</h2>
       
       <div class="content-list-wrapper">
         <ol class="content-list">
           <?php for ($i = 0; $i < 8; $i++) : ?>
             <li>
-              <a href="/">
+              <a href="/post/<?=substr(md5(uniqid()),0,8);?>">
                 <span style="font-size: 2.5rem;color:#1cdfb5;">&#9654;</span>
                 <?=$catNameSingular?> Post #<?=$i?>
                 <span>View Post &rarr;</span>
@@ -146,17 +146,17 @@ $catNameSingular = true === $isViewingCategory
       </div>
     </section>
 
-    <section>
-      <h2>Recent Photos</h2>
+    <section class="content-grid">
+      <h2>Recent Pics</h2>
       
       <div class="content-list-wrapper">
         <ol class="content-list">
           <?php for ($i = 0; $i < 8; $i++) : ?>
             <li>
-              <a href="/">
+              <a href="/pic/<?=substr(md5(uniqid()),0,8);?>">
                 <span style="font-size: 2.5rem;color:#1cdfb5;">&#9654;</span>
-                <?=$catNameSingular?> Photo #<?=$i?>
-                <span>View Photo &rarr;</span>
+                <?=$catNameSingular?> Pic #<?=$i?>
+                <span>View Pic &rarr;</span>
                 
                 <div class="item-info">
                   <div>
@@ -181,12 +181,12 @@ $catNameSingular = true === $isViewingCategory
 </main>
 
 <style>
-  section {
+  section.content-grid {
     max-width: 1200px;
     width: 100vw;
   }
   
-  section h2 {
+  section.content-grid h2 {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -201,177 +201,5 @@ $catNameSingular = true === $isViewingCategory
 
   div.breadcrumbs span {
     margin: 0 0.25rem;
-  }
-
-  div.category-list-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    margin: 1rem -0.5rem;
-    max-width: 1200px;
-    width: 100vw;
-    position: relative;
-    z-index: 2;
-  }
-
-  ol.category-list,
-  ol.content-list {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: stretch;
-    justify-content: stretch;
-    padding: 0;
-    margin: 0;
-  }
-
-  ol.category-list li,
-  ol.content-list li {
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    align-items: stretch;
-    justify-content: stretch;
-    width: 100%;
-  }
-
-  ol.category-list li a,
-  ol.content-list li a {
-    display: flex;
-    flex: 1;
-    box-sizing: border-box;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0.5rem 1rem;
-    padding: 1rem;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.34);
-    border-radius: 0.5rem;
-    background: linear-gradient(163deg, rgb(186 218 255 / 47%) 0%, rgb(255 255 255 / 69%) 100%);
-    transition: all 333ms;
-    aspect-ratio: 16 / 6;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    color: #012e39;
-    font-size: 1.1rem;
-    font-weight: 500;
-    text-decoration: none;
-  }
-
-  ol.category-list li a {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0.5rem 1rem;
-    padding: 1rem;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.34);
-    border-radius: 0.25rem;
-    background: linear-gradient(163deg, rgb(0 0 0 / 47%) 0%, rgb(0 0 0 / 69%) 100%);
-    transition: all 333ms;
-    aspect-ratio: 16 / 6;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: 500;
-    text-decoration: none;
-    border-bottom: 4px solid;
-    backdrop-filter: brightness(0.75) blur(10px);
-  }
-
-  ol.content-list li a {
-    background: rgba(0,0,0,1);
-    color: #fff;
-    border: 1px solid #5ad8ff;
-    aspect-ratio: 16/9;
-    position: relative;
-    margin-bottom: 4rem;
-    color: rgb(255,255,255,0.5);
-  }
-
-  ol.category-list li a:hover {
-    color: #00fff9;
-  }
-
-  ol.content-list li a:hover {
-    background-color: rgb(186 218 255 / 47%);
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.34);
-  }
-
-  ol.category-list li a span,
-  ol.content-list li a span {
-    font-size: 0.8rem;
-    font-weight: 100;
-  }
-
-  ol.category-list li a span {
-    color: rgba(255,255,255,0.5);
-  }
-
-  div.item-info {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    height: 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: stretch;
-    font-size: 1.1rem;
-    padding: 0.5rem 0.35rem 0;
-    line-height: 1.5rem;
-    color: rgba(255,255,255,0.75);
-  }
-
-  ol.content-list li a:hover {
-    color: rgba(255,255,255,0.9);
-  }
-
-  ol.content-list li a:hover div.item-info {
-    color: rgba(255,255,255,1);
-  }
-
-  div.item-info > div {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: space-between;
-  }
-
-  div.item-info {
-
-  }
-
-  @media only screen and (min-width: 800px) {
-    
-    ol.category-list,
-    ol.content-list {
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-    }
-
-    ol.category-list li,
-    ol.content-list li {
-      max-width: 25%;
-      width: 25%;
-    }
-
-    ol.category-list li a,
-    ol.content-list li a {
-      margin: 1rem;
-    }
-
-    ol.content-list li a {
-      margin: 1rem 1rem 4rem;
-    }
-
-    div.category-list-wrapper,
-    div.content-list-wrapper {
-      margin: 2rem -0.5rem;
-    }
-
   }
 </style>

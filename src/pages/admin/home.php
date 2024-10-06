@@ -160,7 +160,7 @@ $tools = [
     <h1>Admin Dashboard</h1>
   </div>
 
-  <section class="content-grid">
+  <section class="admin-button-grid">
     <div class="content-list-wrapper">
       <ol class="content-list">
         <?php foreach ($tools as $tool) : ?>
@@ -189,15 +189,15 @@ $tools = [
 </main>
 
 <style>
-  section.content-grid {
+  section.admin-button-grid {
     position: relative;
   }
 
-  section.content-grid div.content-list-wrapper {
+  section.admin-button-grid div.content-list-wrapper {
 
   }
 
-  section.content-grid div.content-list-wrapper ol.content-list {
+  section.admin-button-grid div.content-list-wrapper ol.content-list {
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -208,7 +208,7 @@ $tools = [
     margin: 0;
   }
 
-  section.content-grid div.content-list-wrapper ol.content-list li {
+  section.admin-button-grid div.content-list-wrapper ol.content-list li {
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
@@ -217,7 +217,7 @@ $tools = [
     width: 100%;
   }
 
-  section.content-grid div.content-list-wrapper ol.content-list li a {
+  section.admin-button-grid div.content-list-wrapper ol.content-list li a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -240,11 +240,11 @@ $tools = [
     backdrop-filter: brightness(0.85) blur(10px);
   }
 
-  section.content-grid div.content-list-wrapper ol.content-list li a:hover  {
+  section.admin-button-grid div.content-list-wrapper ol.content-list li a:hover  {
     color: #00fff9;
   }
 
-  section.content-grid div.content-list-wrapper ol.content-list li a span {
+  section.admin-button-grid div.content-list-wrapper ol.content-list li a span {
     font-size: 0.9rem;
     background: linear-gradient(to top, #053d58, #28617d);
     padding: 0.5rem 2rem;
@@ -256,7 +256,7 @@ $tools = [
     text-transform: uppercase;
   }
 
-  section.content-grid {
+  section.admin-button-grid {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -382,7 +382,7 @@ $tools = [
       width: auto;
     }
 
-    section.content-grid {
+    section.admin-button-grid {
       display: flex;
       flex-direction: column;
       align-items: stretch;
@@ -405,27 +405,27 @@ $tools = [
       margin-bottom: none;
     }
     
-    section.content-grid div.content-list-wrapper ol.content-list {
+    section.admin-button-grid div.content-list-wrapper ol.content-list {
       flex-direction: row;
       flex-wrap: wrap;
       align-items: stretch;
       justify-content: stretch;
     }
 
-    section.content-grid div.content-list-wrapper ol.content-list li {
+    section.admin-button-grid div.content-list-wrapper ol.content-list li {
       max-width: 25%;
       width: 25%;
     }
 
-    section.content-grid div.content-list-wrapper ol.content-list li a {
+    section.admin-button-grid div.content-list-wrapper ol.content-list li a {
       margin: 1rem;
     }
 
-    section.content-grid div.content-list-wrapper ol.content-list li a {
+    section.admin-button-grid div.content-list-wrapper ol.content-list li a {
       margin: 1rem;
     }
 
-    section.content-grid div.content-list-wrapper {
+    section.admin-button-grid div.content-list-wrapper {
       margin: 2rem 0;
     }
   }
