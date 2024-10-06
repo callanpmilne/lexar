@@ -31,7 +31,7 @@ require_once( '../src/GlobalSession.php' );
 require_once( '../src/router.php' );
 
 // Patterns to exclude from router
-define( 'SKIP_PATTERNS', '/\.(?:png|jpg|jpeg|gif|css|js)$/' );
+define( 'SKIP_PATTERNS', '/\.(?:png|jpg|jpeg|gif|css|js|webm|mov|m4v|ogg|mp4)$/' );
 
 // HTTP Request URI
 define( 'REQUEST_URI', $_SERVER["REQUEST_URI"] );

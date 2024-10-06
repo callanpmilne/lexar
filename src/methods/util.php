@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * Get Content ID
+ * @return string Last Part of the route (the Content ID if this is a content view)
+ */
+function getContentID(
+  // no args
+): string {
+  $pathParts = explode('/', substr(REQUEST_URI, 1));
+  return array_slice($pathParts, -1)[0];
+}
+
+/**
  * Is Logged In
  * 
  * @return bool TRUE if the current visitor is logged in

@@ -24,7 +24,7 @@
 </head>
 
 <body>
-  <header>
+  <header id="pageHeader">
     <ul id="topmenu">
       <li>
         <a 
@@ -300,7 +300,7 @@
   </header>
 
   <style>
-    header {
+    header#pageHeader {
       height: 3.5rem;
       font-size: 0.9rem;
       /* background-color: #012e39; */

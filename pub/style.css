@@ -1,3 +1,9 @@
+:root {
+  --text-shadow-heading:  1px 1px 5px rgba(0, 0, 0, 0.2);
+  --text-shadow-body:     1px 1px 3px rgba(0, 0, 0, 0.2);
+  --text-shadow-other:    1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
 html {
   font-size: 16.6px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -28,12 +34,21 @@ main {
 
 h1 {
   text-align: center;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  text-shadow: var(--text-shadow-heading);
   margin: 0;
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1rem;
 }
 
 p {
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  text-shadow: var(--text-shadow-body);
 }
 
 p.breadcrumbs {
@@ -81,6 +96,7 @@ main > * {
  * Forms
  */
 form input[type=input],
+form input[type=search],
 form input[type=password],
 form input[type=number],
 form select,
@@ -99,6 +115,7 @@ form select {
 }
 
 form input[type=input]:focus,
+form input[type=search]:focus,
 form input[type=password]:focus,
 form input[type=number]:focus,
 form select:focus,
@@ -152,7 +169,7 @@ form button {
   margin: 0;
   padding: 0.5rem 2rem;
   background: linear-gradient(to top, #1cdfb5 0%, #80dcc9 100%);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: var(--text-shadow-body);
   cursor: pointer;
   transition: all 333ms;
   color: #fff;
@@ -212,8 +229,7 @@ div.component-form.alt-form label {
 
 div.component-form pre {
   font-size: 0.7rem;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
-  /* max-height: 100px; */
+  text-shadow: var(--text-shadow-other);
   overflow: scroll;
   backdrop-filter: brightness(0.5);
   padding: 0.75rem;
@@ -393,7 +409,7 @@ section.content-grid ol.content-list li a {
   background: linear-gradient(163deg, rgb(186 218 255 / 47%) 0%, rgb(255 255 255 / 69%) 100%);
   transition: all 333ms;
   aspect-ratio: 16 / 6;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: var(--text-shadow-other);
   color: #012e39;
   font-size: 1.1rem;
   font-weight: 500;
@@ -411,7 +427,7 @@ ol.category-list li a {
   background: linear-gradient(163deg, rgb(0 0 0 / 47%) 0%, rgb(0 0 0 / 69%) 100%);
   transition: all 333ms;
   aspect-ratio: 16 / 6;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: var(--text-shadow-other);
   color: #fff;
   font-size: 1.1rem;
   font-weight: 500;

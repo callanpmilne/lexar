@@ -12,7 +12,7 @@ function fetchCustomerList () {
   $dbconn = $GLOBALS['dbh'];
 
   pg_prepare(
-    $dbconn, 
+    $dbconn,
     "select_all_customers", 
     ' SELECT 
         CUST."ID" AS "CustomerID",

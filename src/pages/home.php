@@ -14,7 +14,8 @@
       action="/search" 
       method="GET">
       <input id="SearchInput"
-        type="input"
+        role="search"
+        type="search"
         name="query"
         placeholder="Enter Search Term or Keywords ..."
         value="<?=array_key_exists('query', $_REQUEST) ? $_REQUEST['query'] : ''?>"
