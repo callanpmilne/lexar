@@ -3,7 +3,9 @@
 /**
  * Category Class
  */
-class Category {
+class Category
+  implements JsonSerializable
+{
 
   /**
    * Unique ID
@@ -56,6 +58,12 @@ class Category {
    */
   public function isNested () {
     return isset($this->ParentID);
+  }
+
+  public function jsonSerialize (
+    // no agrs
+  ): mixed {
+    return get_object_vars($this);
   }
 
 }
