@@ -121,34 +121,42 @@ $buttons = array(
  */
 $tools = [
   new Tool(
+    '💻',
     'Code Writer',
     '/code/writer'
   ),
   new Tool(
+    '💻',
     'Code Writer',
     '/code/writer'
   ),
   new Tool(
+    '💻',
     'Code Writer',
     '/code/writer'
   ),
   new Tool(
+    '💻',
     'Code Writer',
     '/code/writer'
   ),
   new Tool(
+    '🔑',
     'Password Generator',
     '/password/generator'
   ),
   new Tool(
+    '📦',
     'Timestamp Converter',
     '/timestamp/converter'
   ),
   new Tool(
+    '📦',
     'UUID Generator',
     '/uuid/generator'
   ),
   new Tool(
+    '🔐',
     'Password Hasher',
     '/password/hasher'
   ),
@@ -166,8 +174,9 @@ $tools = [
         <?php foreach ($tools as $tool) : ?>
           <li>
             <a href="/admin/tools<?=$tool->Path?>">
-              <?=$tool->Label?>
-              <span>Use Tool &rarr;</span>
+              <span class="label"><?=$tool->Label?></span>
+              <span class="button">Use Tool &rarr;</span>
+              <span class="icon"><?=$tool->Icon?></span>
             </a>
           </li>
         <?php endforeach; ?>
@@ -244,13 +253,28 @@ $tools = [
     flex: 1;
     flex-direction: column;
     backdrop-filter: brightness(0.85) blur(10px);
+    overflow: hidden;
   }
 
   section.admin-button-grid div.content-list-wrapper ol.content-list li a:hover  {
     color: #00fff9;
   }
 
-  section.admin-button-grid div.content-list-wrapper ol.content-list li a span {
+  section.admin-button-grid div.content-list-wrapper ol.content-list li a span.icon {
+    position: absolute;
+    bottom: -4rem;
+    right: -1rem;
+    font-size: 7rem;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  section.admin-button-grid div.content-list-wrapper ol.content-list li a span.label {
+    position: relative;
+    z-index: 1;
+  }
+
+  section.admin-button-grid div.content-list-wrapper ol.content-list li a span.button {
     font-size: 0.9rem;
     background: linear-gradient(to top, #053d58, #28617d);
     padding: 0.5rem 2rem;
@@ -260,6 +284,8 @@ $tools = [
     font-size: 0.7rem;
     margin-top: 0.5rem;
     text-transform: uppercase;
+    position: relative;
+    z-index: 1;
   }
 
   div.admin-dashboard-grid {
