@@ -9,7 +9,16 @@ $PicID = array_slice($pathParts, -1)[0];
 ?>
 
 <main>
-  <h1>View Pic</h1>
+  <div id="PageTitle">
+    <h1>View Pic</h1>
+
+    <p class="breadcrumbs">
+      <a href="#" onClick="window.history.go(-1)">
+        &larr; Back
+      </a>
+    </p>
+  </div>
+
   <p>
     Pic ID (<?=$PicID?>)
   </p>

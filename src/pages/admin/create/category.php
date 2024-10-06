@@ -1,6 +1,6 @@
 <?php
 
-require_once('../src/method/Category/createCategory.php');
+require_once('../src/methods/Category/createCategory.php');
 
 /**
  * Create Category Page

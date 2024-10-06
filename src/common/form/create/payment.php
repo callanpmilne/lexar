@@ -3,7 +3,7 @@
  * Create Payment Form Component
  */
 
-include('../src/common/form/input/uuid.php');
+include('../src/common/input/uuid.php');
 ?>
 
 <div 

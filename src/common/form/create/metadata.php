@@ -3,13 +3,28 @@
  * Create Metadata Form Component
  */
 
-include('../src/common/form/input/uuid.php');
+include('../src/common/input/uuid.php');
 ?>
 
 <div 
   class="component-form">
 
   <?=uuidField('Metadata ID')?> 
+
+  <div 
+    class="component-form-field">
+    <label
+      for="CreateMetadataInputKey">
+      Route / Content URI
+    </label>
+
+    <input 
+      id="CreateMetadataInputRoute"
+      name="metadataRoute"
+      type="input"
+      tabindex="2"
+      placeholder="E.g. /categories/computers or /pic/f5392e02" />
+  </div>
 
   <div 
     class="component-form-field">
@@ -22,7 +37,7 @@ include('../src/common/form/input/uuid.php');
       id="CreateMetadataInputKey"
       name="metadataKey"
       type="input"
-      tabindex="2" />
+      tabindex="3" />
   </div>
 
   <div 
@@ -36,7 +51,7 @@ include('../src/common/form/input/uuid.php');
       id="CreateMetadataInputValue"
       name="metadataValue"
       type="input"
-      tabindex="2" />
+      tabindex="4" />
   </div>
 
   <div
