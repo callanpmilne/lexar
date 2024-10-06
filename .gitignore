@@ -1,2 +1,4 @@
 /config.inc.php
 /.tmp
+
+.DS_Store
