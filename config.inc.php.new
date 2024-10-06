@@ -23,6 +23,15 @@ define(
 );
 
 /**
+ * DEBUG_API Constant
+ * Shows Real Error Message in API Responses when TRUE
+ */
+define(
+  'DEBUG_API',
+  false
+);
+
+/**
  * Syntax Highlighting
  */
 
