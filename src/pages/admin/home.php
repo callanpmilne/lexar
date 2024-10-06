@@ -191,6 +191,12 @@ $tools = [
 <style>
   section.admin-button-grid {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    width: 100%;
   }
 
   section.admin-button-grid div.content-list-wrapper {
@@ -256,22 +262,13 @@ $tools = [
     text-transform: uppercase;
   }
 
-  section.admin-button-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    width: 100%;
-  }
-
   div.admin-dashboard-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     flex-wrap: nowrap;
-    margin-top: 4rem;
+    /* margin-top: 4rem; */
     width: 100%;
     position: relative;
   }
@@ -288,21 +285,18 @@ $tools = [
   div.admin-dashboard-grid div.admin-dashboard-grid-cell h2 {
     font-size: 0.8rem;
     border: none;
-    color: rgba(255,255,255,1);
+    color: rgba(255,255,255,0.5);
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
     font-weight: 500;
     border-radius: 0.25rem;
     width: 100%;
     margin: 0;
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
-    font-weight: 600;
-  }
-
-  div.admin-dashboard-grid div.admin-dashboard-grid-cell h2 span {
-    margin-right: 0.5rem;
+    font-weight: 200;
+    box-sizing: border-box;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell {
@@ -326,22 +320,23 @@ $tools = [
     justify-content: flex-end;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.34);
     border-radius: 0.5rem;
-    background: linear-gradient(163deg, rgb(186 218 255 / 47%) 0%, rgb(255 255 255 / 69%) 100%);
     transition: all 333ms;
+    backdrop-filter: brightness(0.5) blur(10px);
   }
 
-  div.admin-dashboard-grid div.admin-dashboard-grid-cell ul {
+  div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul {
     flex: 1;
     margin: 0;
     padding: 0;
-    border-radius: 0.5rem;
-    background: linear-gradient(163deg, rgb(0 69 97 / 68%) 0%, rgb(3 57 85) 100%);
-    border: 1px solid #5b98a3;
+    border-radius: 0 0 0.5rem 0.5rem;
+    border: none;
     width: 100%;
     box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(0,0,0,0.25);
   }
 
-  div.admin-dashboard-grid div.admin-dashboard-grid-cell ul li {
+  div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li {
     display: flex;
     flex-direction: column;
     justify-content: stretch;
@@ -350,7 +345,7 @@ $tools = [
     font-size: 0.85rem;
   }
 
-  div.admin-dashboard-grid div.admin-dashboard-grid-cell ul li a {
+  div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li a {
     line-height: 2.5rem;
     display: block;
     text-decoration: none;
@@ -360,14 +355,30 @@ $tools = [
     color: #ffffff;
     font-weight: 400;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    padding: 0 0.5rem;
+    padding: 0.25rem 0.75rem;
+    transition: all 500ms;
+  }
+
+  div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li a span.icon,
+  div.admin-dashboard-grid div.admin-dashboard-grid-cell h2 span {
+    color: #ffffff;
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li a span.icon {
+    background-color: #fff;
+    padding: 0.15rem 0.25rem;
+    border-radius: 0.25rem;
+    vertical-align: middle;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li a:hover {
-    background: linear-gradient(163deg, rgb(0 69 97 / 50%) 0%, rgb(3 84 85) 100%);
+    background: linear-gradient(199deg, #1ad3af, #067b7e);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   }
 
-  div.admin-dashboard-grid div.admin-dashboard-grid-cell ul li:last-of-type {
+  div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li:last-of-type {
     border-bottom: none;
   }
 
@@ -380,6 +391,8 @@ $tools = [
       flex-direction: row;
       flex-wrap: wrap;
       width: auto;
+      padding: 0 2rem;
+      box-sizing: border-box;
     }
 
     section.admin-button-grid {
@@ -402,7 +415,7 @@ $tools = [
       min-width: auto;
       max-width: 25%;
       width: 25%;
-      margin-bottom: none;
+      margin-bottom: 0;
     }
     
     section.admin-button-grid div.content-list-wrapper ol.content-list {
@@ -465,7 +478,8 @@ function renderAdminDashboardTitle (
           <a 
             href="/admin/search/<?=$pluralName?>"
             title="<?=$singularLabel?> Search">
-            🔎 Lookup
+            <span class="icon">🔎</span>
+            Search <?=$pluralLabel?>
           </a>
         </li>
 
@@ -473,14 +487,16 @@ function renderAdminDashboardTitle (
           <a 
             href="/admin/list/<?=$pluralName?>"
             title="List All <?=$pluralLabel?>">
-            ✏️ Edit <?=$pluralLabel?>
+            <span class="icon">📋</span>
+            List All <?=$pluralLabel?>
           </a>
         </li>
         <li>
           <a 
             href="/admin/create/<?=$singularName?>"
             title="Create New <?=$singularLabel?>">
-            ➕ New <?=$singularLabel?>
+            <span class="icon">✏️</span>
+            Create <?=$singularLabel?>
           </a>
         </li>
       </ul>

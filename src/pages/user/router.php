@@ -12,6 +12,7 @@ $routes = array(
   '/^\/my\/orders$/i'       => 'my/orders',
   '/^\/my\/settings$/i'     => 'my/settings',
   '/^\/my\/files$/i'        => 'my/files',
+  '/^\/my\/account$/i'      => 'my/account',
   
   '/^\/change\/password$/i' => 'change/password',
   '/^\/update\/contact$/i'  => 'update/contact',

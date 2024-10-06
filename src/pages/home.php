@@ -6,12 +6,25 @@
 
 <main>
   <div id="PageTitle">
-    <h1>Welcome to Lexar!</h1>
-  <p>
-    A <em>really great</em> PHP Web Application, by 
-    <a href="https://github.com/callanpmilne">Callan P Milne</a>.
-  </p>
+    <h1>Welcome Home!</h1>
   </div>
+
+  <section id="SearchInputContainer">
+    <form 
+      action="/search" 
+      method="GET">
+      <input id="SearchInput"
+        type="input"
+        name="query"
+        placeholder="Enter Search Term or Keywords ..."
+        value="<?=array_key_exists('query', $_REQUEST) ? $_REQUEST['query'] : ''?>"
+        tabindex="1" />
+      
+      <button id="SearchSubmit">
+        Search
+      </button>
+    </form>
+  </section>
 
   <section class="content-grid">
     <h2>Recent Videos</h2>
@@ -103,3 +116,15 @@
     </div>
   </section>
 </main>
+
+<script>
+  (function ($) {
+    $.document.getElementById('SearchInput').focus();
+  })(window);
+</script>
+
+<style>
+  #SearchInputContainer {
+
+  }
+</style>

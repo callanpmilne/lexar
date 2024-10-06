@@ -1,11 +1,19 @@
 <?php
 
+define("HTTP_GET", "GET");
+define("HTTP_POST", "POST");
+define("HTTP_PUT", "PUT");
+define("HTTP_PATCH", "PATCH");
+define("HTTP_DELETE", "DELETE");
+
 /**
  * API Router
  */
 $routes = array(
-  '/\/status$/i' => ['GET', 'getStatus'],
-  '/\/categories.json$/i' => ['GET', 'getCategories.json'],
+  '/\/status$/i' => 
+    [HTTP_GET, 'getStatus'],
+  '/\/categories.json$/i' => 
+    [HTTP_GET, 'getCategories.json'],
 );
 
 foreach ($routes as $pattern => $includePath) {
@@ -32,4 +40,22 @@ foreach ($routes as $pattern => $includePath) {
       ["ErrorMessage" => DEBUG_API ? $e->getMessage() : 'Internal Server Error']
     );
   }
+
+  // That is all
+  exit(0);
 }
+
+/**
+ * If we reached here: there was no matching route, send a 404 response code.
+ */
+
+// Set JSON Content-Type
+header("Content-Type: application/json;charset=utf8");
+
+// Send 404 Response
+http_response_code(404);
+
+// JSON Response
+print json_encode(
+  ["ErrorMessage" => sprintf('Resource "%s" not found', REQUEST_URI)]
+);

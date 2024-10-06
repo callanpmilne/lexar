@@ -59,6 +59,10 @@ function handleRoute (
       loadPage('categories');
       break;
     
+    case 'search': 
+      loadPage('search');
+      break;
+    
     case 'change': 
       // no break
     
