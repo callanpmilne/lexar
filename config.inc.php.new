@@ -11,7 +11,7 @@
  */
 define( 
   'DEFAULT_USER_UUID', 
-  '8b2c194b-8e7e-431d-9971-7452bfecdbb2'
+  'e1e1e1e1e1-e1e1-e1e1-e1e1-e1e1e1e1e1e1'
 );
 
 /**

@@ -15,47 +15,28 @@ class Preview {
   public array $Sources;
 
   /**
-   * @var bool Preview is multiple frames?
-   */
-  public bool $Multiframe = false;
-
-  /**
    * Constructor
    * 
    * @param string $ContentID Unique ID
    * @param array $Sources Source URI(s)
-   * @param bool $Multiframe Display Name
    */
   public function __construct (
     string $ContentID,
-    array $Sources,
-    bool $Multiframe
+    array $Sources
   ) {
     $this->ContentID = $ContentID;
     $this->Sources = $Sources;
-    $this->Multiframe = $Multiframe;
   }
 
   /**
-   * Get Type
+   * Is Multi-Frame
    * 
-   * Returns a description about the content (e.g. Image/800x600 or Video/800x600/5m22s)
+   * Determine if preview has multiple frames.
    * 
-   * @return string
+   * @return boolean True if content has multiple frames
    */
-  public abstract function getType (
-    // no args
-  ): string;
-
-  /**
-   * Is Published
-   * 
-   * Determine if content is published or not.
-   * 
-   * @return boolean True if content is published
-   */
-  public function isPublished () {
-    return isset($this->Published);
+  public function isMultiframe () {
+    return array_count_values($this->Sources) > 1;
   }
 
 } 

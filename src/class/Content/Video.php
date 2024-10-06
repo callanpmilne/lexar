@@ -14,10 +14,7 @@ final class Video extends MultiframeContent {
    * @param string $URL Display Name
    * @param string $Title Path (e.g. animals/cat)
    * @param string $Content
-   * @param int $Quality Quality score out of 100
-   * @param int $Height Height in pixels
-   * @param int $Width Width in pixels
-   * @param int $Duration Video duration in milliseconds
+   * @param int $Duration Content duration in milliseconds
    * @param int $FPS Frames Per Seconod
    * @param int $Length Content Length in bytes
    * @param int $Created Date created
@@ -40,19 +37,7 @@ final class Video extends MultiframeContent {
     ?int $Published = null,
     ?int $Deleted = null
   ) {
-    parent::__construct(
-      $ID,
-      $Author,
-      $URL,
-      $Title,
-      $Content,
-      $Duration,
-      $FPS,
-      $Length,
-      $Created,
-      $Published ? $Published : null,
-      $Deleted ? $Deleted : null
-    );
+    
   }
 
   public function getType (
