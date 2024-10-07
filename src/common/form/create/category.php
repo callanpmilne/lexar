@@ -8,6 +8,7 @@ require_once('../src/methods/Category/fetchCategoryList.php');
  */
 
 include('../src/common/input/uuid.php');
+include('../src/common/input/category.php');
 
 /**
  * Categories
@@ -24,34 +25,7 @@ $topLevelCategories = array_filter($categories, function ($cat) {
 
   <?=uuidField('Category ID')?> 
 
-  <div 
-    class="component-form-field">
-    <label
-      for="CreateCategoryInputName">
-      Parent Category
-    </label>
-
-    <select 
-      id="CreateCategoryInputPath"
-      name="path"
-      type="input"
-      tabindex="1"
-      placeholder="E.g. /animals/dog">
-      <option value="">
-        No Parent
-      </option>
-      <?php foreach ( $categories as $category ) : ?>
-        <option value="<?=$category->ID?>">
-          <span><?=$category->Name?></span>
-          <span><?=sprintf(
-            '/%s/%s',
-            'categories',
-            $category->Path
-          )?></span>
-        </option>
-      <?php endforeach; ?>
-    </select>
-  </div>
+  <?=categoryField(2, 'Parent Category')?> 
 
   <div 
     class="component-form-field">

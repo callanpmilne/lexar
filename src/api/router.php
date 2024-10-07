@@ -15,7 +15,7 @@ $routes = array(
     [HTTP_GET, 'getStatus'],
   
   // Categories
-  '/\/categories.json$/i' => 
+  '/\/categories.json(|\?.+)$/i' => 
     [HTTP_GET, 'getCategories.json'],
   
   // Customers

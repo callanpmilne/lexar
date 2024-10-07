@@ -66,4 +66,32 @@ class Category
     return get_object_vars($this);
   }
 
+  /**
+   * Matches
+   * 
+   * @param string $query The text string to match
+   * @return bool TRUE if anything on this Category matches $query
+   */
+  public function matches (
+    string $query
+  ): bool {
+    if (stripos($this->Name, $query) > -1) {
+      return true;
+    }
+
+    if (stripos($this->Path, $query) > -1) {
+      return true;
+    }
+
+    if (stripos($this->ID, $query) > -1) {
+      return true;
+    }
+
+    if (isset($this->Parent) && stripos($this->Parent, $query) > -1) {
+      return true;
+    }
+
+    return false;
+  }
+
 }

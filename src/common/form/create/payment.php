@@ -26,7 +26,8 @@ include('../src/common/input/org.php');
       id="CreatePaymentInputDescription"
       name="paymentDescription"
       type="input"
-      tabindex="3" />
+      tabindex="3"
+      placeholder="E.g. Account Top-Up" />
   </div>
 
   <div 
@@ -40,7 +41,8 @@ include('../src/common/input/org.php');
       id="CreatePaymentInputAmount"
       name="paymentAmount"
       type="input"
-      tabindex="4" />
+      tabindex="4"
+      placeholder="E.g. 100.00" />
   </div>
 
   <div 
@@ -54,7 +56,8 @@ include('../src/common/input/org.php');
       id="CreatePaymentInputFeeAmount"
       name="paymentFeeAmount"
       type="input"
-      tabindex="5" />
+      tabindex="5"
+      placeholder="E.g. 10.00" />
   </div>
 
   <?=orgField(6, "Payment Processor ID", "paymentProcessor")?>
