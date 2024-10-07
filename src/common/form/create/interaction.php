@@ -4,6 +4,7 @@
  */
 
 include('../src/common/input/uuid.php');
+include('../src/common/input/customer.php');
 ?>
 
 <div 
@@ -11,18 +12,19 @@ include('../src/common/input/uuid.php');
 
   <?=uuidField('Interaction ID')?> 
 
+  <?=customerField(2)?>
+
   <div 
     class="component-form-field">
     <label
       for="CreateInteractionInputName">
-      Interaction Name
+      Interaction Notes
     </label>
 
-    <input 
-      id="CreateInteractionInputName"
-      name="interactionName"
-      type="input"
-      tabindex="2" />
+    <textarea 
+      id="CreateInteractionInputContent"
+      name="interactionContentBody"
+      tabindex="3"></textarea>
   </div>
 
   <div
@@ -31,7 +33,8 @@ include('../src/common/input/uuid.php');
     <div style="display: flex; flex: 1;"></div>
 
     <button
-      type="submit">
+      type="submit"
+      tabindex="4">
       Create
     </button>
 

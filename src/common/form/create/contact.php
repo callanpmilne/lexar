@@ -4,12 +4,15 @@
  */
 
 include('../src/common/input/uuid.php');
+include('../src/common/input/customer.php');
 ?>
 
 <div 
   class="component-form">
 
   <?=uuidField('Contact Method ID')?> 
+
+  <?=customerField(2)?>
 
   <div 
     class="component-form-field">
@@ -21,7 +24,7 @@ include('../src/common/input/uuid.php');
     <select 
       id="CreateContactMethodInputMedium"
       name="contactMethodMedium"
-      tabindex="2">
+      tabindex="3">
       <option value="PHONE">Phone</option>
       <option value="EMAIL">E-Mail</option>
     </select>
@@ -38,7 +41,7 @@ include('../src/common/input/uuid.php');
       id="CreateContactMethodInputIdentifier"
       name="contactMethodIdentifier"
       type="input"
-      tabindex="3"
+      tabindex="4"
       placeholder="e.g. +614123456789 or someone@somehost.tld" />
   </div>
 
@@ -48,7 +51,8 @@ include('../src/common/input/uuid.php');
     <div style="display: flex; flex: 1;"></div>
 
     <button
-      type="submit">
+      type="submit"
+      tabindex="5">
       Create
     </button>
 

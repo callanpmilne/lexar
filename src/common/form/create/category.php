@@ -38,7 +38,7 @@ $topLevelCategories = array_filter($categories, function ($cat) {
       id="CreateCategoryInputPath"
       name="path"
       type="input"
-      tabindex="1"
+      tabindex="3"
       placeholder="E.g. /animals/dog" />
   </div>
 
@@ -53,7 +53,7 @@ $topLevelCategories = array_filter($categories, function ($cat) {
       id="CreateCategoryInputName"
       name="categoryName"
       type="input"
-      tabindex="2"
+      tabindex="4"
       placeholder="E.g. Mountain" />
   </div>
 
@@ -63,7 +63,8 @@ $topLevelCategories = array_filter($categories, function ($cat) {
     <div style="display: flex; flex: 1;"></div>
 
     <button
-      type="submit">
+      type="submit"
+      tabindex="5">
       Create
     </button>
 
