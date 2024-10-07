@@ -5,6 +5,7 @@
 
 include('../src/common/input/customer.php');
 include('../src/common/input/uuid.php');
+include('../src/common/input/org.php');
 ?>
 
 <div 
@@ -56,19 +57,7 @@ include('../src/common/input/uuid.php');
       tabindex="5" />
   </div>
 
-  <div 
-    class="component-form-field">
-    <label
-      for="CreatePaymentInputProcessor">
-      Payment Processor
-    </label>
-
-    <input 
-      id="CreatePaymentInputProcessor"
-      name="paymentProcessor"
-      type="input"
-      tabindex="6" />
-  </div>
+  <?=orgField(6, "Payment Processor ID", "paymentProcessor")?>
 
   <div
     class="component-form-buttons">

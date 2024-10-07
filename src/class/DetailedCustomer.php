@@ -141,4 +141,24 @@ class DetailedCustomer extends Customer {
       $this->AccountOpened
     );
   }
+
+  /**
+   * Matches
+   * 
+   * @param string $query The text string to match
+   * @return bool TRUE if anything on this Customer matches $query
+   */
+  public function matches (
+    string $query
+  ): bool {
+    if (stripos($this->AccountName, $query) > -1) {
+      return true;
+    }
+
+    if (stripos($this->AccountID, $query) > -1) {
+      return true;
+    }
+
+    return parent::matches($query);
+  }
 }

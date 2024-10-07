@@ -49,7 +49,7 @@ if ($isCreate<?=$module->name->UcSingular?>Submit) {
       w.location.assign(<?=$module->name->LcSingular?>URI);
     })(window);&lt;/script&gt;
     &lt;?php
-    exit(1);
+    exit(0);
   }
 
 }

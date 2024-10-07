@@ -1,7 +1,22 @@
 :root {
-  --text-shadow-heading:  1px 1px 5px rgba(0, 0, 0, 0.2);
-  --text-shadow-body:     1px 1px 3px rgba(0, 0, 0, 0.2);
-  --text-shadow-other:    1px 1px 2px rgba(0, 0, 0, 0.4);
+  --text-shadow-heading:     1px 1px 5px rgba(0, 0, 0, 0.2);
+  --text-shadow-body:        1px 1px 3px rgba(0, 0, 0, 0.2);
+  --text-shadow-other:       1px 1px 2px rgba(0, 0, 0, 0.4);
+
+  --input-bg:                linear-gradient(to top, #80dcc9, #ffffffc2);
+  --input-box-shadow:        1px 1px 5px rgba(0, 0, 0, 0.25);
+  --input-focus-box-shadow:  0px 0px 20px #80dcc9;
+
+  --form-submit-btn-bg:      linear-gradient(to top, #012e39, #004457);
+  
+  --foreground-color-alt-1:  #5ad8ff;
+  --foreground-color-alt-2:  #00fff9;
+
+  --search-btn-bg:           linear-gradient(to top, #1cdfb5 0%, #80dcc9 100%);
+
+  --grid-cat-content-bg:     linear-gradient(163deg, rgb(0 0 0 / 47%) 0%, rgb(0 0 0 / 69%) 100%);
+  --grid-item-content-bg:    linear-gradient(163deg, rgb(186 218 255 / 47%) 0%, rgb(255 255 255 / 69%) 100%);
+
 }
 
 html {
@@ -16,7 +31,7 @@ body {
 }
 
 a {
-  color: #00fff9;
+  color: var(--foreground-color-alt);
 }
 
 main {
@@ -92,6 +107,10 @@ main > * {
   }
 }
 
+.hidden {
+  display: none;
+}
+
 /**
  * Predictive Inputs & Options
  */
@@ -129,9 +148,9 @@ form textarea {
   border-radius: 0.25rem;
   border: 0;
   margin: 0.5rem 0 0;
-  background: linear-gradient(to top, #80dcc9, #ffffffc2);
+  background: var(--input-bg);
   padding: 0 0.5rem;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--input-box-shadow);
 }
 
 form select {
@@ -143,8 +162,11 @@ form input[type=search]:focus,
 form input[type=password]:focus,
 form input[type=number]:focus,
 form select:focus,
-form textarea:focus {
+form textarea:focus,
+form button:focus {
   outline: none;
+  box-shadow: var(--input-focus-box-shadow);
+  border: 2px solid var(--foreground-color-alt);
 }
 
 form input[type=input][readonly=readonly] {
@@ -160,7 +182,7 @@ form button {
   border-radius: 0.25rem;
   border: 0;
   margin: 0.5rem 0 0;
-  background: linear-gradient(to top, #012e39, #004457);
+  background: var(--form-submit-btn-bg);
   padding: 0 1rem;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
   font-size: 0.8rem;
@@ -192,7 +214,7 @@ form button {
 #SearchInputContainer form button {
   margin: 0;
   padding: 0.5rem 2rem;
-  background: linear-gradient(to top, #1cdfb5 0%, #80dcc9 100%);
+  background: var(--search-btn-bg);
   text-shadow: var(--text-shadow-body);
   cursor: pointer;
   transition: all 333ms;
@@ -203,7 +225,7 @@ form button {
 }
 
 #SearchInputContainer form button:hover {
-  background: linear-gradient(to top, #5ad8ff 0%, #00fff9 100%);
+  background: linear-gradient(to top, #5ad8ff 0%, var(--foreground-color-alt) 100%);
 }
 
 #SearchInput {
@@ -214,14 +236,8 @@ form button {
   text-align: center;
 }
 
-#SearchInput:focus,
-#SearchInputContainer form button:focus {
-  box-shadow: 0px 0px 20px #80dcc9;
-  outline: none;
-}
-
 #SearchInput:focus {
-  border: 2px solid #00fff9;
+  border: 2px solid var(--foreground-color-alt);
 }
 
 div.component-form {
@@ -265,6 +281,7 @@ div.component-form div.component-form-field {
   align-items: stretch;
   justify-content: flex-start;
   padding: 0.5rem 0;
+  position: relative;
 }
 
 div.component-form div.component-form-buttons {
@@ -430,7 +447,7 @@ section.content-grid ol.content-list li a {
   padding: 1rem;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.34);
   border-radius: 0.5rem;
-  background: linear-gradient(163deg, rgb(186 218 255 / 47%) 0%, rgb(255 255 255 / 69%) 100%);
+  background: var(--grid-content-item-bg);
   transition: all 333ms;
   aspect-ratio: 16 / 6;
   text-shadow: var(--text-shadow-other);
@@ -448,7 +465,7 @@ ol.category-list li a {
   padding: 1rem;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.34);
   border-radius: 0.25rem;
-  background: linear-gradient(163deg, rgb(0 0 0 / 47%) 0%, rgb(0 0 0 / 69%) 100%);
+  background: var(--grid-cat-content-bg);
   transition: all 333ms;
   aspect-ratio: 16 / 6;
   text-shadow: var(--text-shadow-other);
@@ -471,7 +488,7 @@ section.content-grid ol.content-list li a {
 }
 
 ol.category-list li a:hover {
-  color: #00fff9;
+  color: var(--foreground-color-alt);
 }
 
 section.content-grid ol.content-list li a:hover {

@@ -33,7 +33,7 @@ if ($isCreateOrganisationSubmit) {
       w.location.assign(organisationURI);
     })(window);</script>
     <?php
-    exit(1);
+    exit(0);
   }
 
 }

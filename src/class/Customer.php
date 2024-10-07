@@ -37,4 +37,24 @@ class Customer {
     );
   }
 
+  /**
+   * Matches
+   * 
+   * @param string $query The text string to match
+   * @return bool TRUE if anything on this Customer matches $query
+   */
+  public function matches (
+    string $query
+  ): bool {
+    if (stripos($this->Name, $query) > -1) {
+      return true;
+    }
+
+    if (stripos($this->ID, $query) > -1) {
+      return true;
+    }
+
+    return false;
+  }
+
 }

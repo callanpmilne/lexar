@@ -13,11 +13,21 @@ require_once('../src/methods/Customer/fetchCustomerList.php');
 if (!isSuperAdmin()) {
   http_response_code(200);
   print '{}';
-  exit(1);
+  exit(0);
 }
 
 $query = array_key_exists('q', $_GET) ? $_GET['q'] : '';
 
 $customers = fetchCustomerList();
 
-print json_encode($customers, JSON_THROW_ON_ERROR, 3);
+if ($query && count($customers) > 0) {
+  $customers = array_filter($customers, function ($customer) use ($query) {
+    return $customer->matches($query);
+  });
+}
+
+$customers = numericalArray($customers);
+
+print json_encode($customers, JSON_THROW_ON_ERROR | JSON_OBJECT_AS_ARRAY, 3);
+
+exit(0);

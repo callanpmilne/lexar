@@ -21,6 +21,14 @@ $routes = array(
   // Customers
   '/\/customers.json(|\?.+)$/i' => 
     [HTTP_GET, 'getCustomers.json'],
+  
+  // Orgs
+  '/\/orgs.json(|\?.+)$/i' => 
+    [HTTP_GET, 'getOrgs.json'],
+  
+  // Accounts
+  '/\/accounts.json(|\?.+)$/i' => 
+    [HTTP_GET, 'getAccounts.json'],
 );
 
 foreach ($routes as $pattern => $includePath) {

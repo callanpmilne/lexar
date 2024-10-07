@@ -1,6 +1,24 @@
 <?php
 
 /**
+ * Numerical Array
+ * @param mixed $inputArr A single item, Associative Array, or Numerical Array
+ * @return array Numerical Array
+ */
+function numericalArray (
+  mixed $inputArr
+): array {
+  $outputArr = [...$inputArr];
+  $keys = array_keys($outputArr);
+
+  if ($keys != array_keys($keys)) {
+    $outputArr = array_values($outputArr);
+  }
+
+  return $outputArr;
+}
+
+/**
  * Get Content ID
  * @return string Last Part of the route (the Content ID if this is a content view)
  */
@@ -97,7 +115,7 @@ function inlineRedirect (
     w.location.assign('<?=$dest?>');
   })(window);</script>
   <?php
-  exit(1);
+  exit(0);
 }
 
 /**

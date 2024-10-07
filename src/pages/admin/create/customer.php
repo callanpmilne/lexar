@@ -33,7 +33,7 @@ if ($isCreateCustomerSubmit) {
       w.location.assign(customerURI);
     })(window);</script>
     <?php
-    exit(1);
+    exit(0);
   }
 
 }

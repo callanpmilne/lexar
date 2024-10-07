@@ -133,4 +133,40 @@ class DetailedOrganisation extends Organisation {
       $this->AccountOpened
     );
   }
+
+  /**
+   * Matches
+   * 
+   * @param string $query The text string to match
+   * @return bool TRUE if anything on this Customer matches $query
+   */
+  public function matches (
+    string $query
+  ): bool {
+    if (true === parent::matches($query)) {
+      return true;
+    }
+
+    if (stripos($this->AccountID, $query) > -1) {
+      return true;
+    }
+
+    if (stripos($this->AccountName, $query) > -1) {
+      return true;
+    }
+
+    if (stripos($this->AccountOpened, $query) > -1) {
+      return true;
+    }
+
+    if (stripos($this->TotalPaymentsAmount, $query) > -1) {
+      return true;
+    }
+
+    if (stripos($this->TotalFeesAmount, $query) > -1) {
+      return true;
+    }
+
+    return false;
+  }
 }

@@ -1,16 +1,16 @@
 <?php
 
-function customerField(
+function orgField(
   int $tabIndex = 1,
-  string $label = 'Customer',
-  string $name = 'customerID',
+  string $label = 'Organisation',
+  string $name = 'orgID',
   string $value = ''
 ) {
   $previousValue = array_key_exists($name, $_REQUEST) ? $_REQUEST[$name] : '';
   $value = htmlentities($value ? $value : $previousValue);
   $elemID = sprintf(
     '%s_%d', 
-    'CustomerIDInput',
+    'OrganisationIDInput',
     $tabIndex
   );
 
@@ -28,7 +28,7 @@ function customerField(
       type="input"
       tabindex="<?=$tabIndex?>"
       placeholder="Start Typing ..."
-      value="<?=htmlentities($value)?>" />
+      value="<?=$value?>" />
 
     <div class="predictive-options hidden"></div>
   </div>
@@ -42,7 +42,7 @@ function customerField(
       $.document.querySelector('#<?=$elemID?>').addEventListener("input", (e) => {
         let value = e.target.value;
         
-        clearCustomers();
+        clearOrganisations();
 
         if (value.length < 3) {
           return;
@@ -52,56 +52,57 @@ function customerField(
           return;
         }
 
-        fetchCustomers(value);
+        fetchOrganisations(value);
       });
 
       function $optionsEl () {
+        console.log("#<?=$elemID?>");
         return $.document.querySelector("#<?=$elemID?>").parentNode.querySelector(".predictive-options");
       }
 
       function reqListener () {
         const $el = $optionsEl();
-        const customers = JSON.parse(this.response);
+        const orgs = JSON.parse(this.response);
 
-        clearCustomers();
+        clearOrganisations();
 
-        if (!Array.isArray(customers) || customers.length === 0) {
+        if (!Array.isArray(orgs) || orgs.length === 0) {
           return;
         }
 
         $el.setAttribute('class', 'predictive-options');
 
-        customers.forEach((cust) => {
+        orgs.forEach((cust) => {
           $el.appendChild(resultOptionDiv(cust.ID, cust.Name));
         });
       }
 
-      function clearCustomers () {
+      function clearOrganisations () {
         $optionsEl().innerHTML = '';
-        hideCustomerList();
+        hideOrganisationList();
       }
 
-      function hideCustomerList () {
+      function hideOrganisationList () {
         $optionsEl().setAttribute('class', 'predictive-options hidden');
       }
 
-      function fetchCustomers (query) {
+      function fetchOrganisations (query) {
         fetchResponse(
-          '/api/customers.json?q=' + encodeURIComponent(query),
+          '/api/orgs.json?q=' + encodeURIComponent(query),
           reqListener
         );
       }
 
-      function selectCustomer (ID, Label) {
+      function selectOrganisation (ID, Label) {
         $.document.querySelector('#<?=$elemID?>').value = ID;
-        clearCustomers();
+        clearOrganisations();
       }
 
       function resultOptionDiv (ID, Label) {
         const newDiv = $.document.createElement('div');
         newDiv.innerHTML = '<span>' + Label + '</span>';
         newDiv.addEventListener('click', () => {
-          selectCustomer(ID, Label)
+          selectOrganisation(ID, Label)
         });
         return newDiv;
       }
