@@ -35,6 +35,7 @@ function categoryField(
 
   <script>"use strict";
     (function ($) {
+
       <? if ($tabIndex === 1) : ?>
         $.document.querySelector('#<?=$elemID?>').focus();
       <? endif; ?>
@@ -71,8 +72,8 @@ function categoryField(
 
         $el.setAttribute('class', 'predictive-options');
 
-        categories.forEach((cat.ID, cat.Label, cat.Route) => {
-          $el.appendChild(resultOptionDiv(cat));
+        categories.forEach((cat) => {
+          $el.appendChild(resultOptionDiv(cat.ID, cat.Name, cat.Path));
         });
       }
 
@@ -101,7 +102,7 @@ function categoryField(
         const newDiv = $.document.createElement('div');
         
         newDiv.innerHTML = '<span>' + Label + '</span>'
-          + '<span>' + Route + '</span>';
+          + ' <span style="font-size: 0.8rem;opacity:0.5;">[' + Route + ']</span>';
 
         newDiv.addEventListener('click', () => {
           selectCategory(ID, Label, Route)

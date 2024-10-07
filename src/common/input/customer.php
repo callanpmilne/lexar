@@ -35,6 +35,7 @@ function customerField(
 
   <script>"use strict";
     (function ($) {
+      
       <? if ($tabIndex === 1) : ?>
         $.document.querySelector('#<?=$elemID?>').focus();
       <? endif; ?>
