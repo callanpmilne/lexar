@@ -1,33 +1,47 @@
 <?php
 
 /**
+ * @var string SQL Query
+ */
+$qUpdateSessionSql = <<<END
+  UPDATE
+    public."Sessions"
+  SET
+    "UserID" = $1 , 
+    "Expiry" = $2
+  WHERE
+    "ID" = $3
+  END;
+
+// Register the SQL Query
+pg_prepare(
+  $GLOBALS['dbh'],
+  "update_session_user_id_and_expiry", 
+  $qUpdateSessionSql
+);
+
+/**
  * Update Session Set User ID
  * 
  * @param string $SessionID
  * @param string $UserID
+ * @param int $Duration Number of seconds until the session expires
  */
 function updateSessionSetUserID (
   string $SessionID,
-  string $UserID
+  string $UserID,
+  int $Duration = 900
 ) {
 
   try {
     $dbconn = $GLOBALS['dbh'];
   
-    pg_prepare(
-      $dbconn,
-      "", 
-      ' UPDATE 
-          public."Sessions"
-          SET "UserID" = $1
-          WHERE "ID" = $2'
-    );
-  
     $result = pg_execute(
       $dbconn,
-      "", 
+      "update_session_user_id_and_expiry", 
       array(
         $UserID,
+        $Duration,
         $SessionID,
       )
     );

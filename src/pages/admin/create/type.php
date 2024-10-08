@@ -1,13 +1,13 @@
 <?php
 /**
- * Create Type Page
+ * Type Type Page
  */
 
-$isCreateTypeSubmit = 
+$isTypeTypeSubmit = 
   array_key_exists('is_create_type_submit', $_POST)
     && '1' === $_POST['is_create_type_submit'];
 
-if ($isCreateTypeSubmit) {
+if ($isTypeTypeSubmit) {
   // Type Name
   $name = strtolower($_POST['typeName']);
 
@@ -18,7 +18,7 @@ if ($isCreateTypeSubmit) {
 
 <main>
   <div id="PageTitle">
-    <h1>Create Content Type</h1>
+    <h1>Entity Type</h1>
 
     <p class="breadcrumbs">
       <a href="/admin">
@@ -33,7 +33,7 @@ if ($isCreateTypeSubmit) {
     <?php include('../src/common/form/create/type.php'); ?>
   </form>
 
-  <?php if ($isCreateTypeSubmit) : ?>
+  <?php if ($isTypeTypeSubmit) : ?>
     <div
       class="component-form-login-debug">
       <h2>Debug</h2>

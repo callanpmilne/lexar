@@ -54,6 +54,6 @@ class Session {
 
   public function isNotExpired (): bool {
     return is_null($this->Expiry)
-      || time() < $this->Expiry;
+      || time() < time() + $this->Expiry;
   }
 }

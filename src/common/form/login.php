@@ -114,3 +114,9 @@ if (array_key_exists('redirect', $_REQUEST)) {
     cursor: pointer;
   }
 </style>
+<script>
+  "use strict";
+  (function ($) {
+    $.document.getElementById("AuthInputUsername").focus();
+  })(window);
+</script>

@@ -101,18 +101,32 @@ $buttons = array(
     'categories',
   ),
   new AdminDashboardButton(
-    '🧬',
-    'Type',
-    'type',
-    'Types',
-    'types',
-  ),
-  new AdminDashboardButton(
     '⌨️',
     'Metadata',
     'metadata',
     'Metadata',
     'metadata',
+  ),
+  new AdminDashboardButton(
+    '🧬',
+    'Entity',
+    'entity',
+    'Entities',
+    'entities',
+  ),
+  new AdminDashboardButton(
+    '🧬',
+    'Entity Type',
+    'entity/type',
+    'Entity Types',
+    'entity/types',
+  ),
+  new AdminDashboardButton(
+    '🧬',
+    'Entity Attribute',
+    'entity/attribute',
+    'Entity Attributes',
+    'entity/attributes',
   ),
 );
 
@@ -121,23 +135,23 @@ $buttons = array(
  */
 $tools = [
   new Tool(
-    '💻',
-    'Code Writer',
-    '/code/writer'
+    '⚙️',
+    'Api Builder',
+    '/api/builder'
+  ),
+  new Tool(
+    '🚀',
+    'Portal Builder',
+    '/portal/builder'
+  ),
+  new Tool(
+    '🧬',
+    'Entity Manager',
+    '/entity/manager'
   ),
   new Tool(
     '💻',
-    'Code Writer',
-    '/code/writer'
-  ),
-  new Tool(
-    '💻',
-    'Code Writer',
-    '/code/writer'
-  ),
-  new Tool(
-    '💻',
-    'Code Writer',
+    'Module Builder',
     '/code/writer'
   ),
   new Tool(
@@ -218,7 +232,7 @@ $tools = [
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: stretch;
-    justify-content: stretch;
+    justify-content: center;
     padding: 0;
     margin: 0;
   }
@@ -227,8 +241,8 @@ $tools = [
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
+    justify-content: center;
     align-items: stretch;
-    justify-content: stretch;
     width: 100%;
   }
 
@@ -448,7 +462,7 @@ $tools = [
       flex-direction: row;
       flex-wrap: wrap;
       align-items: stretch;
-      justify-content: stretch;
+      justify-content: center;
     }
 
     section.admin-button-grid div.content-list-wrapper ol.content-list li {

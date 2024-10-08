@@ -3,6 +3,25 @@
 require_once('../src/class/Session.php');
 
 /**
+ * @var string SQL Query
+ */
+$qUpdateSessionSql = <<<END
+  SELECT 
+    * 
+  FROM 
+    public."Sessions" 
+  WHERE 
+    "ID" = $1
+  END;
+
+// Register the SQL Query
+pg_prepare(
+  $GLOBALS['dbh'],
+  "fetch_session_by_id", 
+  $qUpdateSessionSql
+);
+
+/**
  * Fetch Session By ID
  * 
  * @param string $id Session ID
@@ -14,17 +33,9 @@ function fetchSessionByID (
 
   $dbconn = $GLOBALS['dbh'];
 
-  pg_prepare(
-    $dbconn, 
-    "", 
-    ' SELECT * 
-      FROM public."Sessions" 
-      WHERE "ID" = $1'
-  );
-
   $result = pg_execute(
     $dbconn, 
-    "", 
+    "fetch_session_by_id", 
     array(
       $id,
     )

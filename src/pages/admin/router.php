@@ -53,11 +53,30 @@ $routes = array(
   '/^\/admin\/create\/type$/i'  => 'create/type',
   '/^\/admin\/list\/types$/i'  => 'list/types',
 
-  '/^\/admin\/tools\/password\/generator$/i'  => 'tools/password/generator',
-  '/^\/admin\/tools\/password\/hasher$/i'  => 'tools/password/hasher',
+  '/^\/admin\/search\/entities$/i'             => 'search/entities',
+  '/^\/admin\/create\/entity$/i'               => 'create/entity',
+  '/^\/admin\/list\/entities$/i'               => 'list/entities',
+  '/^\/admin\/view\/entity\//i'                => 'view/entity',
+
+  '/^\/admin\/search\/entity\/types$/i'        => 'search/entity/types',
+  '/^\/admin\/create\/entity\/type$/i'         => 'create/entity/type',
+  '/^\/admin\/list\/entity\/types$/i'          => 'list/entity/types',
+  '/^\/admin\/view\/entity\/type\//i'          => 'view/entity/type',
+
+  '/^\/admin\/search\/entity\/attributes$/i'   => 'search/entity/attributes',
+  '/^\/admin\/create\/entity\/attribute$/i'    => 'create/entity/attribute',
+  '/^\/admin\/list\/entity\/attributes$/i'     => 'list/entity/attributes',
+  '/^\/admin\/view\/entity\/attribute\//i'     => 'view/entity/attribute',
+  
+  '/^\/admin\/tools\/api\/builder$/i'          => 'tools/api/builder',
+  '/^\/admin\/tools\/code\/writer$/i'          => 'tools/code/writer',
+  '/^\/admin\/tools\/entity\/manager$/i'       => 'tools/entity/manager',
+  '/^\/admin\/tools\/portal\/builder$/i'       => 'tools/portal/builder',
+
+  '/^\/admin\/tools\/password\/generator$/i'   => 'tools/password/generator',
+  '/^\/admin\/tools\/password\/hasher$/i'      => 'tools/password/hasher',
   '/^\/admin\/tools\/timestamp\/converter$/i'  => 'tools/timestamp/converter',
-  '/^\/admin\/tools\/uuid\/generator$/i'  => 'tools/uuid/generator',
-  '/^\/admin\/tools\/code\/writer$/i'  => 'tools/code/writer',
+  '/^\/admin\/tools\/uuid\/generator$/i'       => 'tools/uuid/generator',
 
 );
 

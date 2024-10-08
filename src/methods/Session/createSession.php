@@ -3,6 +3,31 @@
 require_once('../src/class/Session.php');
 
 /**
+ * @var string SQL Query
+ */
+$qInsertSessionSql = <<<END
+  INSERT INTO 
+    public."Sessions" (
+      "ID",
+      "SecretKey",
+      "Started"
+    ) 
+  VALUES 
+    (
+      $1,
+      $2,
+      $3
+    )
+  END;
+
+// Register the SQL Query
+pg_prepare(
+  $GLOBALS['dbh'],
+  "create_session", 
+  $qInsertSessionSql
+);
+
+/**
  * Create Session
  * 
  * @param Session $session
@@ -39,27 +64,9 @@ function insertSession (
 
   $dbconn = $GLOBALS['dbh'];
 
-  pg_prepare(
-    $dbconn,
-    "", 
-    ' INSERT
-      INTO 
-        public."Sessions" (
-          "ID",
-          "SecretKey",
-          "Started"
-        ) 
-      VALUES 
-        (
-          $1,
-          $2,
-          $3
-        )'
-  );
-
   $result = pg_execute(
     $dbconn,
-    "", 
+    "create_session", 
     array(
       $ID,
       $SecretKey,

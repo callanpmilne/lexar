@@ -35,7 +35,7 @@ $initialValue = array_key_exists('query', $_POST) ? $_POST['query'] : '';
     <div 
       class="component-form">
 
-      <?php searchField('Note Search', 'query', $initialValue); ?>
+      <?php searchField('Payment Search', 'query', $initialValue); ?>
 
       <div
         class="component-form-buttons">
@@ -48,7 +48,7 @@ $initialValue = array_key_exists('query', $_POST) ? $_POST['query'] : '';
         </button>
 
         <input
-          name="is_note_search_submit"
+          name="is_payment_search_submit"
           type="hidden"
           value="1" />
       </div>

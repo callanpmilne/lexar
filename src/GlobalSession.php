@@ -59,7 +59,7 @@ class GlobalSession {
    * Summary of COOKIE_DEFAULT_EXP
    * @var int Default Cookie Expiry Time (in seconds)
    */
-  protected const COOKIE_DEFAULT_EXP = 900;
+  protected const COOKIE_DEFAULT_EXP = 86400 * 7;
 
   /**
    * Summary of Session
@@ -236,7 +236,8 @@ class GlobalSession {
 
     updateSessionSetUserID(
       $globalSession->getSession()->ID, 
-      $globalSession->getUser()->ID
+      $globalSession->getUser()->ID,
+      86400 * 7
     );
   
     return $user;

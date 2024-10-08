@@ -35,7 +35,7 @@ $initialValue = array_key_exists('query', $_POST) ? $_POST['query'] : '';
     <div 
       class="component-form">
 
-      <?php searchField('Category Search', 'query', $initialValue); ?>
+      <?=categoryField(1, 'Category Search', 'query', $initialValue)?>
 
       <div
         class="component-form-buttons">

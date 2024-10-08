@@ -35,7 +35,7 @@ if ($isCodeWriterSubmit) {
 
 <main>
   <div id="PageTitle">
-    <h1>Class Builder</h1>
+    <h1>Module Builder</h1>
     <!-- <h1>Portal Builder</h1> -->
 
     <p class="breadcrumbs">
