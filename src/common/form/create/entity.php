@@ -13,19 +13,7 @@ include('../src/common/input/uuid.php');
 
   <?=uuidField('Entity ID')?> 
 
-  <div 
-    class="component-form-field">
-    <label
-      for="CreateEntityInputName">
-      Entity Name
-    </label>
-
-    <input 
-      id="CreateEntityInputName"
-      name="entityName"
-      type="input"
-      tabindex="2" />
-  </div>
+  <!-- entity type fields -->
 
   <div
     class="component-form-buttons">
