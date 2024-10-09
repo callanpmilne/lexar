@@ -5,30 +5,21 @@
  */
 
 include('../src/common/input/uuid.php');
-include('../src/common/input/entityName.php');
+include('../src/common/input/entity/name.php');
+include('../src/common/input/entity/type.php');
 
 ?>
 
 <div 
   class="component-form">
 
-  <?=uuidField('Entity Type ID')?> 
+  <?=uuidField(1, 'Entity Type ID', 'uuid')?>
 
-  <div 
-    class="component-form-field">
-    <label
-      for="CreateEntityTypeInputParent">
-      Parent Type
-    </label>
+  <?=uuidField(2, 'Entity Name ID', 'nameID')?>
+  
+  <?=entityTypeField(3, 'Parent Entity', 'parentEntityID')?>
 
-    <input 
-      id="CreateEntityTypeInputParent"
-      name="entityType"
-      type="input"
-      tabindex="2" />
-  </div>
-
-  <?=entityNameFields(3)?>
+  <?=entityNameFields(4)?>
 
   <div
     class="component-form-buttons">
@@ -41,7 +32,7 @@ include('../src/common/input/entityName.php');
     </button>
 
     <input
-      name="is_create_entity_attribute_submit"
+      name="is_create_entity_type_submit"
       type="hidden"
       value="1" />
   </div>

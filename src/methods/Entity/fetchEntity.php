@@ -8,27 +8,6 @@
 
 require_once('../src/class/Entity.php');
 
-$GLOBALS['entity'] = [];
-
-/**
- * @var string SQL Query
- */
-$qFetchListSql = <<<END
-  SELECT 
-    *
-  FROM
-    public."Entity"
-  WHERE
-    "ID" = $1
-  END;
-
-// Register the SQL Query
-pg_prepare(
-  $GLOBALS['dbh'],
-  "select_one_entity_by_id", 
-  $qFetchListSql
-);
-
 /**
  * Fetch Entity * 
  * @param string $ID Entity ID
@@ -40,9 +19,15 @@ function fetchEntity (
 
   $dbconn = $GLOBALS['dbh'];
 
-  $result = pg_execute(
-    $dbconn, 
-    "select_one_entity_by_id", 
+  $result = pg_query_params(
+    $GLOBALS['dbh'], 
+    ' SELECT
+        *
+      FROM
+        public."Entity" ENT
+      WHERE
+        ENT."ID" = $1
+    ', 
     array(
       $ID,
     )

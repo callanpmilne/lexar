@@ -76,7 +76,7 @@ function handleRoute (
     
     case 'admin': 
       adminOnlyPage(); // Redirect user to the login page if they're not an admin
-      loadPage('admin/router');
+      require('../src/pages/admin/router.php');
       break;
     
     case 'api': 

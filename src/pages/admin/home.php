@@ -59,6 +59,27 @@ class AdminDashboardButton {
 
 $buttons = array(
   new AdminDashboardButton(
+    '🧬',
+    'Entity',
+    'entity',
+    'Entities',
+    'entities',
+  ),
+  new AdminDashboardButton(
+    '🧬',
+    'Entity Type',
+    'entity/type',
+    'Entity Types',
+    'entity/types',
+  ),
+  new AdminDashboardButton(
+    '🧬',
+    'Entity Type Attribute',
+    'entity/type/attribute',
+    'Entity Type Attributes',
+    'entity/type/attributes',
+  ),
+  new AdminDashboardButton(
     '📁',
     'Customer',
     'customer',
@@ -80,18 +101,25 @@ $buttons = array(
     'interactions',
   ),
   new AdminDashboardButton(
-    '📁',
-    'Note',
-    'note',
-    'Notes',
-    'notes',
-  ),
-  new AdminDashboardButton(
     '📇',
     'Contact',
     'contact',
     'Contacts',
     'contacts',
+  ),
+  new AdminDashboardButton(
+    '⌨️',
+    'User',
+    'user',
+    'Users',
+    'users',
+  ),
+  new AdminDashboardButton(
+    '📁',
+    'Note',
+    'note',
+    'Notes',
+    'notes',
   ),
   new AdminDashboardButton(
     '📚',
@@ -102,31 +130,17 @@ $buttons = array(
   ),
   new AdminDashboardButton(
     '⌨️',
-    'Metadata',
+    'Page Metadata',
     'metadata',
-    'Metadata',
+    'Page Metadata',
     'metadata',
   ),
   new AdminDashboardButton(
-    '🧬',
-    'Entity',
-    'entity',
-    'Entities',
-    'entities',
-  ),
-  new AdminDashboardButton(
-    '🧬',
-    'Entity Type',
-    'entity/type',
-    'Entity Types',
-    'entity/types',
-  ),
-  new AdminDashboardButton(
-    '🧬',
-    'Entity Attribute',
-    'entity/attribute',
-    'Entity Attributes',
-    'entity/attributes',
+    '📚',
+    'API Route',
+    'api/route',
+    'API Routes',
+    'api/routes',
   ),
 );
 
@@ -479,7 +493,7 @@ $tools = [
     }
 
     section.admin-button-grid div.content-list-wrapper {
-      margin: 2rem 0;
+      margin: -1rem 0 1rem;
     }
   }
 </style>

@@ -1,30 +1,31 @@
 <?php
 
 /**
- * Create Entity Type Form Component
+ * Create Entity Type Attribute Form Component
  */
 
 include('../src/common/input/uuid.php');
-include('../src/common/input/entityName.php');
+include('../src/common/input/entity/name.php');
 
 ?>
 
 <div 
   class="component-form">
 
-  <?=uuidField(1, 'Entity Type ID')?> 
+  <?=uuidField(1, 'Entity Type Attribute ID')?> 
 
   <div 
     class="component-form-field">
     <label
-      for="CreateEntityTypeInputType">
-      Type
+      for="CreateEntityTypeAttributeInputType">
+      Entity Type
     </label>
 
     <input 
-      id="CreateEntityTypeInputType"
-      name="type"
+      id="CreateEntityTypeAttributeInputType"
+      name="entityType"
       type="input"
+      value="<?=htmlspecialchars($_REQUEST['entityType'] ?? '', ENT_QUOTES)?>"
       tabindex="2" />
   </div>
 
@@ -41,7 +42,7 @@ include('../src/common/input/entityName.php');
     </button>
 
     <input
-      name="is_create_entity_attribute_submit"
+      name="is_create_entity_type_attribute_submit"
       type="hidden"
       value="1" />
   </div>

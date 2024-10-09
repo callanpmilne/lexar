@@ -29,6 +29,10 @@ $routes = array(
   // Accounts
   '/\/accounts.json(|\?.+)$/i' => 
     [HTTP_GET, 'getAccounts.json'],
+  
+  // Accounts
+  '/\/entity\/types(|\/p\/[0-9]+).json(|\?.+)$/i' => 
+    [HTTP_GET, 'entity/getTypes.json'],
 );
 
 foreach ($routes as $pattern => $includePath) {

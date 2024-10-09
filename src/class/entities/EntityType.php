@@ -13,7 +13,7 @@ class EntityType {
   /**
    * @var string $ParentID The Parent Type UUID, or NULL if top-level type
    */
-  public string $ParentID = null;
+  public ?string $ParentID;
 
   /**
    * @var string $EntityNameID UUID for the Entity Name to use for this Type
@@ -29,29 +29,50 @@ class EntityType {
    * Constructor Function
    * 
    * @param string $ID Universally Unique ID (UUID) for the type
+   * @param string $EntityNameID Parent Type UUID, or NULL if top-level type
+   * @param bool $IsAbstract Type is Abstract? (requires completion from another class)
    * @param ?string $ParentID Parent Type UUID, or NULL if top-level type
-   * @param ?string $EntityNameID Parent Type UUID, or NULL if top-level type
-   * @param ?bool $IsAbstract Type is Abstract? (requires completion from another class)
    */
   public function __construct (
     string $ID,
-    ?string $ParentID = null,
-    ?string $EntityNameID = null,
-    ?bool $IsAbstract = false
+    string $EntityNameID,
+    bool $IsAbstract = false,
+    ?string $ParentID = null
   ) {
     $this->ID = $ID;
-    
-    if (isset($ParentID)) {
-      $this->ParentID = $ParentID;
-    }
-    
-    if (isset($EntityNameID)) {
-      $this->EntityNameID = $EntityNameID;
-    }
+    $this->EntityNameID = $EntityNameID;
 
     if (isset($IsAbstract)) {
       $this->IsAbstract = $IsAbstract;
     }
+    
+    if (isset($ParentID)) {
+      $this->ParentID = $ParentID;
+    }
+  }
+
+  /**
+   * Matches
+   * 
+   * @param string $query The text string to match
+   * @return bool TRUE if anything on this Entity Type matches $query
+   */
+  public function matches (
+    string $query
+  ): bool {
+    if (stripos($this->ID, $query) > -1) {
+      return true;
+    }
+    
+    if (stripos($this->EntityNameID, $query) > -1) {
+      return true;
+    }
+    
+    if (isset($this->ParentID) && stripos($this->ParentID, $query) > -1) {
+      return true;
+    }
+
+    return false;
   }
 
 }

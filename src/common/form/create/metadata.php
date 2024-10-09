@@ -9,7 +9,7 @@ include('../src/common/input/uuid.php');
 <div 
   class="component-form">
 
-  <?=uuidField('Metadata ID')?> 
+  <?=uuidField(1, 'Metadata ID')?> 
 
   <div 
     class="component-form-field">

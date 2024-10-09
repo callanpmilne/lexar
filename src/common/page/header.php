@@ -201,8 +201,26 @@
 
                 <ul>
                   <li>
+                    <a href="/admin/tools/api/builder">
+                      Api Builder
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/admin/tools/portal/builder">
+                      Portal Builder
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/admin/tools/entity/manager">
+                      Entity Manager
+                    </a>
+                  </li>
+
+                  <li>
                     <a href="/admin/tools/code/writer">
-                      Code Writer
+                      Module Builder
                     </a>
                   </li>
 
@@ -255,8 +273,20 @@
                   </li>
 
                   <li>
+                    <a href="/admin/list/users">
+                      Users
+                    </a>
+                  </li>
+
+                  <li>
                     <a href="/admin/list/notes">
                       Notes
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/admin/list/contacts">
+                      Contacts
                     </a>
                   </li>
 
@@ -269,27 +299,52 @@
               </section>
               
               <section>
-                <strong>Site Content</strong>
+                <section>
+                  <strong>Site Content</strong>
+                  
+                  <ul>
+                    <li>
+                      <a href="/admin/list/metadata">
+                        Meta-Tags
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/admin/list/categories">
+                        Categories
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/admin/list/api/routes">
+                        Api Routes
+                      </a>
+                    </li>
+                  </ul>
+                </section>
                 
-                <ul>
-                  <li>
-                    <a href="/admin/list/categories">
-                      Categories
-                    </a>
-                  </li>
+                <section>
+                  <strong>Entity Management</strong>
+                  
+                  <ul>
+                    <li>
+                      <a href="/admin/list/entities">
+                        Entities
+                      </a>
+                    </li>
 
-                  <li>
-                    <a href="/admin/list/types">
-                      Content-Types
-                    </a>
-                  </li>
+                    <li>
+                      <a href="/admin/list/entity/types">
+                        Entity Types
+                      </a>
+                    </li>
 
-                  <li>
-                    <a href="/admin/list/metadata">
-                      Page Meta-Tags
-                    </a>
-                  </li>
-                </ul>
+                    <li>
+                      <a href="/admin/list/entity/type/attributes">
+                        Entity Type Attributes
+                      </a>
+                    </li>
+                  </ul>
               </section>
             </div>
           </div>

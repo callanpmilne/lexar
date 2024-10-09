@@ -9,7 +9,7 @@ include('../src/common/input/uuid.php');
 <div 
   class="component-form">
 
-  <?=uuidField('Content Type ID')?> 
+  <?=uuidField(1, 'Content Type ID')?> 
 
   <div 
     class="component-form-field">

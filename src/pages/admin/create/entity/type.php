@@ -1,40 +1,88 @@
 <?php
 
 require_once('../src/class/Entities/Entity.php');
-require_once('../src/methods/Entity/createEntity.php');
+require_once('../src/methods/Entity/createEntityType.php');
+require_once('../src/methods/Entity/createEntityName.php');
 
 /**
  * Create Entity Page
  */
 
-$isCreateEntitySubmit = 
-  array_key_exists('is_create_entity_submit', $_POST)
-    && '1' === $_POST['is_create_entity_submit'];
+$isCreateEntityTypeSubmit = 
+  array_key_exists('is_create_entity_type_submit', $_POST)
+    && '1' === $_POST['is_create_entity_type_submit'];
 
-if ($isCreateEntitySubmit) {
+if ($isCreateEntityTypeSubmit) {
   
-  // Entity ID
-  $entityID = $_POST['uuid'];
+  // Entity Type ID
+  $entityTypeID = $_POST['uuid'];
+  
+  // Parent Entity Type ID
+  $parentID = array_key_exists('parentEntityID', $_POST)
+    ? $_POST['parentEntityID']
+    : null;
 
-  // Entity Name
-  $entityName = $_POST['entityName'];
+  // Entity Name ID
+  $entityNameID = $_POST['nameID'];
+
+  // Entity Normal Display Name (Label)
+  $label = $_POST['label'];
+
+  // Entity 'Nice' Name
+  $niceName = $_POST['niceName'];
+
+  // Entity PascalCase Name
+  $pascalCaseName = $_POST['pascalCaseName'];
+
+  // Entity Camel Case Name
+  $camelCaseName = $_POST['camelCaseName'];
+
+  // Entity Snake Case Name
+  $snakeCaseName = $_POST['snakeCaseName'];
+
+  // Plural Replacements
+  $pluralReplacements = $_POST['pluralReplacements'];
+
+  // Is Abstract Type?
+  $isAbstractType = array_key_exists('isAbstractType', $_POST)
+    ? '1' === $_POST['isAbstractType']
+    : false;
 
   // attempt to create entity
-  $result = createEntity(new Entity(
-    $entityID,
-    $entityName
+  $createTypeResult = createEntityType(new EntityType(
+    $entityTypeID,
+    $entityNameID,
+    $isAbstractType,
+    $parentID ?? null
   ));
 
-  // redirect user to entity admin page on successful creation
-  if (true === $result) {
-    ?>
-    <script>"use strict"; (function (w) {
-      const entityURI = '/admin/view/entity/<?=$entityID?>';
-      w.location.assign(entityURI);
-    })(window);</script>
-    <?php
-    exit(0);
+  // attempt to create entity name
+  $createNameResult = createEntityName(new EntityName(
+    $entityNameID,
+    $label,
+    $niceName,
+    $pascalCaseName,
+    $camelCaseName,
+    $snakeCaseName,
+    $pluralReplacements
+  ));
+
+  if (false === $createTypeResult) {
+    return;
   }
+
+  if (false === $createNameResult) {
+    return;
+  }
+
+  // redirect user to entity admin page on successful creation
+  ?>
+  <script>"use strict"; (function (w) {
+    const entityTypeURI = '/admin/view/entity/type/<?=$entityTypeID?>';
+    w.location.assign(entityTypeURI);
+  })(window);</script>
+  <?php
+  exit(0);
 
 }
 ?>
@@ -56,7 +104,7 @@ if ($isCreateEntitySubmit) {
     <?php include('../src/common/form/create/entity/type.php'); ?>
   </form>
 
-  <?php if ($isCreateEntitySubmit) : ?>
+  <?php if ($isCreateEntityTypeSubmit) : ?>
     <div
       class="component-form-login-debug">
       <h2>Debug</h2>

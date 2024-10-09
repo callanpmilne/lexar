@@ -8,25 +8,13 @@ require_once('../src/class/Entities/Entity.php');
 $qInsertNewEntitySql = <<<END
   INSERT INTO public."Entity" 
     (
-      "ParentID",
       "ID",
-      "RelativeID",
-      "SecondRelativeID",
-      "Name",
-      "Path",
-      "Content",
-      "Created"
+      "TypeID",
     )
   VALUES 
     (
       $1,
-      $2,
-      $3,
-      $4,
-      $5,
-      $6,
-      $7,
-      $8
+      $2
     );
   END;
 
@@ -43,17 +31,12 @@ pg_prepare(
   * @param Entity $entity
   */
 function createEntity (
-  Entity $entity) {
+  Entity $entity
+) {
   try {
     return insertEntity(
-      $entity->ParentID,
       $entity->ID,
-      $entity->RelativeID,
-      $entity->SecondRelativeID,
-      $entity->Name,
-      $entity->Path,
-      $entity->Content,
-      $entity->Created
+      $entity->TypeID
     );
   }
   catch (Exception $e) {
@@ -64,20 +47,12 @@ function createEntity (
 /**
  * Insert Entity 
  * 
- * @param string $name New Entity Name
- * @param string $Name
- * @param int $Added
- * @param string|null $ParentID
+ * @param string $ID Entity UUID
+ * @param string $TypeID Entity Type UUID
  */
 function insertEntity (
-  string|null $ParentID,
   string $ID,
-  string $RelativeID,
-  string $SecondRelativeID,
-  string $Name,
-  string $Path,
-  string $Content,
-  int $Created
+  string $TypeID
 ) {
 
   $dbconn = $GLOBALS['dbh'];
@@ -86,14 +61,8 @@ function insertEntity (
     $dbconn,
     "insert_new_entity", 
     array(
-      $ParentID,
       $ID,
-      $RelativeID,
-      $SecondRelativeID,
-      $Name,
-      $Path,
-      $Content,
-      $Created > 0 ? $Created : time()
+      $TypeID,
     )
   );
 

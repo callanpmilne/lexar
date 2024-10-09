@@ -11,7 +11,7 @@ include('../src/common/input/org.php');
 <div 
   class="component-form">
 
-  <?=uuidField('Payment ID')?> 
+  <?=uuidField(1, 'Payment ID')?> 
 
   <?=customerField(2)?>
 
