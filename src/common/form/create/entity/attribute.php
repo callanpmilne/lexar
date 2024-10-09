@@ -5,28 +5,17 @@
  */
 
 include('../src/common/input/uuid.php');
-include('../src/common/input/entityName.php');
+include('../src/common/input/entity/name.php');
+include('../src/common/input/entity/type.php');
 
 ?>
 
 <div 
   class="component-form">
 
-  <?=uuidField(1, 'Entity Type ID')?> 
+  <?=uuidField(1, 'Entity Attribute ID')?> 
 
-  <div 
-    class="component-form-field">
-    <label
-      for="CreateEntityTypeInputType">
-      Type
-    </label>
-
-    <input 
-      id="CreateEntityTypeInputType"
-      name="type"
-      type="input"
-      tabindex="2" />
-  </div>
+  <?=entityTypeField(2, 'Entity Type ID', 'type')?> 
 
   <?=entityNameFields(3)?>
 
