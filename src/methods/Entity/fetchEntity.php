@@ -6,7 +6,7 @@
  * Shows a list of Entities
  */
 
-require_once('../src/class/Entity.php');
+require_once('../src/class/DetailedEntity.php');
 
 /**
  * Fetch Entity * 
@@ -15,7 +15,7 @@ require_once('../src/class/Entity.php');
  */
 function fetchEntity (
   string $ID
-) {
+): Entity {
 
   $dbconn = $GLOBALS['dbh'];
 
@@ -43,7 +43,7 @@ function fetchEntity (
       $r['Content'],
       $r['Created'],
       isset($r['Deleted']) ? $r['Deleted'] : null,
-      isset($r['ParentID']) ? $r['ParentID'] : = null
+      isset($r['ParentID']) ? $r['ParentID'] : null
     );
   }, [pg_fetch_assoc($result)]);
 

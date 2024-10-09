@@ -6,25 +6,16 @@
  * @return string A new UUID
  */
 function generateUuid () {
-
-  $dbconn = $GLOBALS['dbh'];
-
   try {
-    pg_prepare(
-      $dbconn, 
-      "", 
-      'SELECT gen_random_uuid()'
+    $result = pg_query_params(
+      $GLOBALS['dbh'], 
+      'SELECT gen_random_uuid()', 
+      array()
     );
+
+    return pg_fetch_row($result)[0];
   }
   catch (Exception $e) {
-    // do nothing
+    
   }
-
-  $result = pg_execute(
-    $dbconn,
-    "", 
-    array()
-  );
-
-  return pg_fetch_row($result)[0];
 }

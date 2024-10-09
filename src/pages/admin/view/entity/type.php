@@ -18,7 +18,7 @@ $type = fetchEntityType($TypeID);
 
 <main>
   <div id="PageTitle">
-    <h1>Type: <?=$type->Name?></h1>
+    <h1>Type: <?=$type->Label?></h1>
 
     <p>
       <a href="/admin/list/entity/types">
@@ -49,7 +49,7 @@ $type = fetchEntityType($TypeID);
 
     <li>
       <span class="label">Abstract:</span>
-      <?=$type->IsAbstract ? 'true' : 'false'?>
+      <?=(true === $type->IsAbstract ? 'true' : 'false')?>
     </li>
   </ul>
 </main>

@@ -6,7 +6,7 @@
  * Shows a list of Entity
  */
 
-require_once('../src/class/Entity.php');
+require_once('../src/class/Entities/Entity.php');
 require_once('../src/methods/Entity/fetchEntityList.php');
 
 $entity = fetchEntityList();
