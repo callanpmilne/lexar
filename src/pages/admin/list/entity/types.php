@@ -28,9 +28,9 @@ $types = fetchEntityTypeList();
     <thead>
       <tr>
         <th class="wide">Label</th>
-        <th>Name</th>
-        <th>Parent</th>
-        <th>Abstract</th>
+        <th style="text-align:left;">Name</th>
+        <th style="text-align:left;">Parent</th>
+        <th style="text-align:center;">Abstract</th>
         <th>Attributes</th>
       </tr>
     </thead>
@@ -44,15 +44,23 @@ $types = fetchEntityTypeList();
             </a>
           </td>
 
-          <th>
+          <td style="text-align:left;">
             <?=$type->Name?>
-          </th>
+          </td>
 
-          <td><?=isset($type->ParentID) ? $type->ParentID : ''?></td>
+          <?php if (isset($type->ParentID)) : ?>
+            <td style="text-align:left;">
+              <a href="/admin/view/entity/type/<?=$type->ParentID?>">
+                <?=$type->ParentLabel?>
+              </a>
+            </td>
+          <?php else : ?>
+            <td></td>
+          <?php endif; ?>
 
-          <td style="text-align:right;"><?=$type->IsAbstract ? 'Y' : ''?></td>
+          <td style="text-align:center;"><?=(true === $type->IsAbstract ? 'Y' : '')?></td>
 
-          <td style="text-align:right;">0</td>
+          <td style="text-align:right;"><?=$type->AttributeCount?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>

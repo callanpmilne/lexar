@@ -23,7 +23,7 @@ class EntityType {
   /**
    * @var bool $IsAbstract TRUE if this type is an Abstract (incomplete) type
    */
-  public bool $IsAbstract = false;
+  public bool $IsAbstract;
 
   /**
    * Constructor Function
@@ -42,9 +42,7 @@ class EntityType {
     $this->ID = $ID;
     $this->EntityNameID = $EntityNameID;
 
-    if (isset($IsAbstract)) {
-      $this->IsAbstract = $IsAbstract;
-    }
+    $this->IsAbstract = $IsAbstract;
     
     if (isset($ParentID)) {
       $this->ParentID = $ParentID;

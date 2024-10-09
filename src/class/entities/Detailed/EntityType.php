@@ -30,6 +30,16 @@ class DetailedEntityType extends EntityType {
   public string $PluralReplacements;
 
   /**
+   * @var string Number of Attributes
+   */
+  public int $AttributeCount = 0;
+
+  /**
+   * @var string Parent Entity Type Label
+   */
+  public string $ParentLabel = '';
+
+  /**
    * Constructor Function
    * 
    * @param string $TypeID
@@ -38,7 +48,9 @@ class DetailedEntityType extends EntityType {
    * @param string $Name
    * @param string $PluralReplacements
    * @param bool $IsAbstract
+   * @param int $AttributeCount
    * @param string $ParentID
+   * @param string $ParentLabel
    */
   public function __construct(
     string $TypeID,
@@ -47,19 +59,26 @@ class DetailedEntityType extends EntityType {
     string $Name,
     string $PluralReplacements,
     bool $IsAbstract = false,
+    int $AttributeCount = 0,
     ?string $ParentID = null,
+    ?string $ParentLabel = ''
   ) {
     parent::__construct(
       $TypeID,
       $NameID,
-      $IsAbstract = false,
-      $ParentID = null
+      $IsAbstract,
+      $ParentID
     );
 
     $this->Name = $Name;
     $this->Label = $Label;
     $this->NameID = $NameID;
     $this->PluralReplacements = $PluralReplacements;
+    $this->AttributeCount = $AttributeCount;
+
+    if (isset($this->ParentID)) {
+      $this->ParentLabel = $ParentLabel;
+    }
   }
 
   /**

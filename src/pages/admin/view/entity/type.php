@@ -30,9 +30,9 @@ $type = fetchEntityType($TypeID);
   <ul>
     <?php if (isset($type->ParentID)) : ?>
       <li>
-        <span class="label">Inherits From:</span>
+        <span class="label">Parent:</span>
         <a href="/admin/view/entity/type/<?=$type->ParentID?>">
-          <?=$type->ParentID?>
+          <?=$type->ParentLabel?>
         </a>
       </li>
     <?php endif; ?>

@@ -19,7 +19,7 @@ function createEntityType (
       return insertEntityType($entityType);
     }
 
-    return insertChildEntityType($entityType, $ParentID);
+    return insertChildEntityType($entityType);
   }
   catch (Exception $e) {
     return false;
@@ -68,9 +68,12 @@ function insertEntityType (
 }
 
 function insertChildEntityType (
-  EntityType $entityType,
-  string $ParentID
+  EntityType $entityType
 ): bool {
+  
+  $abstract = $entityType->IsAbstract 
+    ? 'true' : 'false';
+    
   $result = pg_query_params(
     $GLOBALS['dbh'],
     ' INSERT 
@@ -87,14 +90,13 @@ function insertChildEntityType (
             $1,
             $2,
             $3,
-            $4
+            '.($abstract).'
           );
       ', 
     array(
       $entityType->ID,
-      $ParentID,
+      $entityType->ParentID,
       $entityType->EntityNameID,
-      $entityType->IsAbstract,
     )
   );
 
