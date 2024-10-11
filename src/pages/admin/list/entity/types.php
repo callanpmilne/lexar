@@ -58,7 +58,7 @@ $types = fetchEntityTypeList();
             <td></td>
           <?php endif; ?>
 
-          <td style="text-align:center;"><?=(true === $type->IsAbstract) ? 'Y' : ''?></td>
+          <td style="text-align:center;"><?=((true === $type->IsAbstract) ? 'Y' : '')?></td>
 
           <td style="text-align:right;"><?=$type->AttributeCount?></td>
         </tr>

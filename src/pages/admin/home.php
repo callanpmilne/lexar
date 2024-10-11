@@ -300,6 +300,7 @@ $tools = [
   section.admin-button-grid div.content-list-wrapper ol.content-list li a span.label {
     position: relative;
     z-index: 1;
+    font-family: 'Roboto Condensed';
   }
 
   section.admin-button-grid div.content-list-wrapper ol.content-list li a span.button {
@@ -337,20 +338,21 @@ $tools = [
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell h2 {
-    font-size: 0.8rem;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.2rem;
     border: none;
-    color: rgba(255,255,255,0.5);
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
     font-weight: 500;
     border-radius: 0.25rem;
     width: 100%;
     margin: 0;
-    padding: 0.5rem 0.75rem;
+    padding: 1.25rem 0.75rem;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    font-weight: 200;
+    justify-content: center;
     box-sizing: border-box;
+    background: linear-gradient(to bottom right, #00000070, transparent);
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell {
@@ -386,8 +388,8 @@ $tools = [
     border: none;
     width: 100%;
     box-sizing: border-box;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    background-color: rgba(0,0,0,0.25);
+    border-top: 2px solid var(--foreground-color-alt-2);
+    background-color: rgba(0,0,0,0.5);
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li {
@@ -395,8 +397,7 @@ $tools = [
     flex-direction: column;
     justify-content: stretch;
     align-items: stretch;
-    border-bottom: 1px solid rgb(255 255 255 / 30%);
-    font-size: 0.85rem;
+    font-size: 0.90rem;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li a {
@@ -406,11 +407,10 @@ $tools = [
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow-y: hidden;
-    color: #ffffff;
-    font-weight: 400;
+    font-weight: 200;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     padding: 0.25rem 0.75rem;
-    transition: all 500ms;
+    transition: all 200ms;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li a span.icon,
@@ -420,8 +420,14 @@ $tools = [
     font-size: 1.2rem;
   }
 
+  div.admin-dashboard-grid div.admin-dashboard-grid-cell h2 span {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
   div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li a span.icon {
-    background-color: #fff;
+    border: 1px solid var(--foreground-color-alt-2);
+    background-color: rgba(0,0,0,0.5);
     padding: 0.15rem 0.25rem;
     border-radius: 0.25rem;
     vertical-align: middle;
@@ -430,6 +436,7 @@ $tools = [
   div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li a:hover {
     background: linear-gradient(199deg, #1ad3af, #067b7e);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
   }
 
   div.admin-dashboard-grid div.admin-dashboard-grid-cell div.cell-inside ul li:last-of-type {
