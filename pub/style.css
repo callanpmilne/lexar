@@ -3,25 +3,29 @@
 
 /* Variables */
 :root {
-  --text-shadow-heading:     1px 1px 5px rgba(0, 0, 0, 0.2);
-  --text-shadow-body:        1px 1px 3px rgba(0, 0, 0, 0.2);
-  --text-shadow-other:       1px 1px 2px rgba(0, 0, 0, 0.4);
+  --text-shadow-heading:       1px 1px 5px rgba(0, 0, 0, 0.2);
+  --text-shadow-body:          1px 1px 3px rgba(0, 0, 0, 0.2);
+  --text-shadow-other:         1px 1px 2px rgba(0, 0, 0, 0.4);
 
-  --input-bg:                linear-gradient(to top, #80dcc9, #ffffffc2);
-  --input-box-shadow:        1px 1px 5px rgba(0, 0, 0, 0.25);
-  --input-focus-box-shadow:  0px 0px 20px #80dcc9;
+  --input-bg:                  linear-gradient(to top, #80dcc9, #ffffffc2);
+  --input-box-shadow:          1px 1px 5px rgba(0, 0, 0, 0.25);
+  --input-focus-box-shadow:    0px 0px 20px #80dcc9;
 
-  --form-submit-btn-bg:      linear-gradient(to top, #012e39, #004457);
+  --form-submit-btn-bg:        linear-gradient(to top, #012e39, #004457);
   
-  --foreground-color-alt-1:  #5ad8ff;
-  --foreground-color-alt-2:  #00fff9;
+  --foreground-color-alt-1:   #5ad8ff;
+  --foreground-color-alt-2:   #00fff9;
 
-  --search-btn-bg:           linear-gradient(to top, #1cdfb5 0%, #80dcc9 100%);
+  --search-btn-bg:              linear-gradient(to top, #1cdfb5 0%, #80dcc9 100%);
 
-  --grid-cat-content-bg:     linear-gradient(163deg, rgb(0 0 0 / 47%) 0%, rgb(0 0 0 / 69%) 100%);
-  --grid-item-content-bg:    linear-gradient(163deg, rgb(186 218 255 / 47%) 0%, rgb(255 255 255 / 69%) 100%);
+  --grid-cat-content-bg:        linear-gradient(163deg, rgb(0 0 0 / 47%) 0%, rgb(0 0 0 / 69%) 100%);
+  --grid-item-content-bg:       linear-gradient(163deg, rgb(186 218 255 / 47%) 0%, rgb(255 255 255 / 69%) 100%);
 
-  --menu-link-hover-bg:      linear-gradient(199deg, #1ad3af, #067b7e);
+  --menu-link-hover-bg:         linear-gradient(199deg, #1ad3af, #067b7e);
+
+  --desktop-device-min-width:   800px;
+  --desktop-content-max-width:  1200px;
+  --desktop-content-width:      100vw;
 }
 
 /* Common Elements */
@@ -557,8 +561,8 @@ section.content-grid div.item-info {
 
 @media only screen and (min-width: 800px) {
   section.content-grid {
-    max-width: 1200px;
-    width: 100vw;
+    max-width: var(--desktop-content-max-width);
+    width: var(--desktop-content-width);
   }
   
   ol.category-list,

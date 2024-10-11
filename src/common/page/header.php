@@ -478,6 +478,7 @@
 
     #topmenu li div.submenu ul li a {
       transition: all 200ms;
+      border-radius: 0.3rem;
     }
 
     #topmenu li div.submenu ul li a:hover {
