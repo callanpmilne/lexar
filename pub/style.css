@@ -1,3 +1,7 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Variables */
 :root {
   --text-shadow-heading:     1px 1px 5px rgba(0, 0, 0, 0.2);
   --text-shadow-body:        1px 1px 3px rgba(0, 0, 0, 0.2);
@@ -17,8 +21,10 @@
   --grid-cat-content-bg:     linear-gradient(163deg, rgb(0 0 0 / 47%) 0%, rgb(0 0 0 / 69%) 100%);
   --grid-item-content-bg:    linear-gradient(163deg, rgb(186 218 255 / 47%) 0%, rgb(255 255 255 / 69%) 100%);
 
+  --menu-link-hover-bg:      linear-gradient(199deg, #1ad3af, #067b7e);
 }
 
+/* Common Elements */
 html {
   font-size: 16.6px;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -45,6 +51,14 @@ main {
   background-attachment: fixed;
   color: #fff;
   overflow: hidden;
+}
+
+h1,
+h2, 
+h3, 
+h4, 
+h5 {
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 h1 {

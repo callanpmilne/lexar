@@ -456,7 +456,7 @@
     }
 
     #topmenu li div.submenu ul {
-      padding: 0;
+      padding: 1rem 0 0;
     }
 
     #topmenu li div.submenu ul li {
@@ -473,6 +473,15 @@
       color: #fff;
       text-decoration: none;
       font-size: 0.875rem;
+      transition: all 200ms;
+    }
+
+    #topmenu li div.submenu ul li a {
+      transition: all 200ms;
+    }
+
+    #topmenu li div.submenu ul li a:hover {
+      padding-left: 0.5rem;
     }
 
     #topmenu li:hover div.submenu {
@@ -501,11 +510,15 @@
       font-size: 0.9rem;
       text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
       border-radius: 0.25rem;
+      transition: all 200ms;
     }
 
+    #topmenu li div.submenu ul li a:hover,
     #topmenu div.submenu ul.tagcloud li.tag a:hover {
-      background: linear-gradient(199deg, #1ad3af, #067b7e);
+      background: var(--menu-link-hover-bg);
       color: #fff;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+      border-radius: 0.3rem;
     }
 
     #topmenu > li > a {

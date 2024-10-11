@@ -62,7 +62,7 @@ function fetchEntityTypeList () {
       $ent['Label'],
       $ent['Name'],
       $ent['PluralReplacements'],
-      $ent['IsAbstract'],
+      't' === $ent['IsAbstract'],
       $ent['AttributeCount'] ?? 0,
       $ent['ParentID'] ?? null,
       $ent['ParentLabel'] ?? '',

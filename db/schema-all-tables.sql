@@ -5,7 +5,7 @@
 -- Dumped from database version 15.2
 -- Dumped by pg_dump version 15.2
 
--- Started on 2024-10-06 17:37:14 AEDT
+-- Started on 2024-10-11 17:28:34 AEDT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -29,7 +29,7 @@ CREATE SCHEMA public;
 ALTER SCHEMA public OWNER TO pg_database_owner;
 
 --
--- TOC entry 3849 (class 0 OID 0)
+-- TOC entry 3889 (class 0 OID 0)
 -- Dependencies: 4
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: pg_database_owner
 --
@@ -56,7 +56,7 @@ CREATE TABLE public."AccountBalances" (
 ALTER TABLE public."AccountBalances" OWNER TO postgres;
 
 --
--- TOC entry 3850 (class 0 OID 0)
+-- TOC entry 3890 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: TABLE "AccountBalances"; Type: COMMENT; Schema: public; Owner: postgres
 --
@@ -96,7 +96,7 @@ CREATE TABLE public."Accounts" (
 ALTER TABLE public."Accounts" OWNER TO postgres;
 
 --
--- TOC entry 3853 (class 0 OID 0)
+-- TOC entry 3893 (class 0 OID 0)
 -- Dependencies: 229
 -- Name: TABLE "Accounts"; Type: COMMENT; Schema: public; Owner: postgres
 --
@@ -216,7 +216,7 @@ CREATE TABLE public."ContactMethods" (
 ALTER TABLE public."ContactMethods" OWNER TO postgres;
 
 --
--- TOC entry 3861 (class 0 OID 0)
+-- TOC entry 3901 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: COLUMN "ContactMethods"."Medium"; Type: COMMENT; Schema: public; Owner: postgres
 --
@@ -225,7 +225,7 @@ COMMENT ON COLUMN public."ContactMethods"."Medium" IS 'E.g. Phone, Email, Facebo
 
 
 --
--- TOC entry 3862 (class 0 OID 0)
+-- TOC entry 3902 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: COLUMN "ContactMethods"."Identifier"; Type: COMMENT; Schema: public; Owner: postgres
 --
@@ -355,6 +355,85 @@ CREATE TABLE public."Customers" (
 
 
 ALTER TABLE public."Customers" OWNER TO postgres;
+
+--
+-- TOC entry 245 (class 1259 OID 25240)
+-- Name: Entity; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Entity" (
+    "ID" uuid DEFAULT gen_random_uuid() NOT NULL,
+    "TypeID" uuid NOT NULL
+);
+
+
+ALTER TABLE public."Entity" OWNER TO postgres;
+
+--
+-- TOC entry 244 (class 1259 OID 25230)
+-- Name: EntityAttribute; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."EntityAttribute" (
+    "ID" uuid DEFAULT gen_random_uuid() NOT NULL,
+    "EntityTypeID" uuid NOT NULL,
+    "EntityNameID" uuid NOT NULL,
+    "ValueType" character varying NOT NULL,
+    "Optional" boolean DEFAULT false NOT NULL,
+    "DefaultValue" character varying NOT NULL,
+    "DisplayOrder" bigint DEFAULT 10 NOT NULL
+);
+
+
+ALTER TABLE public."EntityAttribute" OWNER TO postgres;
+
+--
+-- TOC entry 246 (class 1259 OID 25261)
+-- Name: EntityAttributeValue; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."EntityAttributeValue" (
+    "EntityID" uuid DEFAULT gen_random_uuid() NOT NULL,
+    "EntityAttributeID" uuid NOT NULL,
+    "Value" character varying(255) DEFAULT NULL::character varying,
+    "LastModified" bigint NOT NULL
+);
+
+
+ALTER TABLE public."EntityAttributeValue" OWNER TO postgres;
+
+--
+-- TOC entry 243 (class 1259 OID 25218)
+-- Name: EntityName; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."EntityName" (
+    "ID" uuid DEFAULT gen_random_uuid() NOT NULL,
+    "Label" character varying(120) NOT NULL,
+    "NiceName" character varying(80) NOT NULL,
+    "PascalCaseName" character varying(80) NOT NULL,
+    "CamelCaseName" character varying(80) NOT NULL,
+    "SnakeCaseName" character varying(80) NOT NULL,
+    "PluralReplacements" character varying(255) DEFAULT 'y$=ies'::character varying NOT NULL
+);
+
+
+ALTER TABLE public."EntityName" OWNER TO postgres;
+
+--
+-- TOC entry 247 (class 1259 OID 25273)
+-- Name: EntityType; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."EntityType" (
+    "ID" uuid DEFAULT gen_random_uuid() NOT NULL,
+    "ParentID" uuid,
+    "EntityNameID" uuid NOT NULL,
+    "IsAbstract" boolean DEFAULT false NOT NULL
+);
+
+
+ALTER TABLE public."EntityType" OWNER TO postgres;
 
 --
 -- TOC entry 222 (class 1259 OID 17329)
@@ -526,7 +605,7 @@ CREATE TABLE public."Users" (
 ALTER TABLE public."Users" OWNER TO postgres;
 
 --
--- TOC entry 3669 (class 2606 OID 17443)
+-- TOC entry 3699 (class 2606 OID 17443)
 -- Name: AccountBalances AccountBalance_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -535,7 +614,7 @@ ALTER TABLE ONLY public."AccountBalances"
 
 
 --
--- TOC entry 3677 (class 2606 OID 17475)
+-- TOC entry 3707 (class 2606 OID 17475)
 -- Name: AccountPayments AccountPaymentID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -544,7 +623,7 @@ ALTER TABLE ONLY public."AccountPayments"
 
 
 --
--- TOC entry 3667 (class 2606 OID 17438)
+-- TOC entry 3697 (class 2606 OID 17438)
 -- Name: Accounts Accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -553,7 +632,7 @@ ALTER TABLE ONLY public."Accounts"
 
 
 --
--- TOC entry 3681 (class 2606 OID 17506)
+-- TOC entry 3711 (class 2606 OID 17506)
 -- Name: Apis ApiID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -562,7 +641,7 @@ ALTER TABLE ONLY public."Apis"
 
 
 --
--- TOC entry 3687 (class 2606 OID 17530)
+-- TOC entry 3717 (class 2606 OID 17530)
 -- Name: ApiRouteHandlers ApiRouteHandlerID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -571,7 +650,7 @@ ALTER TABLE ONLY public."ApiRouteHandlers"
 
 
 --
--- TOC entry 3685 (class 2606 OID 17522)
+-- TOC entry 3715 (class 2606 OID 17522)
 -- Name: ApiRoutes ApiRouteID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -580,7 +659,7 @@ ALTER TABLE ONLY public."ApiRoutes"
 
 
 --
--- TOC entry 3683 (class 2606 OID 17514)
+-- TOC entry 3713 (class 2606 OID 17514)
 -- Name: ApiVersions ApiVersionID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -589,7 +668,7 @@ ALTER TABLE ONLY public."ApiVersions"
 
 
 --
--- TOC entry 3671 (class 2606 OID 17448)
+-- TOC entry 3701 (class 2606 OID 17448)
 -- Name: Balances Balances_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -598,7 +677,7 @@ ALTER TABLE ONLY public."Balances"
 
 
 --
--- TOC entry 3619 (class 2606 OID 17365)
+-- TOC entry 3649 (class 2606 OID 17365)
 -- Name: Categories CategoryID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -607,7 +686,7 @@ ALTER TABLE ONLY public."Categories"
 
 
 --
--- TOC entry 3621 (class 2606 OID 17367)
+-- TOC entry 3651 (class 2606 OID 17367)
 -- Name: Categories CategoryPath; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -616,7 +695,7 @@ ALTER TABLE ONLY public."Categories"
 
 
 --
--- TOC entry 3627 (class 2606 OID 17369)
+-- TOC entry 3657 (class 2606 OID 17369)
 -- Name: CustomerContactMethods ContactMethodCustomerID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -625,7 +704,7 @@ ALTER TABLE ONLY public."CustomerContactMethods"
 
 
 --
--- TOC entry 3623 (class 2606 OID 17371)
+-- TOC entry 3653 (class 2606 OID 17371)
 -- Name: ContactMethods ContactMethodID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -634,7 +713,7 @@ ALTER TABLE ONLY public."ContactMethods"
 
 
 --
--- TOC entry 3673 (class 2606 OID 17458)
+-- TOC entry 3703 (class 2606 OID 17458)
 -- Name: Currencies Currencies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -643,7 +722,7 @@ ALTER TABLE ONLY public."Currencies"
 
 
 --
--- TOC entry 3675 (class 2606 OID 17468)
+-- TOC entry 3705 (class 2606 OID 17468)
 -- Name: CustomerAccounts CustomerAccounts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -652,7 +731,7 @@ ALTER TABLE ONLY public."CustomerAccounts"
 
 
 --
--- TOC entry 3629 (class 2606 OID 17373)
+-- TOC entry 3659 (class 2606 OID 17373)
 -- Name: CustomerContactMethods CustomerContactMethodID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -661,7 +740,7 @@ ALTER TABLE ONLY public."CustomerContactMethods"
 
 
 --
--- TOC entry 3647 (class 2606 OID 17375)
+-- TOC entry 3677 (class 2606 OID 17375)
 -- Name: Customers CustomerID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -670,7 +749,7 @@ ALTER TABLE ONLY public."Customers"
 
 
 --
--- TOC entry 3643 (class 2606 OID 17377)
+-- TOC entry 3673 (class 2606 OID 17377)
 -- Name: CustomerSocialProfiles CustomerIDSocialProfileID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -679,7 +758,7 @@ ALTER TABLE ONLY public."CustomerSocialProfiles"
 
 
 --
--- TOC entry 3631 (class 2606 OID 17379)
+-- TOC entry 3661 (class 2606 OID 17379)
 -- Name: CustomerInteractions CustomerInteractionID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -688,7 +767,7 @@ ALTER TABLE ONLY public."CustomerInteractions"
 
 
 --
--- TOC entry 3635 (class 2606 OID 17381)
+-- TOC entry 3665 (class 2606 OID 17381)
 -- Name: CustomerNotes CustomerNoteID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -697,7 +776,7 @@ ALTER TABLE ONLY public."CustomerNotes"
 
 
 --
--- TOC entry 3639 (class 2606 OID 17383)
+-- TOC entry 3669 (class 2606 OID 17383)
 -- Name: CustomerPayments CustomerPaymentID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -706,7 +785,7 @@ ALTER TABLE ONLY public."CustomerPayments"
 
 
 --
--- TOC entry 3645 (class 2606 OID 17385)
+-- TOC entry 3675 (class 2606 OID 17385)
 -- Name: CustomerSocialProfiles CustomerSocialProfileID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -715,7 +794,43 @@ ALTER TABLE ONLY public."CustomerSocialProfiles"
 
 
 --
--- TOC entry 3649 (class 2606 OID 17387)
+-- TOC entry 3737 (class 2606 OID 25267)
+-- Name: EntityAttributeValue EntityAttributeValue_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EntityAttributeValue"
+    ADD CONSTRAINT "EntityAttributeValue_pkey" PRIMARY KEY ("EntityID");
+
+
+--
+-- TOC entry 3733 (class 2606 OID 25239)
+-- Name: EntityAttribute EntityAttribute_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EntityAttribute"
+    ADD CONSTRAINT "EntityAttribute_pkey" PRIMARY KEY ("ID");
+
+
+--
+-- TOC entry 3739 (class 2606 OID 25279)
+-- Name: EntityType EntityTypeID; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EntityType"
+    ADD CONSTRAINT "EntityTypeID" PRIMARY KEY ("ID");
+
+
+--
+-- TOC entry 3735 (class 2606 OID 25245)
+-- Name: Entity Entity_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Entity"
+    ADD CONSTRAINT "Entity_pkey" PRIMARY KEY ("ID");
+
+
+--
+-- TOC entry 3679 (class 2606 OID 17387)
 -- Name: Hashes HashID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -724,7 +839,7 @@ ALTER TABLE ONLY public."Hashes"
 
 
 --
--- TOC entry 3661 (class 2606 OID 17389)
+-- TOC entry 3691 (class 2606 OID 17389)
 -- Name: UserHashes ID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -733,7 +848,7 @@ ALTER TABLE ONLY public."UserHashes"
 
 
 --
--- TOC entry 3633 (class 2606 OID 17391)
+-- TOC entry 3663 (class 2606 OID 17391)
 -- Name: CustomerInteractions InteractionNoteCustomerID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -742,7 +857,7 @@ ALTER TABLE ONLY public."CustomerInteractions"
 
 
 --
--- TOC entry 3697 (class 2606 OID 17568)
+-- TOC entry 3727 (class 2606 OID 17568)
 -- Name: OrganisationInteractions InteractionNoteOrganisationID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -751,7 +866,7 @@ ALTER TABLE ONLY public."OrganisationInteractions"
 
 
 --
--- TOC entry 3625 (class 2606 OID 17393)
+-- TOC entry 3655 (class 2606 OID 17393)
 -- Name: ContactMethods MediumID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -760,7 +875,7 @@ ALTER TABLE ONLY public."ContactMethods"
 
 
 --
--- TOC entry 3637 (class 2606 OID 17395)
+-- TOC entry 3667 (class 2606 OID 17395)
 -- Name: CustomerNotes NoteCustomerID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -769,7 +884,7 @@ ALTER TABLE ONLY public."CustomerNotes"
 
 
 --
--- TOC entry 3651 (class 2606 OID 17397)
+-- TOC entry 3681 (class 2606 OID 17397)
 -- Name: Notes NoteID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -778,7 +893,7 @@ ALTER TABLE ONLY public."Notes"
 
 
 --
--- TOC entry 3693 (class 2606 OID 17551)
+-- TOC entry 3723 (class 2606 OID 17551)
 -- Name: OrganisationNotes NoteOrganisationID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -787,7 +902,7 @@ ALTER TABLE ONLY public."OrganisationNotes"
 
 
 --
--- TOC entry 3691 (class 2606 OID 17541)
+-- TOC entry 3721 (class 2606 OID 17541)
 -- Name: OrganisationAccounts OrganisationAccountID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -796,7 +911,7 @@ ALTER TABLE ONLY public."OrganisationAccounts"
 
 
 --
--- TOC entry 3699 (class 2606 OID 17566)
+-- TOC entry 3729 (class 2606 OID 17566)
 -- Name: OrganisationInteractions OrganisationInteractionID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -805,7 +920,7 @@ ALTER TABLE ONLY public."OrganisationInteractions"
 
 
 --
--- TOC entry 3695 (class 2606 OID 17549)
+-- TOC entry 3725 (class 2606 OID 17549)
 -- Name: OrganisationNotes OrganisationNoteID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -814,7 +929,7 @@ ALTER TABLE ONLY public."OrganisationNotes"
 
 
 --
--- TOC entry 3689 (class 2606 OID 17543)
+-- TOC entry 3719 (class 2606 OID 17543)
 -- Name: Organisations Organisations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -823,7 +938,7 @@ ALTER TABLE ONLY public."Organisations"
 
 
 --
--- TOC entry 3679 (class 2606 OID 17477)
+-- TOC entry 3709 (class 2606 OID 17477)
 -- Name: AccountPayments PaymentAccountID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -832,7 +947,7 @@ ALTER TABLE ONLY public."AccountPayments"
 
 
 --
--- TOC entry 3641 (class 2606 OID 17399)
+-- TOC entry 3671 (class 2606 OID 17399)
 -- Name: CustomerPayments PaymentCustomerID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -841,7 +956,7 @@ ALTER TABLE ONLY public."CustomerPayments"
 
 
 --
--- TOC entry 3653 (class 2606 OID 17401)
+-- TOC entry 3683 (class 2606 OID 17401)
 -- Name: Payments PaymentID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -850,7 +965,7 @@ ALTER TABLE ONLY public."Payments"
 
 
 --
--- TOC entry 3655 (class 2606 OID 17403)
+-- TOC entry 3685 (class 2606 OID 17403)
 -- Name: Sessions SessionID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -859,7 +974,7 @@ ALTER TABLE ONLY public."Sessions"
 
 
 --
--- TOC entry 3657 (class 2606 OID 17405)
+-- TOC entry 3687 (class 2606 OID 17405)
 -- Name: Sessions SessionUserSecretKey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -868,7 +983,7 @@ ALTER TABLE ONLY public."Sessions"
 
 
 --
--- TOC entry 3659 (class 2606 OID 17407)
+-- TOC entry 3689 (class 2606 OID 17407)
 -- Name: SocialProfiles SocialProfileID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -877,7 +992,16 @@ ALTER TABLE ONLY public."SocialProfiles"
 
 
 --
--- TOC entry 3663 (class 2606 OID 17409)
+-- TOC entry 3731 (class 2606 OID 25224)
+-- Name: EntityName TypeID; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."EntityName"
+    ADD CONSTRAINT "TypeID" PRIMARY KEY ("ID");
+
+
+--
+-- TOC entry 3693 (class 2606 OID 17409)
 -- Name: Users UserID; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -886,7 +1010,7 @@ ALTER TABLE ONLY public."Users"
 
 
 --
--- TOC entry 3665 (class 2606 OID 17411)
+-- TOC entry 3695 (class 2606 OID 17411)
 -- Name: Users UserUsername; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -895,7 +1019,7 @@ ALTER TABLE ONLY public."Users"
 
 
 --
--- TOC entry 3700 (class 2606 OID 17412)
+-- TOC entry 3740 (class 2606 OID 17412)
 -- Name: UserHashes HashID; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -904,7 +1028,7 @@ ALTER TABLE ONLY public."UserHashes"
 
 
 --
--- TOC entry 3701 (class 2606 OID 17417)
+-- TOC entry 3741 (class 2606 OID 17417)
 -- Name: UserHashes UserID; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -913,7 +1037,7 @@ ALTER TABLE ONLY public."UserHashes"
 
 
 --
--- TOC entry 3851 (class 0 OID 0)
+-- TOC entry 3891 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: TABLE "AccountBalances"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -922,7 +1046,7 @@ GRANT SELECT,INSERT ON TABLE public."AccountBalances" TO lexar;
 
 
 --
--- TOC entry 3852 (class 0 OID 0)
+-- TOC entry 3892 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: TABLE "AccountPayments"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -931,7 +1055,7 @@ GRANT SELECT,INSERT ON TABLE public."AccountPayments" TO lexar;
 
 
 --
--- TOC entry 3854 (class 0 OID 0)
+-- TOC entry 3894 (class 0 OID 0)
 -- Dependencies: 229
 -- Name: TABLE "Accounts"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -940,7 +1064,7 @@ GRANT SELECT,INSERT ON TABLE public."Accounts" TO lexar;
 
 
 --
--- TOC entry 3855 (class 0 OID 0)
+-- TOC entry 3895 (class 0 OID 0)
 -- Dependencies: 238
 -- Name: TABLE "ApiRouteHandlers"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -949,7 +1073,7 @@ GRANT SELECT,INSERT ON TABLE public."ApiRouteHandlers" TO lexar;
 
 
 --
--- TOC entry 3856 (class 0 OID 0)
+-- TOC entry 3896 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: TABLE "ApiRoutes"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -958,7 +1082,7 @@ GRANT SELECT,INSERT ON TABLE public."ApiRoutes" TO lexar;
 
 
 --
--- TOC entry 3857 (class 0 OID 0)
+-- TOC entry 3897 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: TABLE "ApiVersions"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -967,7 +1091,7 @@ GRANT SELECT,INSERT ON TABLE public."ApiVersions" TO lexar;
 
 
 --
--- TOC entry 3858 (class 0 OID 0)
+-- TOC entry 3898 (class 0 OID 0)
 -- Dependencies: 235
 -- Name: TABLE "Apis"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -976,7 +1100,7 @@ GRANT SELECT,INSERT ON TABLE public."Apis" TO lexar;
 
 
 --
--- TOC entry 3859 (class 0 OID 0)
+-- TOC entry 3899 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: TABLE "Balances"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -985,7 +1109,7 @@ GRANT SELECT,INSERT ON TABLE public."Balances" TO lexar;
 
 
 --
--- TOC entry 3860 (class 0 OID 0)
+-- TOC entry 3900 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: TABLE "Categories"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -994,7 +1118,7 @@ GRANT SELECT,INSERT ON TABLE public."Categories" TO lexar;
 
 
 --
--- TOC entry 3863 (class 0 OID 0)
+-- TOC entry 3903 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: TABLE "ContactMethods"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1003,7 +1127,7 @@ GRANT SELECT,INSERT ON TABLE public."ContactMethods" TO lexar;
 
 
 --
--- TOC entry 3864 (class 0 OID 0)
+-- TOC entry 3904 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: TABLE "Currencies"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1012,7 +1136,7 @@ GRANT SELECT,INSERT ON TABLE public."Currencies" TO lexar;
 
 
 --
--- TOC entry 3865 (class 0 OID 0)
+-- TOC entry 3905 (class 0 OID 0)
 -- Dependencies: 233
 -- Name: TABLE "CustomerAccounts"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1021,7 +1145,7 @@ GRANT SELECT,INSERT ON TABLE public."CustomerAccounts" TO lexar;
 
 
 --
--- TOC entry 3866 (class 0 OID 0)
+-- TOC entry 3906 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: TABLE "CustomerContactMethods"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1030,7 +1154,7 @@ GRANT SELECT,INSERT ON TABLE public."CustomerContactMethods" TO lexar;
 
 
 --
--- TOC entry 3867 (class 0 OID 0)
+-- TOC entry 3907 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: TABLE "CustomerInteractions"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1039,7 +1163,7 @@ GRANT SELECT,INSERT ON TABLE public."CustomerInteractions" TO lexar;
 
 
 --
--- TOC entry 3868 (class 0 OID 0)
+-- TOC entry 3908 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: TABLE "CustomerNotes"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1048,7 +1172,7 @@ GRANT SELECT,INSERT ON TABLE public."CustomerNotes" TO lexar;
 
 
 --
--- TOC entry 3869 (class 0 OID 0)
+-- TOC entry 3909 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: TABLE "CustomerPayments"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1057,7 +1181,7 @@ GRANT SELECT,INSERT ON TABLE public."CustomerPayments" TO lexar;
 
 
 --
--- TOC entry 3870 (class 0 OID 0)
+-- TOC entry 3910 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: TABLE "CustomerSocialProfiles"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1066,7 +1190,7 @@ GRANT SELECT,INSERT ON TABLE public."CustomerSocialProfiles" TO lexar;
 
 
 --
--- TOC entry 3871 (class 0 OID 0)
+-- TOC entry 3911 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: TABLE "Customers"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1075,7 +1199,52 @@ GRANT SELECT,INSERT ON TABLE public."Customers" TO lexar;
 
 
 --
--- TOC entry 3872 (class 0 OID 0)
+-- TOC entry 3912 (class 0 OID 0)
+-- Dependencies: 245
+-- Name: TABLE "Entity"; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT ON TABLE public."Entity" TO lexar;
+
+
+--
+-- TOC entry 3913 (class 0 OID 0)
+-- Dependencies: 244
+-- Name: TABLE "EntityAttribute"; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT ON TABLE public."EntityAttribute" TO lexar;
+
+
+--
+-- TOC entry 3914 (class 0 OID 0)
+-- Dependencies: 246
+-- Name: TABLE "EntityAttributeValue"; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT ON TABLE public."EntityAttributeValue" TO lexar;
+
+
+--
+-- TOC entry 3915 (class 0 OID 0)
+-- Dependencies: 243
+-- Name: TABLE "EntityName"; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT ON TABLE public."EntityName" TO lexar;
+
+
+--
+-- TOC entry 3916 (class 0 OID 0)
+-- Dependencies: 247
+-- Name: TABLE "EntityType"; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT,INSERT ON TABLE public."EntityType" TO lexar;
+
+
+--
+-- TOC entry 3917 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: TABLE "Hashes"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1084,7 +1253,7 @@ GRANT SELECT,INSERT ON TABLE public."Hashes" TO lexar;
 
 
 --
--- TOC entry 3873 (class 0 OID 0)
+-- TOC entry 3918 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: TABLE "Notes"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1093,7 +1262,7 @@ GRANT SELECT,INSERT ON TABLE public."Notes" TO lexar;
 
 
 --
--- TOC entry 3874 (class 0 OID 0)
+-- TOC entry 3919 (class 0 OID 0)
 -- Dependencies: 240
 -- Name: TABLE "OrganisationAccounts"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1102,7 +1271,7 @@ GRANT SELECT,INSERT ON TABLE public."OrganisationAccounts" TO lexar;
 
 
 --
--- TOC entry 3875 (class 0 OID 0)
+-- TOC entry 3920 (class 0 OID 0)
 -- Dependencies: 242
 -- Name: TABLE "OrganisationInteractions"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1111,7 +1280,7 @@ GRANT SELECT,INSERT ON TABLE public."OrganisationInteractions" TO lexar;
 
 
 --
--- TOC entry 3876 (class 0 OID 0)
+-- TOC entry 3921 (class 0 OID 0)
 -- Dependencies: 241
 -- Name: TABLE "OrganisationNotes"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1120,7 +1289,7 @@ GRANT SELECT,INSERT ON TABLE public."OrganisationNotes" TO lexar;
 
 
 --
--- TOC entry 3877 (class 0 OID 0)
+-- TOC entry 3922 (class 0 OID 0)
 -- Dependencies: 239
 -- Name: TABLE "Organisations"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1129,7 +1298,7 @@ GRANT SELECT,INSERT ON TABLE public."Organisations" TO lexar;
 
 
 --
--- TOC entry 3878 (class 0 OID 0)
+-- TOC entry 3923 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: TABLE "Payments"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1138,7 +1307,7 @@ GRANT SELECT,INSERT ON TABLE public."Payments" TO lexar;
 
 
 --
--- TOC entry 3879 (class 0 OID 0)
+-- TOC entry 3924 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: TABLE "Sessions"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1147,7 +1316,7 @@ GRANT SELECT,INSERT,UPDATE ON TABLE public."Sessions" TO lexar;
 
 
 --
--- TOC entry 3880 (class 0 OID 0)
+-- TOC entry 3925 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: TABLE "SocialProfiles"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1156,7 +1325,7 @@ GRANT SELECT,INSERT ON TABLE public."SocialProfiles" TO lexar;
 
 
 --
--- TOC entry 3881 (class 0 OID 0)
+-- TOC entry 3926 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: TABLE "UserHashes"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1165,7 +1334,7 @@ GRANT SELECT,INSERT ON TABLE public."UserHashes" TO lexar;
 
 
 --
--- TOC entry 3882 (class 0 OID 0)
+-- TOC entry 3927 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: TABLE "Users"; Type: ACL; Schema: public; Owner: postgres
 --
@@ -1173,7 +1342,7 @@ GRANT SELECT,INSERT ON TABLE public."UserHashes" TO lexar;
 GRANT SELECT,INSERT ON TABLE public."Users" TO lexar;
 
 
--- Completed on 2024-10-06 17:37:14 AEDT
+-- Completed on 2024-10-11 17:28:34 AEDT
 
 --
 -- PostgreSQL database dump complete

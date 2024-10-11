@@ -59,14 +59,14 @@ function fetchEntityType (
   );
 
   $result = array_map(function ($ent) {
-    
+
     return new DetailedEntityType(
       $ent['TypeID'],
       $ent['NameID'],
       $ent['TypeLabel'],
       $ent['TypeName'],
       $ent['TypeNamePluralReplacements'],
-      $ent['TypeIsAbstract'],
+      't' === $ent['TypeIsAbstract'],
       $ent['AttributeCount'],
       $ent['TypeParentID'],
       $ent['ParentLabel'],
