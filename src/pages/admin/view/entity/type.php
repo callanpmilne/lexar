@@ -80,14 +80,14 @@ $sourceFiles = $sourceFiles = generateSourceFiles(module: $module);
       <section id="EntityTypeExplorer">
         <h2>Entity Type Explorer</h2>
 
-        <div>
+        <div class="entity-type-explorer">
           <h3>Code Preview</h3>
 
           <?php foreach ($sourceFiles as $uri => $src) : ?>
             <div 
-              class="component-form-field">
+              class="entity-type-code-preview">
               <label class="output">
-                <pre><?=$uri?></pre>
+                <pre class="source-file-path"><?=$uri?></pre>
               </label>
 
               <?=highlight_string(
@@ -115,17 +115,49 @@ $sourceFiles = $sourceFiles = generateSourceFiles(module: $module);
     display: flex;
     flex-direction: column;
     flex: 1;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: stretch;
+    justify-content: stretch;
   }
 
   section.split-content div.content-section section {
     display: flex;
     flex-direction: column;
     flex: 1;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: stretch;
+    justify-content: stretch;
     width: 100%;
+  }
+
+  #EntityTypeExplorer div.entity-type-explorer {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  #EntityTypeExplorer div.entity-type-code-preview {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+  
+  #EntityTypeExplorer div.entity-type-code-preview pre {
+    margin: 0;
+  }
+  
+  #EntityTypeExplorer div.entity-type-code-preview pre.source-file-path {
+    backdrop-filter: brightness(0.5) blur(50px);
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  
+  #EntityTypeExplorer div.entity-type-code-preview pre code {
+    font-size: 0.7rem;
+    backdrop-filter: brightness(0.8) blur(50px);
+    display: block;
+    height: 10rem;
+    overflow: scroll;
+    padding: 0.5rem;
   }
 
   #EntityTypeDetail {
@@ -179,10 +211,16 @@ $sourceFiles = $sourceFiles = generateSourceFiles(module: $module);
     }
     section.split-content div.content-section:nth-of-type(1) {
       flex: 1;
+      width: 20vw;
+      min-width: 20vw;
     }
     section.split-content div.content-section:nth-of-type(2) {
       flex: 3;
       margin-left: 2rem;
+    }
+
+    section.split-content div.content-section section {
+
     }
 
     
