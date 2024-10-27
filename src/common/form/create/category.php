@@ -23,7 +23,7 @@ $topLevelCategories = array_filter($categories, function ($cat) {
 <div 
   class="component-form">
 
-  <?=uuidField(1, 'Category ID')?> 
+  <?=uuidField(1, 'Category ID', 'uuid')?> 
 
   <?=categoryField(2, 'Parent Category')?> 
 

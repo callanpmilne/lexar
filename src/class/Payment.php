@@ -88,9 +88,14 @@ class Payment {
     );
   }
 
+  /**
+   * Get Fee Amount
+   * 
+   * @return string
+   */
   public function getFeeAmount (
     string $decimalSeparator = ''
-  ) {
+  ): string {
     preg_match(
       '/^([0-9]{1,})([0-9]{2})$/U', 
       $this->FeeAmount, 
@@ -99,8 +104,12 @@ class Payment {
 
     $decimalPlaces = 2;
 
+    $number = count($matches) < 2
+      ? floatval("0.00")
+      : floatval("$matches[1].$matches[2]");
+
     return number_format(
-      floatval("$matches[1].$matches[2]"),
+      $number,
       $decimalPlaces,
       $decimalSeparator
     );
@@ -117,8 +126,12 @@ class Payment {
 
     $decimalPlaces = 2;
 
+    $number = array_count_values($matches) < 1
+      ? floatval("0.00")
+      : floatval("$matches[1].$matches[2]");
+
     return number_format(
-      floatval("$matches[1].$matches[2]"),
+      $number,
       $decimalPlaces,
       $decimalSeparator
     );

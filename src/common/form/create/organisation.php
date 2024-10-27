@@ -11,7 +11,7 @@ include('../src/common/input/uuid.php');
 <div 
   class="component-form alt-form">
 
-  <?=uuidField(1, 'Organisation ID')?> 
+  <?=uuidField(1, 'Organisation ID', 'uuid')?> 
 
   <div 
     class="component-form-field">

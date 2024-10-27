@@ -10,7 +10,7 @@ include('../src/common/input/uuid.php');
 <div 
   class="component-form">
 
-  <?=uuidField(1, 'Customer ID')?> 
+  <?=uuidField(1, 'Customer ID', 'uuid')?> 
 
   <div 
     class="component-form-field">

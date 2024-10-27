@@ -11,7 +11,7 @@ include('../src/common/input/uuid.php');
 <div 
   class="component-form">
 
-  <?=uuidField(1, 'Entity ID')?> 
+  <?=uuidField(1, 'Entity ID', 'uuid')?> 
 
   <!-- entity type fields -->
 
